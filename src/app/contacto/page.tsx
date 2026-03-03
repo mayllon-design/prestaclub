@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactoPage from "@/features/contacto/ContactoPage";
+import { Suspense } from "react"; // 1. Importamos Suspense
 
 export const metadata: Metadata = {
     title: "Contacto - PrestaClub",
@@ -7,5 +8,14 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    return <ContactoPage />;
+    return (
+        /* 2. Envolvemos el componente en Suspense */
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center bg-background">
+                <p className="text-muted-foreground animate-pulse">Cargando formulario...</p>
+            </div>
+        }>
+            <ContactoPage />
+        </Suspense>
+    );
 }
