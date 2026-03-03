@@ -1,10 +1,11 @@
+"use client"; // 1. ESTA ES LA CLAVE: Permite usar onClick y window.history
+
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
 import { House, ArrowLeft } from "lucide-react";
 import Layout from "@/core/layouts/MainLayout";
-import { Suspense } from "react"; // 1. Importación esencial
+import { Suspense } from "react";
 
-// 2. Creamos un componente "Hijo" que contiene todo el diseño
 function NotFoundContent() {
     return (
         <section className="min-h-[70vh] flex flex-col items-center justify-center section-padding text-center">
@@ -20,6 +21,7 @@ function NotFoundContent() {
                 <Button variant="hero" size="xl" asChild>
                     <Link href="/">VOLVER AL INICIO</Link>
                 </Button>
+                {/* Ahora el onClick funcionará sin romper el build */}
                 <Button
                     variant="outline"
                     size="xl"
@@ -32,13 +34,12 @@ function NotFoundContent() {
     );
 }
 
-// 3. El componente principal envuelve TODO (incluyendo el Layout) en Suspense
 export default function NotFound() {
     return (
-        <Suspense fallback={<div className="min-h-screen bg-background" />}>
-            <Layout>
+        <Layout>
+            <Suspense fallback={<div className="min-h-[70vh] flex items-center justify-center"><p>Cargando...</p></div>}>
                 <NotFoundContent />
-            </Layout>
-        </Suspense>
+            </Suspense>
+        </Layout>
     );
 }
