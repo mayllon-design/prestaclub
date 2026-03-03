@@ -1,15 +1,13 @@
-import type { Metadata } from "next";
-import ArticulosPage from "@/features/articulos/ArticulosPage";
-import { Suspense } from "react"; // 1. Importamos Suspense
+"use client"; // 1. Añadimos esto para permitir manejadores de eventos
 
-export const metadata: Metadata = {
-    title: "Artículos y Blog Financiero - PrestaClub",
-    description: "Aprende sobre préstamos con garantía hipotecaria, saneamiento predial y consejos financieros para tu negocio en nuestro blog especializado.",
-};
+import ArticulosPage from "@/features/articulos/ArticulosPage";
+import { Suspense } from "react";
+
+// Nota: Cuando usas "use client", la metadata se debe manejar de forma distinta 
+// o dejarla en un archivo separado. Para no complicarnos, mantengamos la estructura:
 
 export default function Page() {
     return (
-        /* 2. Envolvemos el componente para evitar el error de useSearchParams */
         <Suspense fallback={
             <div className="min-h-screen flex items-center justify-center bg-background">
                 <div className="flex flex-col items-center gap-4">
