@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { Suspense } from "react"; // 1. Importamos Suspense
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -50,7 +51,12 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        {children}
+
+        {/* 2. Envolvemos el contenido principal en Suspense */}
+        {/* Esto protege a todas las páginas de errores de renderizado estático */}
+        <Suspense fallback={<div className="min-h-screen bg-background" />}>
+          {children}
+        </Suspense>
       </body>
     </html>
   );
