@@ -18,11 +18,11 @@ export const AppRoutes = () => {
             <Route path="/" element={<Navigate to="/principal" replace />} />
             <Route path="/principal" element={<Principal />} />
             <Route path="/financiamiento-con-garantia-hipotecaria" element={<Hipotecario />} />
-            <Route path="/financiamiento-con-garantia-hipotecaria/capital-de-trabajo" element={<CapitalDeTrabajo />} />
+            <Route path="/capital-de-trabajo" element={<CapitalDeTrabajo />} />
             <Route path="/financiamiento-con-garantia-hipotecaria/construccion" element={<Construccion />} />
             <Route path="/financiamiento-con-garantia-hipotecaria/consolidacion-de-deudas" element={<ConsolidacionDeudas />} />
             <Route path="/financiamiento-con-garantia-hipotecaria/compra-de-hipoteca" element={<CompraHipoteca />} />
-            <Route path="/credito-con-garantia-vehicular" element={<Vehicular />} />
+            <Route path="/prestamo-con-garantia-vehicular" element={<Vehicular />} />
             <Route path="/saneamiento-predial" element={<Saneamiento />} />
             <Route path="/nosotros" element={<Nosotros />} />
             <Route path="/articulos" element={<Articulos />} />

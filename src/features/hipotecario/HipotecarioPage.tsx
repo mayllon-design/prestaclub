@@ -12,7 +12,7 @@ import { useState } from "react";
 import { LocationModal } from "@/shared/components/LocationModal";
 
 const buyers = [
-  { title: "Capital de Trabajo", description: "Impulsa tu negocio con liquidez inmediata usando tu propiedad como garantía.", link: "/financiamiento-con-garantia-hipotecaria/capital-de-trabajo", icon: Banknote },
+  { title: "Capital de Trabajo", description: "Impulsa tu negocio con liquidez inmediata usando tu propiedad como garantía.", link: "/capital-de-trabajo", icon: Banknote },
   { title: "Construcción", description: "Financia tu proyecto de construcción o remodelación.", link: "/financiamiento-con-garantia-hipotecaria/construccion", icon: Building2 },
   { title: "Consolidación de Deudas", description: "Unifica todas tus deudas en una sola cuota manejable.", link: "/financiamiento-con-garantia-hipotecaria/consolidacion-de-deudas", icon: FileText },
   { title: "Compra de Hipoteca", description: "Mejora las condiciones de tu hipoteca actual.", link: "/financiamiento-con-garantia-hipotecaria/compra-de-hipoteca", icon: Shield },
@@ -210,7 +210,7 @@ const FinanciamientoHipotecario = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button variant="hero" size="xl" asChild>
-              <Link href="/financiamiento-con-garantia-hipotecaria/capital-de-trabajo">Capital de Trabajo</Link>
+              <Link href="/capital-de-trabajo">Capital de Trabajo</Link>
             </Button>
             <Button variant="hero" size="xl" asChild>
               <Link href="/financiamiento-con-garantia-hipotecaria/construccion">Construcción</Link>

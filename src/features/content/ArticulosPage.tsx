@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowRight, Calendar } from "lucide-react";
 import Layout from "@/core/layouts/MainLayout";
 
@@ -33,7 +33,7 @@ const articles = [
     excerpt: "Las PYMEs en Perú enfrentan barreras para acceder a financiamiento bancario. Conoce las alternativas disponibles.",
     date: "2025-01-28",
     category: "Capital de Trabajo",
-    link: "/financiamiento-con-garantia-hipotecaria/capital-de-trabajo",
+    link: "/capital-de-trabajo",
   },
   {
     slug: "credito-vehicular-vs-prestamo-personal",
@@ -41,7 +41,7 @@ const articles = [
     excerpt: "Comparamos ambas opciones para que tomes la mejor decisión financiera según tu situación.",
     date: "2025-01-20",
     category: "Crédito Vehicular",
-    link: "/credito-con-garantia-vehicular",
+    link: "/prestamo-con-garantia-vehicular",
   },
   {
     slug: "como-elegir-empresa-financiamiento",
@@ -87,7 +87,7 @@ const Articulos = () => {
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-6">
             {articles.map((article, i) => (
-              <Link key={i} to={article.link} className="card-elevated p-6 group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              <Link key={i} href={article.link} className="card-elevated p-6 group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-semibold text-gold bg-gold/10 px-3 py-1 rounded-full">{article.category}</span>
                   <span className="flex items-center gap-1 text-xs text-muted-foreground">

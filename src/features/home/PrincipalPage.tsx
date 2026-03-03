@@ -24,7 +24,7 @@ const products = [
     icon: TrendingUp,
     title: "Crédito con Garantía Vehicular",
     description: "Usa tu vehículo como respaldo y accede a financiamiento rápido con tasas competitivas.",
-    link: "/credito-con-garantia-vehicular",
+    link: "/prestamo-con-garantia-vehicular",
   },
   {
     icon: Shield,

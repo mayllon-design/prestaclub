@@ -42,7 +42,7 @@ const Footer = () => {
             <h4 className="font-bold text-base mb-4">Productos</h4>
             <div className="flex flex-col gap-2">
               <Link href="/financiamiento-con-garantia-hipotecaria" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Financiamiento con Garantía Hipotecaria</Link>
-              <Link href="/credito-con-garantia-vehicular" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Crédito con Garantía Vehicular</Link>
+              <Link href="/prestamo-con-garantia-vehicular" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Crédito con Garantía Vehicular</Link>
               <Link href="/saneamiento-predial" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Saneamiento Predial</Link>
             </div>
           </div>
