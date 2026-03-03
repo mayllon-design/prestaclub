@@ -69,5 +69,11 @@
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "react-resizable-panels": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
   }
 }
