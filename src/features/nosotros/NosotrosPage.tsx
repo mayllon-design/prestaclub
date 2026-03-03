@@ -1,124 +1,147 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
-import { Shield, Users, Target, Award, CheckCircle2, ArrowRight, Building2 } from "lucide-react";
+import { Shield, Users, Building2, ArrowRight, ExternalLink } from "lucide-react";
 import Layout from "@/core/layouts/MainLayout";
 import Image from "next/image";
 import teamWorking from "@/assets/team-working.jpg";
 
+const team = [
+    { name: "Juan Diego Cañamero", role: "Gerente General", linkedin: "https://www.linkedin.com/in/juandiegocañamero" },
+    { name: "Hellen Lengua", role: "Directora Comercial", linkedin: "https://www.linkedin.com/in/hellenlengua" },
+    { name: "Leonides Mendiolaza", role: "Director Legal", linkedin: "https://www.linkedin.com/in/leonidesmendiolaza" },
+];
+
 const NosotrosPage = () => {
     return (
         <Layout>
-            {/* Hero Section */}
-            <section className="relative overflow-hidden hero-gradient section-padding">
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src={teamWorking}
-                        alt="Equipo PrestaClub trabajando"
-                        className="w-full h-full object-cover opacity-20"
-                        priority
-                        fill
-                    />
-                </div>
-                <div className="container mx-auto max-w-4xl text-center relative z-10">
-                    <h1 className="text-4xl md:text-6xl font-extrabold text-primary-foreground mb-6">
-                        Más de <span className="text-gradient-gold">23 años</span> conectando oportunidades
+            {/* Hero */}
+            <section className="hero-gradient section-padding">
+                <div className="container mx-auto max-w-4xl text-center">
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-primary-foreground leading-tight mb-6">
+                        Más de 23 años conectando <span className="text-gradient-gold">oportunidades financieras</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-primary-foreground/80 font-body mb-8">
-                        Somos la plataforma líder en soluciones financieras con garantía real, comprometidos con el crecimiento de los peruanos.
+                    <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto font-body">
+                        Somos una empresa inscrita en la SBS, especializada en conectar personas y empresas que necesitan financiamiento con inversionistas institucionales.
                     </p>
                 </div>
             </section>
 
-            {/* Philosophy */}
+            {/* History */}
             <section className="section-padding bg-background">
-                <div className="container mx-auto">
-                    <div className="grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
+                <div className="container mx-auto max-w-5xl">
+                    <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h2 className="text-3xl font-extrabold mb-6">Nuestra Misión</h2>
-                            <p className="text-lg text-muted-foreground font-body leading-relaxed mb-6">
-                                Brindar soluciones financieras ágiles y seguras a personas y microempresas que no tienen acceso a la banca tradicional, conectándolas con inversionistas institucionales bajo un modelo de garantía hipotecaria.
-                            </p>
+                            <h2 className="text-3xl font-extrabold text-foreground mb-6">Nuestra Historia</h2>
                             <div className="space-y-4">
-                                {[
-                                    "Inclusión Financiera",
-                                    "Transparencia absoluta",
-                                    "Rapidez en el servicio",
-                                    "Respaldo institucional"
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <CheckCircle2 className="h-5 w-5 text-gold" />
-                                        <span className="font-semibold text-foreground">{item}</span>
-                                    </div>
-                                ))}
+                                <p className="text-muted-foreground font-body leading-relaxed">
+                                    PrestaClub nació hace más de dos décadas con la misión de democratizar el acceso al financiamiento en el Perú. Desde nuestros inicios, hemos trabajado para crear un puente entre quienes necesitan capital y los inversionistas institucionales dispuestos a respaldarlo.
+                                </p>
+                                <p className="text-muted-foreground font-body leading-relaxed">
+                                    Con más de 15,000 operaciones realizadas y más de S/600 millones desembolsados, nos hemos consolidado como una referencia en el mercado de financiamiento con garantía real.
+                                </p>
+                                <p className="text-muted-foreground font-body leading-relaxed">
+                                    Estamos inscritos en la SBS en el Registro de Empresas de Préstamo y reportamos a la UIF, garantizando la transparencia y legalidad de todas nuestras operaciones.
+                                </p>
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="p-8 bg-muted rounded-3xl text-center">
-                                <div className="text-4xl font-extrabold text-primary mb-2">+23</div>
-                                <div className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Años</div>
-                            </div>
-                            <div className="p-8 bg-primary/10 rounded-3xl text-center">
-                                <div className="text-4xl font-extrabold text-primary mb-2">+15K</div>
-                                <div className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Operaciones</div>
-                            </div>
-                            <div className="p-8 bg-gold/10 rounded-3xl text-center">
-                                <div className="text-4xl font-extrabold text-gold mb-2">+600M</div>
-                                <div className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Soles</div>
-                            </div>
-                            <div className="p-8 bg-muted rounded-3xl text-center">
-                                <div className="text-4xl font-extrabold text-primary mb-2">SBS</div>
-                                <div className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Registrados</div>
-                            </div>
+                        <div className="rounded-3xl overflow-hidden shadow-xl relative aspect-[4/3]">
+                            <Image
+                                src={teamWorking}
+                                alt="Equipo PrestaClub"
+                                className="object-cover"
+                                fill
+                                priority
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                            />
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Ethics & Values */}
-            <section className="section-padding bg-muted/30">
-                <div className="container mx-auto text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-foreground">Pilares que nos definen</h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto font-body">Fundamentamos nuestra operación en la ética y el cumplimiento normativo.</p>
-                </div>
-                <div className="container mx-auto max-w-6xl">
-                    <div className="grid md:grid-cols-3 gap-8">
+            {/* Mission */}
+            <section className="section-padding bg-muted/50">
+                <div className="container mx-auto max-w-4xl">
+                    <div className="grid md:grid-cols-2 gap-8">
                         <div className="card-elevated p-8">
-                            <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                                 <Shield className="h-6 w-6 text-primary" />
                             </div>
-                            <h3 className="text-xl font-bold mb-4">Registro en SBS</h3>
-                            <p className="text-muted-foreground font-body">Estamos inscritos en el Registro de Empresas de Préstamos y Empeños de la SBS (Resolución N° 02627-2020).</p>
+                            <h3 className="text-xl font-bold text-foreground mb-3">Misión</h3>
+                            <p className="text-muted-foreground font-body leading-relaxed">
+                                Democratizar el acceso al financiamiento en el Perú, conectando a personas y empresas con inversionistas institucionales de manera transparente, rápida y segura.
+                            </p>
                         </div>
                         <div className="card-elevated p-8">
-                            <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                                <Target className="h-6 w-6 text-primary" />
+                            <div className="h-12 w-12 rounded-xl bg-gold/10 flex items-center justify-center mb-4">
+                                <Building2 className="h-6 w-6 text-gold" />
                             </div>
-                            <h3 className="text-xl font-bold mb-4">Prevención de Lavado</h3>
-                            <p className="text-muted-foreground font-body">Contamos con un Oficial de Cumplimiento y reportamos directamente a la Unidad de Inteligencia Financiera (UIF).</p>
+                            <h3 className="text-xl font-bold text-foreground mb-3">Registro SBS</h3>
+                            <p className="text-muted-foreground font-body leading-relaxed">
+                                Estamos inscritos en la Superintendencia de Banca, Seguros y AFP (SBS) en el Registro de Empresas de Préstamo. Reportamos a la Unidad de Inteligencia Financiera (UIF).
+                            </p>
                         </div>
-                        <div className="card-elevated p-8">
-                            <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                                <Award className="h-6 w-6 text-primary" />
+                    </div>
+                </div>
+            </section>
+
+            {/* Team */}
+            <section className="section-padding bg-background">
+                <div className="container mx-auto max-w-4xl">
+                    <h2 className="text-3xl font-extrabold text-foreground mb-4 text-center">Equipo Directivo</h2>
+                    <p className="text-muted-foreground text-center mb-12 font-body">Profesionales comprometidos con tu éxito financiero.</p>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {team.map((member, i) => (
+                            <div key={i} className="card-elevated p-6 text-center">
+                                <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                                    <Users className="h-10 w-10 text-primary" />
+                                </div>
+                                <h3 className="font-bold text-foreground text-lg">{member.name}</h3>
+                                <p className="text-sm text-muted-foreground mb-4">{member.role}</p>
+                                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+                                    Ver perfil en LinkedIn <ExternalLink className="h-3 w-3" />
+                                </a>
                             </div>
-                            <h3 className="text-xl font-bold mb-4">Respaldo Institucional</h3>
-                            <p className="text-muted-foreground font-body">Nuestras operaciones cuentan con el respaldo de inversionistas institucionales de primer nivel.</p>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Gallery */}
+            <section className="section-padding bg-muted/50">
+                <div className="container mx-auto max-w-5xl">
+                    <h2 className="text-3xl font-extrabold text-foreground mb-8 text-center">Nuestras Oficinas</h2>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <div className="card-elevated overflow-hidden">
+                            <div className="h-48 bg-primary/5 flex items-center justify-center">
+                                <Building2 className="h-16 w-16 text-primary/30" />
+                            </div>
+                            <div className="p-5">
+                                <h3 className="font-bold text-foreground">Oficina Principal - Cercado de Lima</h3>
+                                <p className="text-sm text-muted-foreground font-body">Av. Nicolás de Piérola 950, frente a la Plaza San Martín</p>
+                            </div>
+                        </div>
+                        <div className="card-elevated overflow-hidden">
+                            <div className="h-48 bg-primary/5 flex items-center justify-center">
+                                <Building2 className="h-16 w-16 text-primary/30" />
+                            </div>
+                            <div className="p-5">
+                                <h3 className="font-bold text-foreground">Oficina Comercial - Ventanilla</h3>
+                                <p className="text-sm text-muted-foreground font-body">Pj. 51 Mz G6 Lt. 4 (Angamos), Ventanilla</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* CTA */}
-            <section className="section-padding bg-background text-center">
-                <div className="container mx-auto max-w-3xl">
-                    <h2 className="text-3xl font-extrabold mb-8 text-foreground">¿Listo para empezar?</h2>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button variant="hero" size="xl" asChild>
-                            <Link href="/financiamiento-con-garantia-hipotecaria">Ver Préstamos Hipotecarios</Link>
-                        </Button>
-                        <Button variant="outline" size="xl" asChild>
-                            <Link href="/contacto">Contáctanos</Link>
-                        </Button>
-                    </div>
+            <section className="hero-gradient section-padding">
+                <div className="container mx-auto text-center max-w-3xl">
+                    <h2 className="text-3xl font-extrabold text-primary-foreground mb-6">¿Listo para trabajar con nosotros?</h2>
+                    <Button variant="hero" size="xl" asChild>
+                        <Link href="/financiamiento-con-garantia-hipotecaria#precalificar">PRECALIFICAR AHORA <ArrowRight className="h-5 w-5" /></Link>
+                    </Button>
                 </div>
             </section>
         </Layout>
