@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: "PrestaClub - Financiamiento con Garantía Hipotecaria",
   description: "Obtén el capital que tu negocio o proyecto necesita con el respaldo de tu propiedad. Préstamos rápidos, seguros y competitivos.",
   keywords: ["préstamos hipotecarios", "garantía hipotecaria", "financiamiento", "PrestaClub", "Perú"],
+  icons: {
+    icon: "/favicon.webp",
+  },
 };
 
 export default function RootLayout({
