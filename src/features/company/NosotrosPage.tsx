@@ -2,6 +2,7 @@ import { Button } from "@/shared/components/ui/button";
 import { Link } from "react-router-dom";
 import { Shield, Users, Building2, ArrowRight, ExternalLink } from "lucide-react";
 import Layout from "@/core/layouts/MainLayout";
+import Image from "next/image";
 import teamWorking from "@/assets/team-working.jpg";
 
 const team = [
@@ -42,7 +43,11 @@ const Nosotros = () => {
               </p>
             </div>
             <div className="rounded-3xl overflow-hidden shadow-xl">
-              <img src={teamWorking} alt="Equipo PrestaClub" className="w-full h-full object-cover" loading="lazy" />
+              <Image
+                src={teamWorking}
+                alt="Equipo PrestaClub"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
