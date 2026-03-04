@@ -77,7 +77,7 @@ const Principal = () => {
               <span className="text-sm font-semibold text-gold">Registrados en la SBS</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6">
-              Financiamiento con <span className="text-gradient-gold">respaldo real</span>
+              Financiamiento con <span className="text-gradient-gold">respaldo real </span>
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 max-w-2xl font-body">
               Conectamos personas y empresas que necesitan financiamiento con inversionistas institucionales. El repago se garantiza con una propiedad.
