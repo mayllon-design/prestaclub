@@ -161,9 +161,11 @@ interface BuyerPageProps {
   problems: string[];
   solution: string;
   buyerType: string;
+  videoId?: string;
+  isVertical?: boolean;
 }
 
-const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyerType }: BuyerPageProps) => {
+const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyerType, videoId, isVertical }: BuyerPageProps) => {
   const { getWhatsAppUrl, clearTracking } = useTrafficTracking();
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
   const leadId = `LEAD-${Date.now().toString(36).toUpperCase()}`;
@@ -230,7 +232,7 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
       </section>
 
       {/* Videos */}
-      <VideoSection title="Conoce cómo funciona" />
+      <VideoSection title="Conoce cómo funciona" videoId={videoId} isVertical={isVertical} />
       {/* <VideoSection title="Video específico sobre esta solución" /> */}
 
       {/* Advantages vs banks */}
@@ -338,6 +340,7 @@ export const CapitalDeTrabajo = () => (
     ]}
     solution="Te conectamos con inversionistas institucionales que financian tu capital de trabajo usando tu propiedad como respaldo. Proceso rápido, tasas competitivas y acompañamiento personalizado."
     buyerType="Capital de Trabajo"
+    videoId="RnkeZ3nx2jo"
   />
 );
 
@@ -355,6 +358,8 @@ export const Construccion = () => (
     ]}
     solution="Financiamos tu proyecto de construcción o remodelación con tu propiedad o terreno como garantía. Desembolsos progresivos según avance de obra."
     buyerType="Construcción"
+    videoId="OXdKXds4mds"
+    isVertical={true}
   />
 );
 

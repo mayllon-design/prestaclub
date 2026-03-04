@@ -9,6 +9,7 @@ interface VideoSectionProps {
   videoId?: string;
   ctaText?: string;
   ctaLink?: string;
+  isVertical?: boolean;
 }
 
 const VideoSection = ({
@@ -16,6 +17,7 @@ const VideoSection = ({
   videoId = "DYqcB5vEq_g",
   ctaText = "Precalifica ahora",
   ctaLink = "/financiamiento-con-garantia-hipotecaria#precalificar",
+  isVertical = false,
 }: VideoSectionProps) => {
   const pathname = usePathname();
 
@@ -37,10 +39,10 @@ const VideoSection = ({
 
   return (
     <section className="section-padding bg-background">
-      <div className="container mx-auto max-w-4xl text-center">
+      <div className={`container mx-auto ${isVertical ? "max-w-md" : "max-w-4xl"} text-center`}>
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-8">{title}</h2>
         <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/50 bg-card">
-          <div className="aspect-video">
+          <div className={isVertical ? "aspect-[9/16]" : "aspect-video"}>
             <iframe
               src={`https://www.youtube.com/embed/${videoId}?rel=0`}
               title={title}

@@ -82,7 +82,7 @@ const SaneamientoPredial = () => {
         </div>
       </section>
 
-      <VideoSection />
+      <VideoSection videoId="JuUIIvug0h0" isVertical={true} />
 
       {/* Process */}
       <section className="section-padding bg-background">
