@@ -138,7 +138,7 @@ const NosotrosPage = () => {
             {/* CTA */}
             <section className="hero-gradient section-padding">
                 <div className="container mx-auto text-center max-w-3xl">
-                    <h2 className="text-3xl font-extrabold text-primary-foreground mb-6">¿Listo para trabajar con nosotros?</h2>
+                    <h2 className="text-3xl font-extrabold text-primary-foreground mb-6">¿Estás listo para tu financiamiento?</h2>
                     <Button variant="hero" size="xl" asChild>
                         <Link href="/financiamiento-con-garantia-hipotecaria#precalificar">PRECALIFICAR AHORA <ArrowRight className="h-5 w-5" /></Link>
                     </Button>
