@@ -7,6 +7,7 @@ import Layout from "@/core/layouts/MainLayout";
 import Image from "next/image";
 import teamWorking from "@/assets/team-working.jpg";
 import ubicacionPresta from "@/assets/ubicacion-presta.webp";
+import sedeVentanilla from "@/assets/sede-ventanilla.webp";
 import jdImage from "@/assets/jd.png";
 import hlImage from "@/assets/hl.png";
 import lmImage from "@/assets/lm.png";
@@ -121,18 +122,28 @@ const NosotrosPage = () => {
                 <div className="container mx-auto max-w-5xl">
                     <h2 className="text-3xl font-extrabold text-foreground mb-8 text-center">Nuestras Oficinas</h2>
                     <div className="grid md:grid-cols-2 gap-6">
-                        <div className="card-elevated overflow-hidden">
-                            <div className="h-48 bg-primary/5 flex items-center justify-center">
-                                <Building2 className="h-16 w-16 text-primary/30" />
+                        <div className="card-elevated overflow-hidden group">
+                            <div className="h-64 relative overflow-hidden bg-white">
+                                <Image
+                                    src={ubicacionPresta}
+                                    alt="Oficina Principal PrestaClub"
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
                             </div>
                             <div className="p-5">
                                 <h3 className="font-bold text-foreground">Oficina Principal - Cercado de Lima</h3>
                                 <p className="text-sm text-muted-foreground font-body">Av. Nicolás de Piérola 950, frente a la Plaza San Martín</p>
                             </div>
                         </div>
-                        <div className="card-elevated overflow-hidden">
-                            <div className="h-48 bg-primary/5 flex items-center justify-center">
-                                <Building2 className="h-16 w-16 text-primary/30" />
+                        <div className="card-elevated overflow-hidden group">
+                            <div className="h-64 relative overflow-hidden bg-white">
+                                <Image
+                                    src={sedeVentanilla}
+                                    alt="Oficina Ventanilla PrestaClub"
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
                             </div>
                             <div className="p-5">
                                 <h3 className="font-bold text-foreground">Oficina Comercial - Ventanilla</h3>
