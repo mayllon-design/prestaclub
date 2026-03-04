@@ -67,7 +67,7 @@ const FinanciamientoHipotecario = () => {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 mb-6">
               <Building2 className="h-4 w-4 text-gold" />
-              <span className="text-sm font-semibold text-gold">Financiamiento Hipotecario</span>
+              <span className="text-sm font-semibold text-gold">Financiamiento con garantía Hipotecaria</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6">
               Tu propiedad es tu mejor <span className="text-gradient-gold">respaldo financiero</span>
@@ -168,10 +168,10 @@ const FinanciamientoHipotecario = () => {
               {[1, 2, 3, 4, 5].map(j => <Star key={j} className="h-5 w-5 fill-gold text-gold" />)}
             </div>
             <p className="text-lg text-foreground/80 leading-relaxed mb-6 font-body italic">
-              &ldquo;PrestaClub me ayudó cuando los bancos me cerraron las puertas. En menos de una semana obtuve el financiamiento que necesitaba para mi negocio, con condiciones transparentes y un trato muy profesional.&rdquo;
+              &ldquo;PrestaClub me ayudó cuando los bancos me cerraron las puertas. En menos de una semana obtuve el financiamiento con garantía hipotecariaque necesitaba para mi negocio, con condiciones transparentes y un trato muy profesional.&rdquo;
             </p>
-            <p className="font-bold text-foreground">Carlos M.</p>
-            <p className="text-sm text-muted-foreground">Empresario, Lima</p>
+            <p className="font-bold text-foreground">Andres F.</p>
+            <p className="text-sm text-muted-foreground">Emprendedor, Surquillo</p>
           </div>
         </div>
       </section>
@@ -182,10 +182,10 @@ const FinanciamientoHipotecario = () => {
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-8 text-center">Preguntas frecuentes</h2>
           <div className="flex flex-col gap-4">
             {[
-              { q: "¿Qué tipo de propiedades aceptan como garantía?", a: "Aceptamos casas, departamentos, terrenos, locales comerciales e inmuebles industriales en Lima y provincias." },
-              { q: "¿Puedo obtener financiamiento si tengo deudas?", a: "Sí, evaluamos cada caso de manera integral. Incluso podemos ayudarte a consolidar tus deudas." },
-              { q: "¿Cuánto tiempo tarda el proceso?", a: "Desde la precalificación hasta el desembolso puede tomar entre 7 y 15 días hábiles." },
-              { q: "¿Están regulados?", a: "Sí, estamos inscritos en la SBS en el Registro de Empresas de Préstamo y reportamos a la UIF." },
+              { q: "¿Qué tipo de propiedades aceptan como garantía?", a: "Los fondos de inversión con los que trabajamos aceptan casas, departamentos, terrenos, locales comerciales e inmuebles industriales en Lima y provincias." },
+              { q: "¿Puedo obtener financiamiento si tengo deudas?", a: "Sí, evaluamos cada caso de manera integral no importa si estas en Infocorp o no puedes demostrar ingresos" },
+              { q: "¿Cuánto tiempo tarda el proceso?", a: "Puedes tener tu desembolso hasta en 3  días hábiles, luego de la firma de minuta." },
+              { q: "¿Están inscritos en la SBS?", a: "Sí, estamos inscritos en la SBS en el Registro de Empresas de Préstamo y reportamos a la UIF. para nuestras actividades de crédito. Nuestras actividades de asesoría legal y financiera no requieren un registro" },
             ].map((faq, i) => (
               <details key={i} className="card-elevated group">
                 <summary className="p-5 cursor-pointer font-semibold text-foreground flex justify-between items-center">
@@ -216,7 +216,7 @@ const FinanciamientoHipotecario = () => {
               <Link href="/financiamiento-con-garantia-hipotecaria/construccion">Construcción</Link>
             </Button>
             <Button variant="hero" size="xl" asChild>
-              <Link href="/financiamiento-con-garantia-hipotecaria/consolidacion-de-deudas">Consolidación</Link>
+              <Link href="/financiamiento-con-garantia-hipotecaria/consolidacion-de-deudas">Consolidación de deudas</Link>
             </Button>
           </div>
         </div>

@@ -8,16 +8,16 @@ import heroPrincipal from "@/assets/hero-principal.jpg";
 
 const stats = [
   { value: "+23", label: "Años en el mercado" },
-  { value: "+15,000", label: "Operaciones realizadas" },
-  { value: "+S/600M", label: "Desembolsados" },
-  { value: "SBS", label: "Registrados en la SBS" },
+  { value: "+15,000", label: "Operaciones gestionadas" },
+  { value: "+S/700M", label: "Desembolsados gestionados" },
+  { value: "+ Confianza", label: "Registrados en la SBS" },
 ];
 
 const products = [
   {
     icon: Building2,
     title: "Financiamiento con Garantía Hipotecaria",
-    description: "Obtén capital respaldado por tu propiedad. Soluciones para capital de trabajo, construcción, consolidación de deudas y compra de hipoteca.",
+    description: "Obtén capital respaldado por tu propiedad a través de fondos de inversión. Soluciones para capital de trabajo, construcción, consolidación de deudas y compra de hipoteca.",
     link: "/financiamiento-con-garantia-hipotecaria",
   },
   {
@@ -35,16 +35,16 @@ const products = [
 ];
 
 const benefits = [
-  { icon: Clock, text: "Respuesta en 48 horas" },
+  { icon: Clock, text: "Precalificación en minutos" },
   { icon: Shield, text: "Respaldo de inversionistas institucionales" },
   { icon: Users, text: "Atención personalizada" },
-  { icon: CheckCircle2, text: "Reportamos a la UIF" },
+  { icon: CheckCircle2, text: "Estamos registrados en la SBS" },
 ];
 
 const testimonials = [
   {
     name: "Carlos M.",
-    role: "Empresario, Lima",
+    role: "Emprendedor, San Juan de Lurigancho",
     text: "PrestaClub me ayudó a obtener el capital de trabajo que necesitaba para expandir mi negocio. El proceso fue rápido y transparente.",
     rating: 5,
   },
@@ -77,7 +77,7 @@ const Principal = () => {
               <span className="text-sm font-semibold text-gold">Registrados en la SBS</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6">
-              Financiamiento con <span className="text-gradient-gold">respaldo real</span> para hacer crecer tu negocio
+              Financiamiento con <span className="text-gradient-gold">respaldo real</span>
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 max-w-2xl font-body">
               Conectamos personas y empresas que necesitan financiamiento con inversionistas institucionales. El repago se garantiza con una propiedad.
@@ -114,7 +114,7 @@ const Principal = () => {
       <section className="section-padding bg-background">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Nuestros productos financieros</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Nuestros servicios financieros</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-body">
               Soluciones diseñadas para cada necesidad, con el respaldo de más de 23 años de experiencia.
             </p>
@@ -194,7 +194,7 @@ const Principal = () => {
             ¿Listo para obtener tu financiamiento?
           </h2>
           <p className="text-lg text-primary-foreground/80 mb-8 font-body">
-            Precalifica en menos de 3 minutos y recibe una respuesta en 48 horas.
+            Precalifica en pocos minutos.
           </p>
           <Button variant="hero" size="xl" asChild>
             <Link href="/financiamiento-con-garantia-hipotecaria#precalificar">

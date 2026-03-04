@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
+import { usePathname } from "next/navigation";
 
 interface VideoSectionProps {
   title?: string;
@@ -14,6 +17,24 @@ const VideoSection = ({
   ctaText = "Precalifica ahora",
   ctaLink = "/financiamiento-con-garantia-hipotecaria#precalificar",
 }: VideoSectionProps) => {
+  const pathname = usePathname();
+
+  // Determine the link based on the current page
+  let finalCtaLink = ctaLink;
+
+  const isBuyerPage =
+    pathname?.includes("capital-de-trabajo") ||
+    pathname?.includes("construccion") ||
+    pathname?.includes("consolidacion-de-deudas");
+
+  const isMainHipotecarioPage = pathname === "/financiamiento-con-garantia-hipotecaria";
+
+  if (isBuyerPage) {
+    finalCtaLink = "#wizard";
+  } else if (isMainHipotecarioPage) {
+    finalCtaLink = "#precalificar";
+  }
+
   return (
     <section className="section-padding bg-background">
       <div className="container mx-auto max-w-4xl text-center">
@@ -32,7 +53,7 @@ const VideoSection = ({
         </div>
         <div className="mt-8">
           <Button variant="hero" size="xl" asChild>
-            <Link href={ctaLink}>{ctaText}</Link>
+            <Link href={finalCtaLink}>{ctaText}</Link>
           </Button>
         </div>
       </div>

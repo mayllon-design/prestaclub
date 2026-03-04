@@ -231,7 +231,7 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
 
       {/* Videos */}
       <VideoSection title="Conoce cómo funciona" />
-      <VideoSection title="Video específico sobre esta solución" />
+      {/* <VideoSection title="Video específico sobre esta solución" /> */}
 
       {/* Advantages vs banks */}
       <section className="section-padding bg-background">
@@ -239,8 +239,8 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
           <h2 className="text-3xl font-extrabold text-foreground mb-8 text-center">Ventajas frente a bancos tradicionales</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              "Aprobamos con historial crediticio negativo",
-              "Proceso más rápido: 7-15 días hábiles",
+              "Apruebas aunque tu historial creditico sea negativo",
+              "Proceso más rápido: Puedes tener tu desembolso hasta en 3 días hábiles, luego de la firma de minuta",
               "Menos requisitos documentarios",
               "Atención personalizada de inicio a fin",
               "Flexibilidad en montos y condiciones",
@@ -286,7 +286,7 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
               {[1, 2, 3, 4, 5].map(j => <Star key={j} className="h-5 w-5 fill-gold text-gold" />)}
             </div>
             <p className="text-lg text-foreground/80 leading-relaxed mb-6 font-body italic">
-              "Obtuve el financiamiento que necesitaba en menos de 10 días. El equipo de PrestaClub fue muy profesional y transparente durante todo el proceso."
+              "Obtuve el financiamiento que necesitaba en muy poco tiempo. El equipo de PrestaClub fue muy profesional y transparente durante todo el proceso."
             </p>
             <p className="font-bold text-foreground">María L.</p>
             <p className="text-sm text-muted-foreground">Propietaria, Lima</p>
@@ -331,7 +331,7 @@ export const CapitalDeTrabajo = () => (
     heroDescription="Obtén la liquidez que tu negocio necesita para crecer. Usa tu propiedad como garantía y accede a montos importantes con condiciones flexibles."
     problems={[
       "Tu negocio necesita capital pero los bancos te rechazan",
-      "Los costos financieros de tus proveedores son muy altos",
+      "No tienes acceso a crédito formal",
       "Necesitas comprar mercadería o insumos con urgencia",
       "Tu flujo de caja no alcanza para cubrir operaciones",
       "Los bancos te piden demasiados requisitos documentarios",
