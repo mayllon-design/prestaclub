@@ -128,7 +128,7 @@ const WizardHipotecario = ({ buyerType, onComplete }: { buyerType: string; onCom
           </div>
           <label className="flex items-start gap-3 cursor-pointer">
             <input type="checkbox" checked={data.privacidad} onChange={e => update("privacidad", e.target.checked)} className="mt-1 h-4 w-4 rounded border-input accent-primary" />
-            <span className="text-sm text-muted-foreground">Acepto la <Link href="/politica-de-privacidad" className="text-primary underline">Política de Privacidad</Link> y autorizo el tratamiento de mis datos personales.</span>
+            <span className="text-sm text-muted-foreground">Acepto la <a href="/politica-de-privacidad-de-prestaclub.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline">Política de Privacidad</a> y autorizo el tratamiento de mis datos personales.</span>
           </label>
         </div>
       )}

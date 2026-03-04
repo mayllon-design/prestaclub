@@ -55,8 +55,9 @@ const Footer = () => {
               <Link href="/articulos" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Artículos</Link>
               <Link href="/preguntas-frecuentes" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Preguntas Frecuentes</Link>
               <Link href="/contacto" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Contáctanos</Link>
-              <Link href="/politica-de-privacidad" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Política de Privacidad</Link>
+              <a href="/politica-de-privacidad-de-prestaclub.pdf" target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Política de Privacidad</a>
               <Link href="/terminos-y-condiciones" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Términos y Condiciones</Link>
+
             </div>
           </div>
 
