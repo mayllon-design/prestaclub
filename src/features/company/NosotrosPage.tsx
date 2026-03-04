@@ -6,9 +6,9 @@ import Image from "next/image";
 import teamWorking from "@/assets/team-working.jpg";
 
 const team = [
-  { name: "Juan Diego Cañamero", role: "Gerente General", linkedin: "https://www.linkedin.com/in/juandiegocañamero" },
-  { name: "Hellen Lengua", role: "Directora Comercial", linkedin: "https://www.linkedin.com/in/hellenlengua" },
-  { name: "Leonides Mendiolaza", role: "Director Legal", linkedin: "https://www.linkedin.com/in/leonidesmendiolaza" },
+  { name: "Juan Diego Cañamero", role: "Gerente General", linkedin: "https://www.linkedin.com/in/juan-diego-canamero/" },
+  { name: "Hellen Lengua", role: "Directora Comercial", linkedin: "https://www.linkedin.com/in/hellen-lengua-7b3454204/" },
+  { name: "Leonides Mendiolaza", role: "Director Legal", linkedin: "https://www.linkedin.com/in/leonides-mendiolaza-875186b7/" },
 ];
 
 const Nosotros = () => {
