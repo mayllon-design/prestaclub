@@ -36,7 +36,7 @@ const NosotrosPage = () => {
                             <h2 className="text-3xl font-extrabold text-foreground mb-6">Nuestra Historia</h2>
                             <div className="space-y-4">
                                 <p className="text-muted-foreground font-body leading-relaxed">
-                                    PrestaClub nació hace más de dos décadas con la misión de democratizar el acceso al financiamiento en el Perú. Desde nuestros inicios, hemos trabajado para crear un puente entre quienes necesitan capital y los inversionistas institucionales dispuestos a respaldarlo.
+                                    Prestaclub nació hace más de dos décadas con la misión de democratizar el acceso al financiamiento en el Perú. Desde nuestros inicios, hemos trabajado para crear un puente entre quienes necesitan capital y los inversionistas institucionales dispuestos a respaldarlo.
                                 </p>
                                 <p className="text-muted-foreground font-body leading-relaxed">
                                     Con más de 15,000 operaciones realizadas y más de S/600 millones desembolsados, nos hemos consolidado como una referencia en el mercado de financiamiento con garantía real.
