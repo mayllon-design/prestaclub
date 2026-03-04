@@ -144,13 +144,31 @@ const CreditWizard = forwardRef<HTMLDivElement, CreditWizardProps>((_, ref) => {
             setShowCustodyInfo(true);
         } else {
             // User insists NO → redirect
-            window.open("https://wa.me/51999999999?text=Hola%2C%20quiero%20conocer%20otras%20opciones%20de%20crédito", "_blank");
+            window.open("https://wa.me/51919000200?text=Hola%2C%20quiero%20conocer%20otras%20opciones%20de%20crédito", "_blank");
         }
     };
 
     const handleFinalSubmit = () => {
-        // Placeholder for Bitrix integration
-        alert(`Formulario enviado:\nNombre: ${nombre}\nCelular: ${celular}\nCorreo: ${correo}\nPlaca: ${placa}\nMonto preaprobado: S/ ${preApproved.toLocaleString()}`);
+        const message = `Hola PrestaClub, quiero continuar con la evaluación para mi crédito con garantía vehicular.
+
+*Datos del Cliente:*
+Nombre: ${nombre}
+Celular: ${celular}
+Correo: ${correo}
+Placa: ${placa}
+
+*Datos del Vehículo:*
+Marca: ${brand}
+Año: ${year}
+Kilometraje: ${km} km
+Combustible: ${fuel}
+Valor estimado: S/ ${parseFloat(value).toLocaleString()}
+Monto preaprobado: S/ ${preApproved.toLocaleString()}
+
+Quedo atento a su respuesta.`;
+
+        const whatsappUrl = `https://wa.me/51919000200?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, "_blank");
     };
 
     const yearTooOld = year && (currentYear - parseInt(year)) > 10;
@@ -218,7 +236,7 @@ const CreditWizard = forwardRef<HTMLDivElement, CreditWizardProps>((_, ref) => {
                                     className="w-full max-w-sm mx-auto block p-3 rounded-xl border border-border bg-background text-foreground mb-4"
                                 />
                                 <a
-                                    href={`https://wa.me/51999999999?text=${encodeURIComponent(`Hola, vengo del simulador web. Mi marca no aparece en el listado. Mi vehículo es: ${customBrand}`)}`}
+                                    href={`https://wa.me/51919000200?text=${encodeURIComponent(`Hola, vengo del simulador web. Mi marca no aparece en el listado. Mi vehículo es: ${customBrand}`)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn-whatsapp inline-flex items-center gap-2"
@@ -256,7 +274,7 @@ const CreditWizard = forwardRef<HTMLDivElement, CreditWizardProps>((_, ref) => {
                                                     Actualmente no califica para este producto, pero podemos evaluar otras opciones.
                                                 </p>
                                                 <a
-                                                    href="https://wa.me/51999999999?text=Hola%2C%20mi%20vehículo%20tiene%20más%20de%2010%20años.%20¿Tienen%20otras%20opciones?"
+                                                    href="https://wa.me/51919000200?text=Hola%2C%20mi%20vehículo%20tiene%20más%20de%2010%20años.%20¿Tienen%20otras%20opciones?"
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="btn-whatsapp inline-flex items-center gap-2 mt-3 !py-2 !px-4 !text-sm"

@@ -46,12 +46,12 @@ const faqs = [
   {
     question: "¿Cuánto me pueden prestar dejando mi auto en garantía?",
     answer:
-      "El monto del préstamo depende de la marca, año, kilometraje y tipo de combustible de tu vehículo. Puedes usar nuestro simulador online para obtener una estimación en minutos. El valor mínimo del vehículo debe ser de S/ 10,000. Prestaclub está registrada en la SBS, por lo que ofrecemos condiciones formales y transparentes.",
+      "El monto del préstamo depende de la marca, año, kilometraje y tipo de combustible de tu vehículo. Puedes usar nuestro simulador online para obtener una estimación en minutos. El valor mínimo del vehículo debe ser de S/ 20,000. Prestaclub está registrada en la SBS, por lo que ofrecemos condiciones formales y transparentes.",
   },
   {
     question: "¿Cuánto tiempo queda mi vehículo en custodia?",
     answer:
-      "Tu vehículo permanece en custodia segura en nuestras instalaciones en Lima hasta que canceles el total del crédito. Los plazos van desde 30 hasta 180 días. La custodia incluye espacio cerrado, vigilancia permanente, póliza de seguros, control periódico documentado y acta formal de entrega y devolución.",
+      "Tu vehículo permanece en custodia segura en nuestras instalaciones en Lima hasta que canceles el total del crédito. Los plazos van desde 30 hasta 180 días. La custodia incluye espacio con vigilancia permanente, póliza de seguros, control periódico y acta formal de entrega y devolución. Además, te entregamos tu vehiculo lavado y listo para usarlo.",
   },
 ];
 
@@ -120,12 +120,9 @@ const FAQSection = () => {
 
 const trustFeatures = [
   { icon: FileCheck, label: "Escritura pública ante notario" },
-  { icon: BookOpen, label: "Registro en SUNARP (SIGM)" },
   { icon: Lock, label: "Custodia protegida" },
   { icon: Shield, label: "Acta de entrega y devolución" },
   { icon: Landmark, label: "Empresa registrada en SBS" },
-  { icon: Building2, label: "Miembro de Asociación Fintech Perú" },
-  { icon: Award, label: "Miembro de Cámara de Comercio de Lima" },
 ];
 
 const TrustFooter = () => (
@@ -150,7 +147,7 @@ const TrustFooter = () => (
             className="flex flex-col items-center gap-3 text-center p-4"
           >
             <div className="w-14 h-14 rounded-full bg-primary-foreground/15 flex items-center justify-center">
-              <item.icon className="w-7 h-7 text-accent" />
+              <item.icon className="w-7 h-7 text-[#ffa200]" />
             </div>
             <p className="text-primary-foreground/90 text-sm font-medium">{item.label}</p>
           </motion.div>
@@ -263,8 +260,8 @@ const Hero = ({ onSimulate }: { onSimulate: () => void }) => {
             transition={{ duration: 0.7 }}
             className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6"
           >
-            Convierte tu vehículo de marca comercial en{" "}
-            <span className="text-accent">liquidez</span> en pocas horas.
+            Convierte tu vehículo en{" "}
+            <span className="text-[#ffa200]">liquidez</span> en pocas horas.
           </motion.h1>
 
           <motion.p
@@ -274,7 +271,7 @@ const Hero = ({ onSimulate }: { onSimulate: () => void }) => {
             className="text-primary-foreground/85 text-lg sm:text-xl mb-4 leading-relaxed"
           >
             Si tienes un vehículo de marca comercial y hasta 10 años de antigüedad,
-            puedes obtener dinero por plazos desde 30 hasta 180 días usando tu vehículo como respaldo.
+            puedes obtener un crédito en plazos de hasta 180 días usando tu vehículo como respaldo.
           </motion.p>
 
           <motion.p
@@ -333,8 +330,6 @@ const VehicularPage = () => {
       <CreditWizard ref={wizardRef} />
 
       <FAQSection />
-
-      <InstitutionalTrust />
 
       <TrustFooter />
     </Layout>
