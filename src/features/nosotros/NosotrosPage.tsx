@@ -6,11 +6,14 @@ import { Shield, Users, Building2, ArrowRight, ExternalLink } from "lucide-react
 import Layout from "@/core/layouts/MainLayout";
 import Image from "next/image";
 import teamWorking from "@/assets/team-working.jpg";
+import jdImage from "@/assets/jd.png";
+import hlImage from "@/assets/hl.png";
+import lmImage from "@/assets/lm.png";
 
 const team = [
-    { name: "Juan Diego Cañamero", role: "Gerente General", linkedin: "https://www.linkedin.com/in/juandiegocañamero" },
-    { name: "Hellen Lengua", role: "Directora Comercial", linkedin: "https://www.linkedin.com/in/hellenlengua" },
-    { name: "Leonides Mendiolaza", role: "Director Legal", linkedin: "https://www.linkedin.com/in/leonidesmendiolaza" },
+    { name: "Juan Diego Cañamero", role: "Gerente General", image: jdImage, linkedin: "https://www.linkedin.com/in/juandiegocañamero" },
+    { name: "Hellen Lengua", role: "Directora Comercial", image: hlImage, linkedin: "https://www.linkedin.com/in/hellenlengua" },
+    { name: "Leonides Mendiolaza", role: "Director Legal", image: lmImage, linkedin: "https://www.linkedin.com/in/leonidesmendiolaza" },
 ];
 
 const NosotrosPage = () => {
@@ -94,8 +97,14 @@ const NosotrosPage = () => {
                     <div className="grid md:grid-cols-3 gap-6">
                         {team.map((member, i) => (
                             <div key={i} className="card-elevated p-6 text-center">
-                                <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                                    <Users className="h-10 w-10 text-primary" />
+                                <div className="h-28 w-28 rounded-full overflow-hidden mx-auto mb-4 border-2 border-primary/20 shadow-md">
+                                    <Image
+                                        src={member.image}
+                                        alt={member.name}
+                                        width={112}
+                                        height={112}
+                                        className="object-cover w-full h-full"
+                                    />
                                 </div>
                                 <h3 className="font-bold text-foreground text-lg">{member.name}</h3>
                                 <p className="text-sm text-muted-foreground mb-4">{member.role}</p>
