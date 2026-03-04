@@ -21,7 +21,7 @@ const buyers = [
 const advantages = [
   "+23 años en el mercado",
   "+15,000 operaciones realizadas",
-  "+S/600 millones desembolsados",
+  "+S/700 millones desembolsados",
   "Registrados en la SBS",
   "Reportamos a la UIF",
   "Respaldo de inversionistas institucionales",
