@@ -39,10 +39,10 @@ const NosotrosPage = () => {
                                     Prestaclub nació hace más de dos décadas con la misión de democratizar el acceso al financiamiento en el Perú. Desde nuestros inicios, hemos trabajado para crear un puente entre quienes necesitan capital y los inversionistas institucionales dispuestos a respaldarlo.
                                 </p>
                                 <p className="text-muted-foreground font-body leading-relaxed">
-                                    Con más de 15,000 operaciones realizadas y más de S/600 millones desembolsados, nos hemos consolidado como una referencia en el mercado de financiamiento con garantía real.
+                                    Con más de 15,000 operaciones gestionadas y más de S/700 millones colocados, nos hemos consolidado como una referencia en el mercado de financiamiento con garantía real.
                                 </p>
                                 <p className="text-muted-foreground font-body leading-relaxed">
-                                    Estamos inscritos en la SBS en el Registro de Empresas de Préstamo y reportamos a la UIF, garantizando la transparencia y legalidad de todas nuestras operaciones.
+                                    Desde 2020, estamos inscritos en el Registro de Empresas de Préstamo de la SBS y reportamos a la UIF, garantizando la transparencia y legalidad de todas nuestras operaciones.
                                 </p>
                             </div>
                         </div>
@@ -70,7 +70,7 @@ const NosotrosPage = () => {
                             </div>
                             <h3 className="text-xl font-bold text-foreground mb-3">Misión</h3>
                             <p className="text-muted-foreground font-body leading-relaxed">
-                                Democratizar el acceso al financiamiento en el Perú, conectando a personas y empresas con inversionistas institucionales de manera transparente, rápida y segura.
+                                Crear alternativas de financiamiento innovadoras, con procesos ágiles, que estén a disposición de todos los peruanos y sus emprendimientos, en calidad, ubicación y costo.
                             </p>
                         </div>
                         <div className="card-elevated p-8">
