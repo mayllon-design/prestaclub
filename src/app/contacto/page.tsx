@@ -4,7 +4,7 @@ import { Suspense } from "react"; // 1. Importamos Suspense
 
 export const metadata: Metadata = {
     title: "Contacto - PrestaClub",
-    description: "Ponte en contacto con nuestros asesores financieros. Estamos ubicados en San Isidro, Lima. Atención personalizada por WhatsApp, teléfono y correo.",
+    description: "Ponte en contacto con nuestros asesores financieros. Oficinas en Cercado de Lima y Ventanilla. Atención personalizada por WhatsApp, teléfono y correo.",
 };
 
 export default function Page() {
