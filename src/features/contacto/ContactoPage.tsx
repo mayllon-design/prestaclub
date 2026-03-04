@@ -90,7 +90,13 @@ const ContactoPage = () => {
                                 </div>
                             </div>
                             <div className="rounded-2xl overflow-hidden h-48 bg-muted flex items-center justify-center">
-                                <p className="text-muted-foreground text-sm">Mapa disponible próximamente</p>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3904.1302829093547!2d-77.12996292541173!3d-11.896015288329117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9aa0b7db6ed%3A0xf135ea7eb7735e5f!2sPrestaclub%20Ventanilla%20%7C%20Pr%C3%A9stamos%20con%20garant%C3%ADa%20hipotecaria%20y%20vehicular!5e0!3m2!1ses!2spe!4v1772660768386!5m2!1ses!2spe"
+                                    className="w-full h-full border-0"
+                                    allowFullScreen
+                                    loading="lazy"
+                                    title="Oficina Comercial Ventanilla"
+                                />
                             </div>
                         </div>
                     </div>
