@@ -4,7 +4,7 @@ import { Shield, Clock, TrendingUp, Users, Building2, CheckCircle2, ArrowRight, 
 import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import Image from "next/image";
-import heroPrincipal from "@/assets/hero-principal.jpg";
+import heroPrincipal from "@/assets/prestamo-garantia-hipotecaria-home.png";
 
 const stats = [
   { value: "+23", label: "Años en el mercado" },

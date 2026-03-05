@@ -340,7 +340,7 @@ export const CapitalDeTrabajo = () => (
     ]}
     solution="Te conectamos con inversionistas institucionales que financian tu capital de trabajo usando tu propiedad como respaldo. Proceso rápido, tasas competitivas y acompañamiento personalizado."
     buyerType="Capital de Trabajo"
-    videoId="RnkeZ3nx2jo"
+    videoId="W-yAvCtOj1E"
   />
 );
 
