@@ -6,6 +6,7 @@ import { Shield, Users, Building2, ArrowRight, ExternalLink } from "lucide-react
 import Layout from "@/core/layouts/MainLayout";
 import Image from "next/image";
 import teamWorking from "@/assets/team-working.jpg";
+import equipoPresta from "@/assets/Equipo-Prestaclub.webp";
 import ubicacionPresta from "@/assets/ubicacion-presta.webp";
 import sedeVentanilla from "@/assets/sede-ventanilla.webp";
 import jdImage from "@/assets/jd.png";
@@ -53,8 +54,8 @@ const NosotrosPage = () => {
                         </div>
                         <div className="rounded-3xl overflow-hidden shadow-xl">
                             <Image
-                                src={ubicacionPresta}
-                                alt="Ubicación PrestaClub - Plaza San Martín"
+                                src={equipoPresta}
+                                alt="Equipo PrestaClub"
                                 className="w-full h-auto"
                                 priority
                             />

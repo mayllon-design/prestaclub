@@ -6,7 +6,7 @@ import { Building2, CheckCircle2, ArrowRight, Shield, FileText, Banknote, Star }
 import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import Image from "next/image";
-import heroHipotecario from "@/assets/hero-hipotecario.jpg";
+import heroHipotecario from "@/assets/financiamiento-con-garantia-hipotecaria.png";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import { useState } from "react";
 import { LocationModal } from "@/shared/components/LocationModal";
