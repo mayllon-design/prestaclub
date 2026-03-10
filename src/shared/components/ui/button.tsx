@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/shared/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 font-body",
   {
     variants: {
       variant: {
@@ -15,17 +15,18 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        gold: "gold-gradient text-gold-foreground shadow-md hover:shadow-lg hover:brightness-110 font-bold",
-        "gold-outline": "border-2 border-gold bg-transparent text-gold hover:bg-gold hover:text-gold-foreground font-bold",
-        hero: "gold-gradient text-gold-foreground shadow-xl hover:shadow-2xl hover:brightness-110 font-bold text-base tracking-wide",
-        "hero-outline": "border-2 border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground backdrop-blur-sm hover:bg-primary-foreground/20 font-semibold",
-        whatsapp: "bg-[hsl(142,70%,45%)] text-primary-foreground shadow-md hover:shadow-lg hover:brightness-110 font-bold",
+        // Premium variants for Prestaclub
+        gold: "bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-900 font-semibold shadow-[0_4px_30px_hsl(38_92%_50%_/_0.15)] hover:shadow-[0_20px_60px_hsl(222_55%_4%_/_0.8)] hover:scale-[1.02] active:scale-[0.98]",
+        goldOutline: "border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground font-semibold transition-all",
+        navy: "bg-slate-800 text-foreground border border-border hover:border-secondary/50 hover:shadow-[0_4px_30px_hsl(38_92%_50%_/_0.15)]",
+        hero: "bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-900 font-bold text-lg shadow-[0_4px_30px_hsl(38_92%_50%_/_0.15)] hover:shadow-[0_20px_60px_hsl(222_55%_4%_/_0.8)] hover:scale-[1.02] active:scale-[0.98] px-8 py-6",
+        heroOutline: "border-2 border-amber-500/70 text-foreground font-semibold hover:bg-amber-500/10 hover:border-amber-500 px-8 py-6 text-lg",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
-        xl: "h-14 rounded-2xl px-10 py-4 text-lg",
+        xl: "h-14 rounded-lg px-10 text-base",
         icon: "h-10 w-10",
       },
     },

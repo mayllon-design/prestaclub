@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
+/* ============================================================
+   PRESTACLUB — Desarrollo Inmobiliario
+   Theme override: Deep Navy + Gold/Amber
+   Technique: :root:has(.di-theme) — sobrescribe los tokens de
+   Tailwind v4 SOLO cuando esta página esté activa.
+   ============================================================ */
+
+:root:has(.di-theme) {
+    /* ── Core color tokens (Tailwind v4 prefixed) ── */
+    --color-background: hsl(222, 47%, 6%);
+    --color-foreground: hsl(45, 30%, 96%);
+
+    --color-card: hsl(230, 58%, 10%);
+    --color-card-foreground: hsl(45, 30%, 96%);
+
+    --color-popover: hsl(222, 47%, 8%);
+    --color-popover-foreground: hsl(45, 30%, 96%);
+
+    /* Navy Blue — Primary */
+    --color-primary: hsl(230, 58%, 34%);
+    --color-primary-foreground: hsl(45, 30%, 96%);
+
+    /* Gold/Amber — Secondary / Accent */
+    --color-secondary: hsl(41, 100%, 50%);
+    --color-secondary-foreground: hsl(222, 47%, 6%);
+
+    --color-muted: hsl(230, 40%, 14%);
+    --color-muted-foreground: hsl(220, 15%, 60%);
+
+    --color-accent: hsl(41, 100%, 50%);
+    --color-accent-foreground: hsl(222, 47%, 6%);
+
+    --color-destructive: hsl(0, 84%, 60%);
+    --color-destructive-foreground: hsl(210, 40%, 98%);
+
+    --color-border: hsl(230, 40%, 20%);
+    --color-input: hsl(230, 40%, 20%);
+    --color-ring: hsl(41, 100%, 50%);
+
+    /* Brand tokens */
+    --color-gold: hsl(41, 100%, 50%);
+    --color-gold-foreground: hsl(222, 47%, 6%);
+    --color-gold-hover: hsl(41, 100%, 42%);
+    --color-navy: hsl(230, 58%, 34%);
+    --color-navy-light: hsl(230, 50%, 45%);
+
+    /* Sidebar (para consistencia) */
+    --color-sidebar: hsl(222, 47%, 8%);
+    --color-sidebar-foreground: hsl(45, 30%, 96%);
+    --color-sidebar-primary: hsl(41, 100%, 50%);
+    --color-sidebar-primary-foreground: hsl(222, 47%, 6%);
+    --color-sidebar-accent: hsl(230, 40%, 18%);
+    --color-sidebar-accent-foreground: hsl(45, 30%, 96%);
+    --color-sidebar-border: hsl(230, 40%, 20%);
+    --color-sidebar-ring: hsl(41, 100%, 50%);
+
+    /* Fonts */
+    --font-display: 'Playfair Display', serif;
+    --font-sans: 'Source Sans 3', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+/* ── Base styles scoped to .di-theme ── */
+.di-theme {
+    background-color: hsl(222, 47%, 6%);
+    color: hsl(45, 30%, 96%);
+    font-family: 'Source Sans 3', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.di-theme h1,
+.di-theme h2,
+.di-theme h3,
+.di-theme h4,
+.di-theme h5,
+.di-theme h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* ── Custom gradient utilities ── */
+.di-theme .bg-gradient-gold {
+    background: linear-gradient(135deg, hsl(41, 100%, 50%) 0%, hsl(45, 100%, 65%) 100%);
+}
+
+.di-theme .bg-gradient-navy {
+    background: linear-gradient(180deg, hsl(230, 58%, 18%) 0%, hsl(230, 58%, 10%) 100%);
+}
+
+.di-theme .bg-gradient-hero {
+    background: linear-gradient(135deg,
+            hsl(230 58% 20% / 0.95) 0%,
+            hsl(230 58% 15% / 0.9) 50%,
+            hsl(41 100% 20% / 0.85) 100%);
+}
+
+.di-theme .bg-gradient-card {
+    background: linear-gradient(145deg, hsl(230, 58%, 16%) 0%, hsl(230, 58%, 9%) 100%);
+}
+
+/* ── Gradient text ── */
+.di-theme .text-gradient-gold {
+    background: linear-gradient(90deg, hsl(41, 100%, 50%) 0%, hsl(45, 100%, 65%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Shadow utilities ── */
+.di-theme .shadow-gold {
+    box-shadow: 0 4px 30px hsl(41 100% 50% / 0.2);
+}
+
+.di-theme .shadow-card {
+    box-shadow: 0 8px 32px hsl(222 55% 4% / 0.6);
+}
+
+.di-theme .shadow-elevated {
+    box-shadow: 0 20px 60px hsl(222 55% 4% / 0.8);
+}
+
+/* ── Border + glow ── */
+.di-theme .border-gold-glow {
+    border: 1px solid hsl(41 100% 50% / 0.3);
+    box-shadow: 0 0 20px hsl(41 100% 50% / 0.1);
+}
+
+/* ── Glass morphism ── */
+.di-theme .glass {
+    background: hsl(230 58% 34% / 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(230 40% 20% / 0.5);
+}
+
+/* ── Font utilities ── */
+.di-theme .font-display {
+    font-family: 'Playfair Display', serif;
+}
+
+.di-theme .font-body {
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+/* ── hero-gradient override ── */
+.di-theme .hero-gradient {
+    background: linear-gradient(135deg, hsl(230 58% 8%) 0%, hsl(230 58% 18%) 50%, hsl(230 58% 14%) 100%);
+}
+
+/* ── card-elevated override ── */
+.di-theme .card-elevated {
+    background-color: hsl(230, 58%, 10%);
+    border: 1px solid hsl(230 40% 20% / 0.5);
+    box-shadow: 0 8px 32px hsl(222 55% 4% / 0.6);
+}
+
+/* ── trust-badge override ── */
+.di-theme .trust-badge {
+    background-color: hsl(230, 58%, 10%);
+    border-color: hsl(230 40% 20%);
+}

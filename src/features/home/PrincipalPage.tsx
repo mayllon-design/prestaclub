@@ -88,7 +88,7 @@ const Principal = () => {
                   PRECALIFICAR AHORA <ArrowRight className="h-5 w-5" />
                 </Link>
               </Button>
-              <Button variant="hero-outline" size="xl" asChild>
+              <Button variant="heroOutline" size="xl" asChild>
                 <Link href="/nosotros">Conoce más</Link>
               </Button>
             </div>

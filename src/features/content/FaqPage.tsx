@@ -70,7 +70,7 @@ const FaqPage = () => {
               <Button variant="hero" size="lg" asChild>
                 <Link href="/contacto">Contáctanos</Link>
               </Button>
-              <Button variant="hero-outline" size="lg" asChild>
+              <Button variant="heroOutline" size="lg" asChild>
                 <a href={whatsappUrl} onClick={clearTracking}>WhatsApp Directo</a>
               </Button>
             </div>

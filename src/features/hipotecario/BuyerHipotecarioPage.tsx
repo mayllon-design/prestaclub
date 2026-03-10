@@ -145,7 +145,7 @@ const WizardHipotecario = ({ buyerType, onComplete }: { buyerType: string; onCom
             Siguiente <ArrowRight className="h-4 w-4" />
           </Button>
         ) : (
-          <Button variant="whatsapp" size="lg" onClick={() => onComplete(data)} disabled={!canNext()}>
+          <Button variant="gold" size="lg" onClick={() => onComplete(data)} disabled={!canNext()}>
             ENVIAR POR WHATSAPP <ArrowRight className="h-4 w-4" />
           </Button>
         )}
@@ -310,7 +310,7 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
         <div className="container mx-auto text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-extrabold text-primary-foreground mb-6">¿Tienes dudas? Escríbenos</h2>
           <p className="text-lg text-primary-foreground/80 mb-8 font-body">Nuestro equipo está listo para ayudarte.</p>
-          <Button variant="whatsapp" size="xl" onClick={handleWhatsAppClick}>
+          <Button variant="gold" size="xl" onClick={handleWhatsAppClick}>
             Hablar por WhatsApp
           </Button>
         </div>

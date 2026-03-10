@@ -225,7 +225,7 @@ const SaneamientoPredial = () => {
                   <div className="flex justify-between"><span className="text-sm text-muted-foreground">Documentos:</span><span className="text-sm font-semibold text-foreground">{data.tieneDocumentos}</span></div>
                 </div>
                 <div className="flex justify-center">
-                  <Button variant="whatsapp" size="lg" onClick={handleWhatsApp}>
+                  <Button variant="gold" size="lg" onClick={handleWhatsApp}>
                     ENVIAR POR WHATSAPP <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>
