@@ -55,12 +55,12 @@ export const useTrafficTracking = () => {
         } else {
             // Tráfico orgánico: Número predeterminado y mensaje base
             const msg = customMessage || 'Hola *PrestaClub*. Ingrese a su web. Necesito más información sobre financiamientos.';
-            return `https://wa.me/51919000200?text=${encodeURIComponent(msg)}`;
+            return `https://wa.me/51921010200?text=${encodeURIComponent(msg)}`;
         }
     }, [tracking.isPaid, tracking.source, tracking.campaign]);
 
     const whatsappUrl = useMemo(() => getWhatsAppUrl(), [getWhatsAppUrl]);
-    const whatsappNumber = useMemo(() => tracking.isPaid ? '51921010200' : '51919000200', [tracking.isPaid]);
+    const whatsappNumber = useMemo(() => tracking.isPaid ? '51921010200' : '51921010200', [tracking.isPaid]);
 
     const clearTracking = useCallback(() => {
         if (typeof window !== 'undefined') {

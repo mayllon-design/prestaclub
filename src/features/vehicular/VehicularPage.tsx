@@ -236,7 +236,7 @@ const VehicularVideoSection = () => {
 };
 
 const Hero = ({ onSimulate }: { onSimulate: () => void }) => {
-  const whatsappUrl = "https://wa.me/51919000200?text=Hola%2C%20quiero%20información%20sobre%20el%20crédito%20con%20garantía%20vehicular";
+  const whatsappUrl = "https://wa.me/51921010200?text=Hola%2C%20quiero%20información%20sobre%20el%20crédito%20con%20garantía%20vehicular";
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
