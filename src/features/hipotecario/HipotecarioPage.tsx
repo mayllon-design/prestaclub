@@ -79,7 +79,12 @@ const FinanciamientoHipotecario = () => {
               <Button variant="hero" size="xl" asChild>
                 <a href="#precalificar">PRECALIFICAR AHORA <ArrowRight className="h-5 w-5" /></a>
               </Button>
-              <Button variant="heroOutline" size="xl" onClick={handleWhatsAppClick}>
+              <Button 
+                variant="outline" 
+                size="xl" 
+                className="rounded-[20px] border-2 border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/50 hover:text-white font-semibold px-8 h-14"
+                onClick={handleWhatsAppClick}
+              >
                 Hablar por WhatsApp
               </Button>
             </div>
