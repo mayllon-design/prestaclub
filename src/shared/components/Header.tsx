@@ -20,6 +20,7 @@ const Header = () => {
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
+  const isDevoluciones = pathname === "/gestion-de-devoluciones-de-saldo";
 
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
@@ -84,11 +85,13 @@ const Header = () => {
         </nav>
 
         {/* CTA */}
-        <div className="hidden lg:flex items-center gap-3">
-          <Button variant="hero" size="lg" asChild>
-            <Link href="/financiamiento-con-garantia-hipotecaria#precalificar">PRECALIFICAR</Link>
-          </Button>
-        </div>
+        {!isDevoluciones && (
+          <div className="hidden lg:flex items-center gap-3">
+            <Button variant="hero" size="lg" asChild>
+              <Link href="/financiamiento-con-garantia-hipotecaria#precalificar">PRECALIFICAR</Link>
+            </Button>
+          </div>
+        )}
 
         {/* Mobile Toggle */}
         <button className="lg:hidden p-2" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -110,9 +113,11 @@ const Header = () => {
             <Link href="/articulos" className="px-4 py-3 rounded-xl text-sm font-medium hover:bg-muted" onClick={() => setMobileOpen(false)}>Artículos</Link>
             <Link href="/nosotros" className="px-4 py-3 rounded-xl text-sm font-medium hover:bg-muted" onClick={() => setMobileOpen(false)}>Nosotros</Link>
             <Link href="/contacto" className="px-4 py-3 rounded-xl text-sm font-medium hover:bg-muted" onClick={() => setMobileOpen(false)}>Contáctanos</Link>
-            <Button variant="hero" size="lg" className="mt-3" asChild>
-              <Link href="/financiamiento-con-garantia-hipotecaria#precalificar" onClick={() => setMobileOpen(false)}>PRECALIFICAR</Link>
-            </Button>
+            {!isDevoluciones && (
+              <Button variant="hero" size="lg" className="mt-3" asChild>
+                <Link href="/financiamiento-con-garantia-hipotecaria#precalificar" onClick={() => setMobileOpen(false)}>PRECALIFICAR</Link>
+              </Button>
+            )}
           </nav>
         </div>
       )}
