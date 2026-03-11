@@ -472,7 +472,7 @@ Quedo atento a su respuesta.`;
                                     <button
                                         onClick={handleFinalSubmit}
                                         disabled={!nombre || !celular || !correo || !placa}
-                                        className="btn-cta w-full !py-4 disabled:opacity-40 disabled:cursor-not-allowed"
+                                        className="btn-cta btn-vehicular w-full !py-4 disabled:opacity-40 disabled:cursor-not-allowed"
                                     >
                                         Quiero continuar con la evaluación
                                     </button>
