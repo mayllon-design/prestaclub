@@ -21,6 +21,11 @@ const Header = () => {
 
   const isActive = (path: string) => pathname === path;
   const isDevoluciones = pathname === "/gestion-de-devoluciones-de-saldo";
+  const isVehicular = pathname === "/prestamo-con-garantia-vehicular";
+  const isSaneamiento = pathname === "/saneamiento-predial";
+  
+  const precalificarHref = isVehicular ? "#simulador" : isSaneamiento ? "#formulario" : "/financiamiento-con-garantia-hipotecaria#precalificar";
+  const precalificarText = isSaneamiento ? "CONSULTAR AHORA" : "PRECALIFICAR";
 
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
@@ -88,7 +93,7 @@ const Header = () => {
         {!isDevoluciones && (
           <div className="hidden lg:flex items-center gap-3">
             <Button variant="hero" size="lg" asChild>
-              <Link href="/financiamiento-con-garantia-hipotecaria#precalificar">PRECALIFICAR</Link>
+              <Link href={precalificarHref}>{precalificarText}</Link>
             </Button>
           </div>
         )}
@@ -115,7 +120,7 @@ const Header = () => {
             <Link href="/contacto" className="px-4 py-3 rounded-xl text-sm font-medium hover:bg-muted" onClick={() => setMobileOpen(false)}>Contáctanos</Link>
             {!isDevoluciones && (
               <Button variant="hero" size="lg" className="mt-3" asChild>
-                <Link href="/financiamiento-con-garantia-hipotecaria#precalificar" onClick={() => setMobileOpen(false)}>PRECALIFICAR</Link>
+                <Link href={precalificarHref} onClick={() => setMobileOpen(false)}>{precalificarText}</Link>
               </Button>
             )}
           </nav>
