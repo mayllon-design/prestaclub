@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
 
 import logo from "@/assets/logopresta.png";
+import { useDesarrolloWhatsApp } from "../hooks/useDesarrolloWhatsApp";
 
 const styles = {
     logoImg: {
@@ -15,9 +16,9 @@ const styles = {
     }
 };
 
-const WHATSAPP_URL = "https://api.whatsapp.com/send?phone=51924274894&text=Hola%20*PrestaClub*.%20Deseo%20a%20evaluar%20mi%20Proyecto.";
 
 const Navbar = () => {
+    const whatsappUrl = useDesarrolloWhatsApp();
     const handleNavClick = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
@@ -52,7 +53,7 @@ const Navbar = () => {
                         Proceso
                     </button>
                     <a
-                        href={WHATSAPP_URL}
+                        href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-body text-sm text-black hover:text-primary transition-colors"
@@ -64,7 +65,7 @@ const Navbar = () => {
                 {/* CTA */}
                 <Button variant="gold" size="sm" asChild>
                     <a
-                        href="https://api.whatsapp.com/send?phone=51924274894&text=Hola%20*PrestaClub*.%20Deseo%20a%20evaluar%20mi%20Proyecto."
+                        href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                     >

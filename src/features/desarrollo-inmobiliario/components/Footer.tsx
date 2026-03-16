@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import logoFooter from "@/assets/logo-footer.svg";
+import { useDesarrolloWhatsApp } from "../hooks/useDesarrolloWhatsApp";
 
 const Footer = () => {
+    const whatsappUrl = useDesarrolloWhatsApp();
     const router = useRouter();
     const pathname = usePathname();
 
@@ -63,7 +65,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a
-                                    href="https://api.whatsapp.com/send?phone=51924274894&text=Hola%20*PrestaClub*.%20Deseo%20a%20evaluar%20mi%20Proyecto."
+                                    href={whatsappUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-muted-foreground font-body text-sm hover:text-secondary transition-colors"

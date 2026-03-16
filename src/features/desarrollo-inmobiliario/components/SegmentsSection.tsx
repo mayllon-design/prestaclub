@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Building2, Users, Target, ArrowRight } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
+import { useDesarrolloWhatsApp } from "../hooks/useDesarrolloWhatsApp";
 
 const segments = [
     {
@@ -48,6 +49,7 @@ const segments = [
 ];
 
 const SegmentsSection = () => {
+    const whatsappUrl = useDesarrolloWhatsApp();
     return (
         <section className="py-24 relative overflow-hidden">
             <div className="container mx-auto px-6">
@@ -118,7 +120,7 @@ const SegmentsSection = () => {
                 >
                     <Button variant="gold" size="lg" asChild>
                         <a
-                            href="https://api.whatsapp.com/send?phone=51924274894&text=Hola%20*PrestaClub*.%20Deseo%20a%20evaluar%20mi%20Proyecto."
+                            href={whatsappUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center"

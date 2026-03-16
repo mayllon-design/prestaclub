@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import { Building2, TrendingUp, Shield, Clock, Handshake, FileCheck } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
+import { useDesarrolloWhatsApp } from "../hooks/useDesarrolloWhatsApp";
 const deckPdf = "/assets/DESARROLLO-INMOBILIARIO.pdf";
 
 const HeroSection = () => {
+    const whatsappUrl = useDesarrolloWhatsApp();
     return (
         <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
             {/* Background Image with Overlay */}
@@ -72,7 +74,7 @@ const HeroSection = () => {
                     >
                         <Button variant="hero" asChild>
                             <a
-                                href="https://api.whatsapp.com/send?phone=51924274894&text=Hola%20*PrestaClub*.%20Deseo%20a%20evaluar%20mi%20Proyecto."
+                                href={whatsappUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
