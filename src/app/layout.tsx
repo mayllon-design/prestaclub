@@ -17,11 +17,15 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://prestaclub.com"),
   title: "PrestaClub - Financiamiento con Garantía Hipotecaria",
   description: "Obtén el capital que tu negocio o proyecto necesita con el respaldo de tu propiedad. Préstamos rápidos, seguros y competitivos.",
   keywords: ["préstamos hipotecarios", "garantía hipotecaria", "financiamiento", "PrestaClub", "Perú"],
   icons: {
     icon: "/favicon.webp",
+  },
+  alternates: {
+    canonical: "/",
   },
 };
 
