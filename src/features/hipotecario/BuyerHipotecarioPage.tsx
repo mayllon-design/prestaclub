@@ -166,7 +166,7 @@ interface BuyerPageProps {
 }
 
 const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyerType, videoId, isVertical }: BuyerPageProps) => {
-  const { getWhatsAppUrl, clearTracking } = useTrafficTracking();
+  const { getWhatsAppUrl, clearTracking, campaign } = useTrafficTracking();
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
   const leadId = `LEAD-${Date.now().toString(36).toUpperCase()}`;
 
@@ -185,7 +185,7 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
       `Nombre: ${data.nombre}\nCelular: ${data.celular}\nEmail: ${data.email || 'No proporcionado'}\n` +
       `Tipo: ${data.tipoPersona}\nMonto: ${data.montoAprox}\n` +
       `Inmueble: ${data.tipoInmueble} en ${data.ubicacionInmueble}\n` +
-      `Registral: ${data.situacionRegistral}\nUso: ${data.usoDelCapital}\n\nRef: ${leadId}`;
+      `Registral: ${data.situacionRegistral}\nUso: ${data.usoDelCapital}${campaign ? `\n\nRef: [${campaign}]` : ''}`;
 
     window.open(getWhatsAppUrl(message), "_blank");
     clearTracking();

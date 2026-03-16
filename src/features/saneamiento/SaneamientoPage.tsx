@@ -9,7 +9,7 @@ import VideoSection from "@/shared/components/VideoSection";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 
 const SaneamientoPredial = () => {
-  const { getWhatsAppUrl, clearTracking } = useTrafficTracking();
+  const { getWhatsAppUrl, clearTracking, campaign } = useTrafficTracking();
   const [step, setStep] = useState(0);
   const [showSummary, setShowSummary] = useState(false);
   const [data, setData] = useState({
@@ -23,7 +23,7 @@ const SaneamientoPredial = () => {
     const message = `Hola, estoy interesado en el servicio de saneamiento predial.\n\nYa respondí las preguntas en la web y estos son mis datos:\n\n` +
       `Nombre: ${data.nombre}\nCelular: ${data.celular}\n` +
       `Ubicación: ${data.ubicacion}\nProblema: ${data.tipoProblema}\n` +
-      `Documentos: ${data.tieneDocumentos}\n\nRef: ${leadId}`;
+      `Documentos: ${data.tieneDocumentos}${campaign ? `\n\nRef: [${campaign}]` : ''}`;
 
     window.open(getWhatsAppUrl(message), "_blank");
     clearTracking();
