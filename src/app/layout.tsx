@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { Suspense } from "react"; // 1. Importamos Suspense
+import { Toaster } from "sonner";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function RootLayout({
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           {children}
         </Suspense>
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );
