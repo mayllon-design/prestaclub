@@ -17,6 +17,7 @@ import {
   ArrowLeft, Save, Globe, Settings, Eye, 
   Upload, X, ImageIcon, Loader2 
 } from 'lucide-react';
+import { compressImage } from '@/shared/lib/image-utils';
 
 interface ArticleFormProps {
   initialData?: Article;
@@ -69,8 +70,11 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
 
     setUploading(true);
     try {
+      // Comprimir imagen antes de subir (Max 1200px de ancho, 80% calidad)
+      const compressedFile = await compressImage(file, 1200, 0.8);
+      
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('file', compressedFile);
 
       // Llamada a nuestro nuevo API de subida local
       const response = await fetch('/api/upload', {
