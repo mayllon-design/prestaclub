@@ -5,9 +5,19 @@ export async function GET() {
   try {
     const [rows] = await pool.query('SELECT * FROM articles ORDER BY published_at DESC');
     return NextResponse.json(rows);
-  } catch (error) {
-    console.error('Database error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  } catch (error: any) {
+    console.error('Database error details:', {
+      message: error.message,
+      code: error.code,
+      errno: error.errno,
+      sqlState: error.sqlState,
+      sqlMessage: error.sqlMessage
+    });
+    return NextResponse.json({ 
+      error: 'Error de conexión con la base de datos',
+      message: error.sqlMessage || error.message,
+      code: error.code
+    }, { status: 500 });
   }
 }
 

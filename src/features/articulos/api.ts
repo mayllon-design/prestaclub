@@ -5,7 +5,10 @@ const API_BASE = '/api/articles';
 export const articlesApi = {
   async getAll(): Promise<Article[]> {
     const res = await fetch(API_BASE);
-    if (!res.ok) throw new Error('Failed to fetch articles');
+    if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Failed to fetch articles');
+    }
     return res.json();
   },
 
