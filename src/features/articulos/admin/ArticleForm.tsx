@@ -11,9 +11,12 @@ import { Label } from '@/shared/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/components/ui/tabs';
 import { Card, CardContent } from '@/shared/components/ui/card';
 import { toast } from 'sonner';
-import { ArrowLeft, Save, Globe, Settings, Eye } from 'lucide-react';
 import Link from 'next/link';
 import { RichTextEditor } from './RichTextEditor';
+import { 
+  ArrowLeft, Save, Globe, Settings, Eye, 
+  Upload, X, ImageIcon, Loader2 
+} from 'lucide-react';
 
 interface ArticleFormProps {
   initialData?: Article;
@@ -22,6 +25,7 @@ interface ArticleFormProps {
 export function ArticleForm({ initialData }: ArticleFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [formData, setFormData] = useState<CreateArticleInput>({
     title: initialData?.title || '',
     slug: initialData?.slug || '',
@@ -47,6 +51,51 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
       setFormData(prev => ({ ...prev, slug }));
     }
   };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validaciones básicas
+    if (!file.type.startsWith('image/')) {
+      toast.error('Por favor, selecciona una imagen válida');
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) { // 5MB limit
+      toast.error('La imagen es demasiado grande (máximo 5MB)');
+      return;
+    }
+
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      // Llamada a nuestro nuevo API de subida local
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Error en la subida');
+      }
+
+      const data = await response.json();
+
+      // Guardamos la URL relativa (ej: /uploads/articulos/filename.jpg)
+      setFormData(prev => ({ ...prev, image_url: data.url }));
+      toast.success('Imagen subida al servidor correctamente');
+    } catch (err: any) {
+      console.error('Error uploading image:', err);
+      toast.error(`Error al subir la imagen: ${err.message}`);
+    } finally {
+      setUploading(false);
+    }
+  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -171,19 +220,66 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                 </div>
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="image_url">URL de Imagen Principal</Label>
-                <Input 
-                  id="image_url" 
-                  name="image_url" 
-                  value={formData.image_url || ''} 
-                  onChange={handleChange} 
-                  placeholder="https://images.unsplash.com/..." 
-                />
-                {formData.image_url && (
-                  <div className="mt-2 rounded-lg overflow-hidden border h-32 w-64">
-                    <img src={formData.image_url} alt="Vista previa" className="w-full h-full object-cover" />
+                <Label htmlFor="image_url">Imagen Principal</Label>
+                <div className="flex flex-col gap-4">
+                  <div className="flex gap-2">
+                    <Input 
+                      id="image_url" 
+                      name="image_url" 
+                      value={formData.image_url || ''} 
+                      onChange={handleChange} 
+                      placeholder="https://images.unsplash.com/..." 
+                      className="flex-1"
+                    />
+                    <div className="relative">
+                      <input
+                        type="file"
+                        id="image-upload"
+                        className="hidden"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        disabled={uploading}
+                      />
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={() => document.getElementById('image-upload')?.click()}
+                        disabled={uploading}
+                        className="flex items-center gap-2"
+                      >
+                        {uploading ? (
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : (
+                          <Upload className="h-4 w-4" />
+                        )}
+                        {uploading ? 'Subiendo...' : 'Subir desde equipo'}
+                      </Button>
+                    </div>
                   </div>
-                )}
+
+                  {formData.image_url ? (
+                    <div className="relative rounded-xl overflow-hidden border bg-muted group w-full max-w-md aspect-video">
+                      <img 
+                        src={formData.image_url} 
+                        alt="Vista previa" 
+                        className="w-full h-full object-cover transition-transform group-hover:scale-105" 
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setFormData(prev => ({ ...prev, image_url: '' }))}
+                        className="absolute top-2 right-2 p-1.5 bg-background/80 hover:bg-destructive hover:text-white rounded-full transition-colors shadow-lg"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-muted-foreground bg-muted/30">
+                      <ImageIcon className="h-10 w-10 mb-2 opacity-20" />
+                      <p className="text-sm">Sin imagen seleccionada</p>
+                      <p className="text-xs">Usa una URL externa o sube un archivo</p>
+                    </div>
+                  )}
+                </div>
               </div>
             </CardContent>
           </Card>
