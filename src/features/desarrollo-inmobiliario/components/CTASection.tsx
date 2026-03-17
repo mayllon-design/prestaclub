@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import { useDesarrolloWhatsApp } from "../hooks/useDesarrolloWhatsApp";
+import DesarrolloWizard from "./DesarrolloWizard";
 
 
 const CTASection = () => {
     const whatsappUrl = useDesarrolloWhatsApp();
     return (
-        <section className="py-24 relative overflow-hidden">
+        <section id="evaluacion" className="py-24 relative overflow-hidden">
             {/* Background gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-background via-card to-background" />
 
@@ -40,19 +41,9 @@ const CTASection = () => {
                                 Sin compromiso. Evaluamos la viabilidad de tu proyecto y te presentamos opciones de estructuración financiera.
                             </p>
 
-                            {/* CTA Button */}
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                                <Button variant="hero" asChild>
-                                    <a
-                                        href={whatsappUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center"
-                                    >
-                                        Solicitar EVALUACIÓN
-                                        <ArrowRight className="w-5 h-5 ml-2" />
-                                    </a>
-                                </Button>
+                            {/* Desarrollo Wizard */}
+                            <div className="mb-12">
+                                <DesarrolloWizard />
                             </div>
 
                             {/* Contact info */}

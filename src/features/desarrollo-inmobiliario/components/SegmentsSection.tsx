@@ -118,16 +118,9 @@ const SegmentsSection = () => {
                     transition={{ duration: 0.6, delay: 0.5 }}
                     className="text-center mt-12"
                 >
-                    <Button variant="gold" size="lg" asChild>
-                        <a
-                            href={whatsappUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center"
-                        >
-                            Evaluar mi proyecto
-                            <ArrowRight className="w-4 h-4 ml-2" />
-                        </a>
+                    <Button variant="gold" size="lg" onClick={() => document.getElementById('evaluacion')?.scrollIntoView({ behavior: 'smooth' })}>
+                        Evaluar proyecto
+                        <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                 </motion.div>
             </div>

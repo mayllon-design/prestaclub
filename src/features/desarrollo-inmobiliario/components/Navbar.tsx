@@ -63,14 +63,8 @@ const Navbar = () => {
                 </div>
 
                 {/* CTA */}
-                <Button variant="gold" size="sm" asChild>
-                    <a
-                        href={whatsappUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Solicitar EVALUACIÓN
-                    </a>
+                <Button variant="gold" size="sm" onClick={() => document.getElementById('evaluacion')?.scrollIntoView({ behavior: 'smooth' })}>
+                    Evaluar proyecto
                 </Button>
             </div>
         </motion.nav>

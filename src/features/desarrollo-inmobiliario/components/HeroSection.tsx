@@ -72,14 +72,8 @@ const HeroSection = () => {
                         transition={{ duration: 0.6, delay: 0.4 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
-                        <Button variant="hero" asChild>
-                            <a
-                                href={whatsappUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Solicitar EVALUACIÓN
-                            </a>
+                        <Button variant="hero" onClick={() => document.getElementById('evaluacion')?.scrollIntoView({ behavior: 'smooth' })}>
+                            Comenzar evaluación
                         </Button>
 
                     </motion.div>
