@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
-import { CheckCircle2, ArrowRight, ArrowLeft, Star, Banknote } from "lucide-react";
+import { CheckCircle2, ArrowRight, ArrowLeft, Star, Banknote, Ban } from "lucide-react";
 import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
@@ -30,7 +30,7 @@ const WizardHipotecario = ({ buyerType, onComplete }: { buyerType: string; onCom
   const canNext = () => {
     if (step === 0) return data.nombre && data.celular;
     if (step === 1) return data.tipoPersona && data.montoAprox;
-    if (step === 2) return data.ubicacionInmueble && data.tipoInmueble && data.situacionRegistral;
+    if (step === 2) return data.ubicacionInmueble && data.ubicacionInmueble !== "Provincia" && data.tipoInmueble && data.situacionRegistral;
     if (step === 3) return data.privacidad;
     return false;
   };
@@ -92,25 +92,47 @@ const WizardHipotecario = ({ buyerType, onComplete }: { buyerType: string; onCom
         <div className="space-y-4">
           <h3 className="text-xl font-bold text-foreground">Sobre la propiedad</h3>
           <div>
-            <label className="block text-sm font-semibold text-foreground mb-1">Ubicación del inmueble *</label>
-            <input type="text" value={data.ubicacionInmueble} onChange={e => update("ubicacionInmueble", e.target.value)} className="w-full h-11 px-4 rounded-xl border border-input bg-background text-foreground focus:ring-2 focus:ring-ring outline-none" placeholder="Distrito, provincia" maxLength={100} />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-foreground mb-2">Tipo de inmueble *</label>
-            <div className="grid grid-cols-2 gap-3">
-              {["Casa", "Departamento", "Terreno", "Local Comercial"].map(opt => (
-                <button key={opt} onClick={() => update("tipoInmueble", opt)} className={`p-3 rounded-xl border-2 text-sm font-semibold transition-all ${data.tipoInmueble === opt ? "border-primary bg-primary/5 text-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}>{opt}</button>
+            <label className="block text-sm font-semibold text-foreground mb-2">Ubicación del inmueble *</label>
+            <div className="grid grid-cols-3 gap-3">
+              {["Lima", "Callao", "Provincia"].map(opt => (
+                <button key={opt} onClick={() => update("ubicacionInmueble", opt)} className={`p-3 rounded-xl border-2 text-sm font-semibold transition-all ${data.ubicacionInmueble === opt ? "border-primary bg-primary/5 text-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}>{opt}</button>
               ))}
             </div>
           </div>
-          <div>
-            <label className="block text-sm font-semibold text-foreground mb-2">Situación registral *</label>
-            <div className="grid grid-cols-2 gap-3">
-              {["Inscrito en SUNARP", "En proceso", "No sé"].map(opt => (
-                <button key={opt} onClick={() => update("situacionRegistral", opt)} className={`p-3 rounded-xl border-2 text-sm font-semibold transition-all ${data.situacionRegistral === opt ? "border-primary bg-primary/5 text-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}>{opt}</button>
-              ))}
+          
+          {data.ubicacionInmueble === "Provincia" ? (
+            <div className="p-6 rounded-2xl bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-900/20 text-center animate-in fade-in zoom-in-95 duration-300">
+              <div className="h-12 w-12 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Ban className="h-6 w-6 text-red-600" />
+              </div>
+              <h4 className="text-lg font-bold text-foreground">🚫 Lo sentimos</h4>
+              <p className="text-sm text-muted-foreground mt-2 font-body">
+                Por el momento solo válido para inmuebles ubicados en <strong>Lima Metropolitana y Callao</strong>.
+              </p>
+              <Button variant="outline" size="sm" className="mt-4 rounded-xl" asChild>
+                <Link href="/nosotros">Conoce más aquí</Link>
+              </Button>
             </div>
-          </div>
+          ) : (
+            <>
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-2">Tipo de inmueble *</label>
+                <div className="grid grid-cols-2 gap-3">
+                  {["Casa", "Departamento", "Terreno", "Local Comercial"].map(opt => (
+                    <button key={opt} onClick={() => update("tipoInmueble", opt)} className={`p-3 rounded-xl border-2 text-sm font-semibold transition-all ${data.tipoInmueble === opt ? "border-primary bg-primary/5 text-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}>{opt}</button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-2">Situación registral *</label>
+                <div className="grid grid-cols-2 gap-3">
+                  {["Inscrito en SUNARP", "En proceso", "No sé"].map(opt => (
+                    <button key={opt} onClick={() => update("situacionRegistral", opt)} className={`p-3 rounded-xl border-2 text-sm font-semibold transition-all ${data.situacionRegistral === opt ? "border-primary bg-primary/5 text-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}>{opt}</button>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
 
@@ -175,9 +197,11 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
     setIsLocationModalOpen(true);
   };
 
-  const proceedToWhatsApp = () => {
+  const proceedToWhatsApp = (data: { location: string; useType: string }) => {
     clearTracking();
-    window.open(getWhatsAppUrl(), "_blank", "noopener,noreferrer");
+    const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
+    const url = getWhatsAppUrl(customMessage);
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   const handleWizardComplete = (data: WizardData) => {

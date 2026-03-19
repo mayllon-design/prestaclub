@@ -43,7 +43,7 @@ const problems = [
 ];
 
 const FinanciamientoHipotecario = () => {
-  const { whatsappUrl, clearTracking } = useTrafficTracking();
+  const { whatsappUrl, getWhatsAppUrl, clearTracking } = useTrafficTracking();
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
 
   const handleWhatsAppClick = (e: React.MouseEvent) => {
@@ -51,9 +51,11 @@ const FinanciamientoHipotecario = () => {
     setIsLocationModalOpen(true);
   };
 
-  const proceedToWhatsApp = () => {
+  const proceedToWhatsApp = (data: { location: string; useType: string }) => {
     clearTracking();
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
+    const url = getWhatsAppUrl(customMessage);
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (

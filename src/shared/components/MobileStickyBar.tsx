@@ -7,14 +7,26 @@ import { useState } from "react";
 import { LocationModal } from "@/shared/components/LocationModal";
 
 const MobileStickyBar = () => {
-  const { whatsappUrl, clearTracking } = useTrafficTracking();
+  const { whatsappUrl, getWhatsAppUrl, clearTracking } = useTrafficTracking();
   const pathname = usePathname();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const isHipotecarioPage = pathname?.includes("financiamiento-con-garantia-hipotecaria");
+  const isHipotecarioPage = pathname?.includes("financiamiento-con-garantia-hipotecaria") || pathname?.includes("capital-de-trabajo");
+  const isVehicularPage = pathname?.includes("prestamo-con-garantia-vehicular");
+  const isHomePage = pathname === "/";
+  const isArticulosPage = pathname?.includes("articulos");
+  const isNosotrosPage = pathname?.includes("nosotros");
+  const isContactoPage = pathname?.includes("contacto");
+
+  const shouldShowModal = isHipotecarioPage || isHomePage || isArticulosPage || isNosotrosPage || isContactoPage;
+
+  const getComputedWhatsappUrl = () => {
+    if (isVehicularPage) return getWhatsAppUrl("Hola, quiero información sobre el crédito con garantía vehicular con custodia");
+    return whatsappUrl;
+  };
 
   const handleWhatsAppClick = (e: React.MouseEvent) => {
-    if (isHipotecarioPage) {
+    if (shouldShowModal) {
       e.preventDefault();
       setIsModalOpen(true);
     } else {
@@ -22,9 +34,11 @@ const MobileStickyBar = () => {
     }
   };
 
-  const proceedToWhatsApp = () => {
+  const proceedToWhatsApp = (data: { location: string; useType: string }) => {
     clearTracking();
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
+    const url = getWhatsAppUrl(customMessage);
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -32,7 +46,7 @@ const MobileStickyBar = () => {
       <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-primary border-t border-primary-foreground/10 shadow-2xl">
         <div className="flex">
           <a
-            href={whatsappUrl}
+            href={getComputedWhatsappUrl()}
             onClick={handleWhatsAppClick}
             target="_blank"
             rel="noopener noreferrer"
@@ -50,13 +64,11 @@ const MobileStickyBar = () => {
         </div>
       </div>
 
-      {isHipotecarioPage && (
-        <LocationModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          onConfirm={proceedToWhatsApp}
-        />
-      )}
+      <LocationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={proceedToWhatsApp}
+      />
     </>
   );
 };

@@ -7,12 +7,24 @@ import { useState } from "react";
 import { LocationModal } from "@/shared/components/LocationModal";
 
 const WhatsAppButton = () => {
-  const { whatsappUrl, clearTracking } = useTrafficTracking();
+  const { whatsappUrl, getWhatsAppUrl, clearTracking } = useTrafficTracking();
   const pathname = usePathname();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Verificamos si estamos en la sección de financiamiento hipotecario
-  const isHipotecarioPage = pathname?.includes("financiamiento-con-garantia-hipotecaria");
+  // Verificamos si estamos en la sección de financiamiento hipotecario, sus derivadas, home, nosotros, artículos o contacto
+  const isHipotecarioPage = pathname?.includes("financiamiento-con-garantia-hipotecaria") || pathname?.includes("capital-de-trabajo");
+  const isVehicularPage = pathname?.includes("prestamo-con-garantia-vehicular");
+  const isHomePage = pathname === "/";
+  const isArticulosPage = pathname?.includes("articulos");
+  const isNosotrosPage = pathname?.includes("nosotros");
+  const isContactoPage = pathname?.includes("contacto");
+
+  const shouldShowModal = isHipotecarioPage || isHomePage || isArticulosPage || isNosotrosPage || isContactoPage;
+
+  const getComputedWhatsappUrl = () => {
+    if (isVehicularPage) return getWhatsAppUrl("Hola, quiero información sobre el crédito con garantía vehicular con custodia");
+    return whatsappUrl;
+  };
 
   const trackWhatsAppConversion = (location: string) => {
     if (typeof window !== "undefined" && (window as any).dataLayer) {
@@ -25,7 +37,7 @@ const WhatsAppButton = () => {
   };
 
   const handleClick = (e: React.MouseEvent) => {
-    if (isHipotecarioPage) {
+    if (shouldShowModal) {
       e.preventDefault();
       setIsModalOpen(true);
     } else {
@@ -34,17 +46,21 @@ const WhatsAppButton = () => {
     }
   };
 
-  const proceedToWhatsApp = () => {
-    trackWhatsAppConversion("hipotecario_floating_button");
+  const proceedToWhatsApp = (data: { location: string; useType: string }) => {
+    trackWhatsAppConversion(isHomePage ? "home_floating_button" : "hipotecario_floating_button");
     clearTracking();
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    
+    const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
+    const url = getWhatsAppUrl(customMessage);
+    
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
     <>
       <a
         id="whatsapp-floating-button"
-        href={whatsappUrl}
+        href={getComputedWhatsappUrl()}
         onClick={handleClick}
         target="_blank"
         rel="noopener noreferrer"
@@ -54,13 +70,11 @@ const WhatsAppButton = () => {
         <MessageCircle className="h-7 w-7" />
       </a>
 
-      {isHipotecarioPage && (
-        <LocationModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          onConfirm={proceedToWhatsApp}
-        />
-      )}
+      <LocationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={proceedToWhatsApp}
+      />
     </>
   );
 };
