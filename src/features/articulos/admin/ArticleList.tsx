@@ -12,13 +12,15 @@ import {
   TableRow 
 } from '@/shared/components/ui/table';
 import { Button } from '@/shared/components/ui/button';
-import { Edit2, Trash2, ExternalLink } from 'lucide-react';
+import { Edit2, Trash2, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
 export function ArticleList() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const articlesPerPage = 12;
 
   useEffect(() => {
     loadArticles();
@@ -48,61 +50,117 @@ export function ArticleList() {
     }
   }
 
-  if (loading) return <div>Cargando...</div>;
+  // Lógica de paginación
+  const totalPages = Math.ceil(articles.length / articlesPerPage);
+  const startIndex = (currentPage - 1) * articlesPerPage;
+  const currentArticles = articles.slice(startIndex, startIndex + articlesPerPage);
+
+  if (loading) return <div className="p-8 text-center text-muted-foreground">Cargando artículos...</div>;
 
   return (
-    <div className="bg-white rounded-lg shadow border overflow-hidden">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Título</TableHead>
-            <TableHead>Categoría</TableHead>
-            <TableHead>Fecha</TableHead>
-            <TableHead className="text-right">Acciones</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {articles.length === 0 ? (
+    <div className="flex flex-col gap-4">
+      <div className="bg-white rounded-lg shadow border overflow-hidden">
+        <Table>
+          <TableHeader>
             <TableRow>
-              <TableCell colSpan={4} className="text-center py-10 text-muted-foreground">
-                No hay artículos todavía.
-              </TableCell>
+              <TableHead>Título</TableHead>
+              <TableHead>Categoría</TableHead>
+              <TableHead>Fecha</TableHead>
+              <TableHead className="text-right">Acciones</TableHead>
             </TableRow>
-          ) : (
-            articles.map((article) => (
-              <TableRow key={article.id}>
-                <TableCell className="font-medium">
-                  <div>
-                    {article.title}
-                    <div className="text-xs text-muted-foreground font-normal">/{article.slug}</div>
-                  </div>
-                </TableCell>
-                <TableCell>{article.category}</TableCell>
-                <TableCell>
-                  {new Date(article.published_at).toLocaleDateString()}
-                </TableCell>
-                <TableCell className="text-right">
-                  <div className="flex justify-end gap-2">
-                    <Button variant="ghost" size="icon" asChild>
-                      <Link href={`/articulos/${article.slug}`} target="_blank">
-                        <ExternalLink className="h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <Button variant="ghost" size="icon" asChild>
-                      <Link href={`/admin/articulos/${article.id}`}>
-                        <Edit2 className="h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <Button variant="ghost" size="icon" onClick={() => handleDelete(article.id)}>
-                      <Trash2 className="h-4 w-4 text-destructive" />
-                    </Button>
-                  </div>
+          </TableHeader>
+          <TableBody>
+            {currentArticles.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={4} className="text-center py-10 text-muted-foreground">
+                  {articles.length === 0 ? 'No hay artículos todavía.' : 'No hay artículos en esta página.'}
                 </TableCell>
               </TableRow>
-            ))
-          )}
-        </TableBody>
-      </Table>
+            ) : (
+              currentArticles.map((article) => (
+                <TableRow key={article.id}>
+                  <TableCell className="font-medium">
+                    <div>
+                      {article.title}
+                      <div className="text-xs text-muted-foreground font-normal">/{article.slug}</div>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                      {article.category || 'General'}
+                    </span>
+                  </TableCell>
+                  <TableCell>
+                    {new Date(article.published_at).toLocaleDateString()}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <div className="flex justify-end gap-2">
+                      <Button variant="ghost" size="icon" asChild title="Ver en la web">
+                        <Link href={`/articulos/${article.slug}`} target="_blank">
+                          <ExternalLink className="h-4 w-4" />
+                        </Link>
+                      </Button>
+                      <Button variant="ghost" size="icon" asChild title="Editar artículo">
+                        <Link href={`/admin/articulos/${article.id}`}>
+                          <Edit2 className="h-4 w-4" />
+                        </Link>
+                      </Button>
+                      <Button variant="ghost" size="icon" onClick={() => handleDelete(article.id)} title="Eliminar artículo">
+                        <Trash2 className="h-4 w-4 text-destructive" />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
+          </TableBody>
+        </Table>
+      </div>
+
+      {/* Controles de Paginación */}
+      {totalPages > 1 && (
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-2 px-1">
+          <div className="text-sm text-muted-foreground">
+            Mostrando <span className="font-medium">{startIndex + 1}</span> a <span className="font-medium">{Math.min(startIndex + articlesPerPage, articles.length)}</span> de <span className="font-medium">{articles.length}</span> artículos
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="px-3"
+            >
+              <ChevronLeft className="h-4 w-4 mr-1" /> Anterior
+            </Button>
+            
+            <div className="flex items-center gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <Button
+                  key={page}
+                  variant={currentPage === page ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setCurrentPage(page)}
+                  className={`w-9 h-9 p-0 ${currentPage === page ? 'pointer-events-none' : ''}`}
+                >
+                  {page}
+                </Button>
+              ))}
+            </div>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="px-3"
+            >
+              Siguiente <ChevronRight className="h-4 w-4 ml-1" />
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
