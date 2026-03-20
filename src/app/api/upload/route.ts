@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import { join } from "path";
+import { createClient } from "@supabase/supabase-js";
+
+// Configuración de Supabase
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function POST(request: Request) {
   try {
@@ -11,39 +15,42 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "No se proporcionó ningún archivo" }, { status: 400 });
     }
 
+    // Convertir el archivo a un Buffer para Supabase
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-
-    // Definir la carpeta de destino: public/uploads/articulos
-    // process.cwd() nos da la raíz del proyecto
-    const uploadDir = join(process.cwd(), "public", "uploads", "articulos");
-    
-    // Crear la carpeta si no existe
-    try {
-        await mkdir(uploadDir, { recursive: true });
-    } catch (err) {
-        // Carpeta ya existe o error de permisos
-    }
 
     // Generar un nombre único para evitar colisiones
     const fileExt = file.name.split('.').pop();
     const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
-    const filePath = join(uploadDir, fileName);
 
-    // Escribir el archivo en el disco del servidor
-    await writeFile(filePath, buffer);
+    // Subir a Supabase Storage (en el bucket 'articulos')
+    const { data, error } = await supabase.storage
+      .from('articulos')
+      .upload(fileName, buffer, {
+        contentType: file.type,
+        cacheControl: '3600',
+        upsert: false
+      });
 
-    // Retornamos la URL relativa que será accesible públicamente
-    // y es la que se guardará en el campo image_url de MySQL
+    if (error) {
+      console.error("Error subiendo a Supabase:", error);
+      return NextResponse.json({ 
+        error: "Error al subir a la nube", 
+        details: error.message 
+      }, { status: 500 });
+    }
+
+    // Retornamos la URL relativa que será accesible bajo TU DOMINIO gracias al rewrite
+    // de next.config.ts (ej: prestaclub.com/uploads/articulos/filename.jpg)
     return NextResponse.json({ 
       url: `/uploads/articulos/${fileName}`,
       success: true 
     });
 
   } catch (error: any) {
-    console.error("Error en la subida local:", error);
+    console.error("Error en la subida:", error);
     return NextResponse.json({ 
-      error: "Error interno al subir el archivo",
+      error: "Error interno al procesar el archivo",
       details: error.message 
     }, { status: 500 });
   }
