@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/uploads/articulos/:path*',
-        destination: 'https://goinawqlxggvugbgfybd.supabase.co/storage/v1/object/public/articulos/:path*',
+        destination: 'https://xhruujqowmosbocjhvmt.supabase.co/storage/v1/object/public/articulos/:path*',
       },
     ];
   },
