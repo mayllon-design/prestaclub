@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# uploads (ignora las imágenes reales pero mantiene la carpeta vía .gitkeep)
+/public/uploads/articulos/*
+!/public/uploads/articulos/.gitkeep
