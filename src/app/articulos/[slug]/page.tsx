@@ -57,7 +57,9 @@ export default async function ArticleDetailPage({ params }: Props) {
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="w-full h-full bg-primary/10" />
+            <div className="w-full h-full bg-[#EBF0F9] flex items-center justify-center">
+                <span className="text-[#002D72] font-bold text-3xl md:text-5xl lg:text-7xl tracking-tighter opacity-70">PrestaClub</span>
+            </div>
           )}
           <div className="absolute inset-0 bg-black/50" />
           <div className="absolute inset-0 flex items-center md:items-end">

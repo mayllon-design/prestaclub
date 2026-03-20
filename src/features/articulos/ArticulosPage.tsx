@@ -56,8 +56,8 @@ const ArticulosPage = () => {
                                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                                     />
                                                 ) : (
-                                                    <div className="w-full h-full bg-primary/10 flex items-center justify-center">
-                                                        <span className="text-primary font-bold">PrestaClub</span>
+                                                    <div className="w-full h-full bg-[#EBF0F9] flex items-center justify-center">
+                                                        <span className="text-[#002D72] font-bold text-2xl tracking-tight opacity-80">PrestaClub</span>
                                                     </div>
                                                 )}
                                                 <div className="absolute top-4 left-4">
