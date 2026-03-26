@@ -80,7 +80,7 @@ const WizardHipotecario = ({ buyerType, onComplete }: { buyerType: string; onCom
           <div>
             <label className="block text-sm font-semibold text-foreground mb-2">Monto aproximado *</label>
             <div className="grid grid-cols-2 gap-3">
-              {["S/50,000 - S/150,000", "S/150,000 - S/300,000", "S/300,000 - S/500,000", "Más de S/500,000"].map(opt => (
+              {["S/ 50 mil - S/ 150 mil", "S/ 150 mil - S/ 300 mil", "S/ 300 mil - S/ 500 mil", "Más de S/ 500 mil"].map(opt => (
                 <button key={opt} onClick={() => update("montoAprox", opt)} className={`p-3 rounded-xl border-2 text-sm font-semibold transition-all ${data.montoAprox === opt ? "border-primary bg-primary/5 text-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}>{opt}</button>
               ))}
             </div>
