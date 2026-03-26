@@ -64,16 +64,16 @@ const ContactoPage = () => {
 
                     <div className="grid md:grid-cols-2 gap-6">
                         <div className="card-elevated p-6">
-                            <div className="flex items-start gap-3 mb-4">
-                                <MapPin className="h-5 w-5 text-primary shrink-0 mt-1" />
+                            <a href="https://www.google.com/maps?q=Prestaclub+Lima+Centro" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 mb-4 group hover:opacity-80 transition-opacity cursor-pointer">
+                                <MapPin className="h-5 w-5 text-primary shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                                 <div>
-                                    <h3 className="font-bold text-foreground mb-1">Oficina Principal</h3>
+                                    <h3 className="font-bold text-foreground mb-1 group-hover:text-primary transition-colors">Oficina Principal</h3>
                                     <p className="text-sm text-muted-foreground font-body">Av. Nicolás de Piérola 950 (frente a la Plaza San Martín), Cercado de Lima</p>
                                 </div>
-                            </div>
+                            </a>
                             <div className="rounded-2xl overflow-hidden h-48 bg-muted">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.9641!2d-77.0347!3d-12.0500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDAzJzAwLjAiUyA3N8KwMDInMDUuMCJX!5e0!3m2!1ses!2spe!4v1"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7803.745215248516!2d-77.037499325409!3d-12.052285088184915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8c7dc3049ad%3A0x80d0bea21f48d933!2sPrestaclub%20Lima%20Centro%20%7C%20Pr%C3%A9stamos%20con%20garant%C3%ADa%20hipotecaria%20y%20vehicular!5e0!3m2!1ses!2sus!4v1774567321622!5m2!1ses!2sus"
                                     className="w-full h-full border-0"
                                     allowFullScreen
                                     loading="lazy"
@@ -82,13 +82,13 @@ const ContactoPage = () => {
                             </div>
                         </div>
                         <div className="card-elevated p-6">
-                            <div className="flex items-start gap-3 mb-4">
-                                <MapPin className="h-5 w-5 text-primary shrink-0 mt-1" />
+                            <a href="https://www.google.com/maps?q=Prestaclub+Ventanilla" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 mb-4 group hover:opacity-80 transition-opacity cursor-pointer">
+                                <MapPin className="h-5 w-5 text-primary shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                                 <div>
-                                    <h3 className="font-bold text-foreground mb-1">Oficina Comercial Ventanilla</h3>
+                                    <h3 className="font-bold text-foreground mb-1 group-hover:text-primary transition-colors">Oficina Comercial Ventanilla</h3>
                                     <p className="text-sm text-muted-foreground font-body">Pj. 51 Mz G6 Lt. 4 (Angamos), Ventanilla</p>
                                 </div>
-                            </div>
+                            </a>
                             <div className="rounded-2xl overflow-hidden h-48 bg-muted flex items-center justify-center">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3904.1302829093547!2d-77.12996292541173!3d-11.896015288329117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9aa0b7db6ed%3A0xf135ea7eb7735e5f!2sPrestaclub%20Ventanilla%20%7C%20Pr%C3%A9stamos%20con%20garant%C3%ADa%20hipotecaria%20y%20vehicular!5e0!3m2!1ses!2spe!4v1772660768386!5m2!1ses!2spe"
