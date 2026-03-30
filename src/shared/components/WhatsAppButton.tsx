@@ -68,6 +68,9 @@ const WhatsAppButton = () => {
         aria-label="Escríbenos por WhatsApp"
       >
         <MessageCircle className="h-7 w-7" />
+        <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-black h-5 w-5 rounded-full flex items-center justify-center border-2 border-white animate-bounce">
+          1
+        </span>
       </a>
 
       <LocationModal
