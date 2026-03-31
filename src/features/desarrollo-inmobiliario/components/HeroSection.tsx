@@ -61,21 +61,44 @@ const HeroSection = () => {
                     </h1>
 
                     {/* Subheadline */}
-                    <p className="text-lg md:text-xl text-muted-foreground font-body mb-10 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-muted-foreground font-body mb-8 max-w-2xl mx-auto leading-relaxed">
                         Financiamiento con garantía hipotecaria, estructurado por Prestaclub y otorgado por fondos de inversión, alineado al flujo real de tu proyecto.
                     </p>
+
+                    {/* YouTube Video Container */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                        className="mb-10 w-full max-w-2xl mx-auto"
+                    >
+                        <p className="text-sm font-bold text-secondary uppercase tracking-[0.2em] mb-4">Mira este breve video</p>
+                        <div className="rounded-2xl overflow-hidden border border-secondary/20 shadow-[0_0_50px_-12px_rgba(212,163,44,0.3)] glassmorphism">
+                            <div className="aspect-video">
+                                <iframe
+                                    width="100%"
+                                    height="100%"
+                                    src="https://www.youtube.com/embed/qjR9qxJuNKQ?autoplay=0&rel=0"
+                                    title="Financiamiento Puente PrestaClub"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                    className="w-full h-full"
+                                ></iframe>
+                            </div>
+                        </div>
+                    </motion.div>
 
                     {/* CTA Buttons */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
                         <Button variant="hero" onClick={() => document.getElementById('evaluacion')?.scrollIntoView({ behavior: 'smooth' })}>
                             Comenzar evaluación
                         </Button>
-
                     </motion.div>
 
                     {/* Trust indicators */}
