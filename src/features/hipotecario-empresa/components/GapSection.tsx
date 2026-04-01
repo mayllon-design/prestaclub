@@ -22,11 +22,11 @@ export const GapSection = () => {
 
             <ul className="space-y-6">
               {[
-                "Procesos de hasta 2 meses para evaluar solicitudes",
-                "Rechazos por historial crediticio o falta de liquidez",
+                "Procesos de hasta 2 meses",
+                "Rechazos por historial crediticio",
                 "Copamiento de líneas de créditos.",
-                "Trámites infinitos con carpetas fiscales y balances pesados",
-                "Evaluación de crédito rígida, sin entender tu negocio",
+                "Trámites infinitos",
+                "Evaluación de crédito rígida",
               ].map((p, i) => (
                 <li key={i} className="flex items-start gap-4">
                   <XCircle className="h-5 w-5 text-destructive shrink-0 mt-1" />

@@ -13,7 +13,7 @@ export const TestimonialsSection = () => {
     {
       title: "Modernización de Planta",
       angle: "Escalamiento",
-      videoId: "OXdKXds4mds",
+      videoId: "t8WuJhqTfbQ",
       description: "Financiamiento para maquinaria sin depender de la banca tradicional.",
     },
     {

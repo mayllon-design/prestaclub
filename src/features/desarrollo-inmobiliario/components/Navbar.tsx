@@ -64,7 +64,7 @@ const Navbar = () => {
 
                 {/* CTA */}
                 <Button variant="gold" size="sm" onClick={() => document.getElementById('evaluacion')?.scrollIntoView({ behavior: 'smooth' })}>
-                    Evaluar proyecto
+                    Evaluar mi proyecto
                 </Button>
             </div>
         </motion.nav>

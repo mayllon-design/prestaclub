@@ -37,42 +37,56 @@ const HeroSection = () => {
 
             {/* Content */}
             <div className="container mx-auto px-6 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="max-w-4xl mx-auto text-center"
-                >
-                    {/* Badge */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    {/* Left Column */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-secondary/30 bg-secondary/5"
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-left"
                     >
-                        <Building2 className="w-4 h-4 text-secondary" />
-                        <span className="text-sm font-body text-muted-foreground">Financiamiento Estructurado Inmobiliario</span>
+                        {/* Badge */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-secondary/30 bg-secondary/5"
+                        >
+                            <Building2 className="w-4 h-4 text-secondary" />
+                            <span className="text-sm font-body text-muted-foreground">Financiamiento Estructurado Inmobiliario</span>
+                        </motion.div>
+
+                        {/* Main Headline */}
+                        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                            Financiamiento para <span className="text-gradient-gold">Proyectos Inmobiliarios</span> sin depender del banco
+                        </h1>
+
+                        {/* Subheadline */}
+                        <p className="text-lg md:text-xl text-muted-foreground font-body mb-8 max-w-xl leading-relaxed">
+                            Obtén capital para tu proyecto usando una propiedad como respaldo. Evaluación en 24–48h
+                        </p>
+
+                        {/* CTA Buttons */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.5 }}
+                            className="flex flex-col sm:flex-row gap-4 justify-start items-center"
+                        >
+                            <Button variant="hero" onClick={() => document.getElementById('evaluacion')?.scrollIntoView({ behavior: 'smooth' })}>
+                                Evaluar mi proyecto
+                            </Button>
+                        </motion.div>
                     </motion.div>
 
-                    {/* Main Headline */}
-                    <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                        Financiamiento puente para{" "}
-                        <span className="text-gradient-gold">Desarrollo inmobiliario</span>
-                    </h1>
-
-                    {/* Subheadline */}
-                    <p className="text-lg md:text-xl text-muted-foreground font-body mb-8 max-w-2xl mx-auto leading-relaxed">
-                        Financiamiento con garantía hipotecaria, estructurado por Prestaclub y otorgado por fondos de inversión, alineado al flujo real de tu proyecto.
-                    </p>
-
-                    {/* YouTube Video Container */}
+                    {/* Right Column - YouTube Video Container */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        className="mb-10 w-full max-w-2xl mx-auto"
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="w-full"
                     >
-                        <p className="text-sm font-bold text-secondary uppercase tracking-[0.2em] mb-4">Mira este breve video</p>
+                        <p className="text-sm font-bold text-secondary uppercase tracking-[0.2em] mb-4 text-center lg:text-left">Mira este breve video</p>
                         <div className="rounded-2xl overflow-hidden border border-secondary/20 shadow-[0_0_50px_-12px_rgba(212,163,44,0.3)] glassmorphism">
                             <div className="aspect-video">
                                 <iframe
@@ -88,44 +102,33 @@ const HeroSection = () => {
                             </div>
                         </div>
                     </motion.div>
+                </div>
 
-                    {/* CTA Buttons */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.5 }}
-                        className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                    >
-                        <Button variant="hero" onClick={() => document.getElementById('evaluacion')?.scrollIntoView({ behavior: 'smooth' })}>
-                            Comenzar evaluación
-                        </Button>
-                    </motion.div>
-
-                    {/* Trust indicators */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.6, delay: 0.8 }}
-                        className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
-                    >
-                        {[
-                            { icon: TrendingUp, label: "Hasta 40% LTV" },
-                            { icon: Clock, label: "Plazos flexibles" },
-                            { icon: Shield, label: "Garantía hipotecaria" },
-                            { icon: Handshake, label: "Fondos de inversión" },
-                        ].map((item, index) => (
-                            <motion.div
-                                key={item.label}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                                className="flex flex-col items-center gap-2 p-4 rounded-lg border border-border/50 bg-card/30 backdrop-blur-sm"
-                            >
-                                <item.icon className="w-6 h-6 text-secondary" />
-                                <span className="text-sm font-body text-muted-foreground text-center">{item.label}</span>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                {/* Trust indicators - outside the grid to span width or follow grid? 
+                    Keep them outside for better balance at the bottom of the hero section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                    className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
+                >
+                    {[
+                        { icon: TrendingUp, label: "Hasta 40% LTV" },
+                        { icon: Clock, label: "Plazos flexibles" },
+                        { icon: Shield, label: "Garantía hipotecaria" },
+                        { icon: Handshake, label: "Fondos de inversión" },
+                    ].map((item, index) => (
+                        <motion.div
+                            key={item.label}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                            className="flex flex-col items-center gap-2 p-4 rounded-lg border border-border/50 bg-card/30 backdrop-blur-sm"
+                        >
+                            <item.icon className="w-6 h-6 text-secondary" />
+                            <span className="text-sm font-body text-muted-foreground text-center">{item.label}</span>
+                        </motion.div>
+                    ))}
                 </motion.div>
             </div>
 

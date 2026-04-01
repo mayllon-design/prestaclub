@@ -26,40 +26,40 @@ export const CalculatorSection = () => {
   }, [monto, plazo, tasaMensual]);
 
   return (
-    <section className="section-padding bg-muted/40">
-      <div className="container mx-auto px-4">
+    <section className="section-padding bg-muted/40 overflow-x-hidden">
+      <div className="container mx-auto px-4 max-w-full">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mb-4">Calcula la Liquidez que tu EMPRESA necesita</h2>
-            <p className="text-muted-foreground font-body text-lg">Proyecta el crecimiento de tu empresa hoy mismo.</p>
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-2xl md:text-5xl font-extrabold text-foreground mb-4 leading-tight">Calcula la Liquidez que tu EMPRESA necesita</h2>
+            <p className="text-muted-foreground font-body text-base md:text-lg">Proyecta el crecimiento de tu empresa hoy mismo.</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 items-stretch pt-8">
             {/* Formulario Calculadora */}
-            <div className="card-elevated p-8 md:p-12 space-y-12 bg-white/50 backdrop-blur-xl border border-white/20">
-              <div className="space-y-8">
-                <div className="flex justify-between items-center bg-muted/30 p-4 rounded-2xl border border-muted/50">
-                  <label className="text-sm font-black text-muted-foreground uppercase tracking-widest">Monto solicitado</label>
-                  <span className="text-3xl font-black text-primary italic">S/ {monto.toLocaleString()}</span>
+            <div className="card-elevated px-4 py-8 md:p-12 space-y-8 md:space-y-12 bg-white/50 backdrop-blur-xl border border-white/20 w-full overflow-hidden">
+              <div className="space-y-6 md:space-y-8">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-muted/30 p-4 md:p-6 rounded-2xl border border-muted/50 w-full">
+                  <label className="text-xs md:text-sm font-black text-muted-foreground uppercase tracking-widest shrink-0">Monto solicitado</label>
+                  <span className="text-2xl md:text-3xl font-black text-primary italic break-all">S/ {monto.toLocaleString()}</span>
                 </div>
                 <Slider
-                  min={100000}
+                  min={200000}
                   max={5000000}
-                  step={10000}
+                  step={20000}
                   value={[monto]}
                   onValueChange={(val) => setMonto(val[0])}
                   className="py-4 cursor-pointer"
                 />
                 <div className="flex justify-between text-[10px] text-muted-foreground font-black uppercase tracking-tighter">
-                  <span>S/ 150,000</span>
+                  <span>S/ 200,000</span>
                   <span>S/ 5,000,000</span>
                 </div>
               </div>
 
-              <div className="space-y-8 pt-4">
-                <div className="flex justify-between items-center bg-muted/30 p-4 rounded-2xl border border-muted/50">
-                  <label className="text-sm font-black text-muted-foreground uppercase tracking-widest">Plazo (Meses)</label>
-                  <span className="text-3xl font-black text-primary italic">{plazo} Meses</span>
+              <div className="space-y-6 md:space-y-8 pt-4">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-muted/30 p-4 md:p-6 rounded-2xl border border-muted/50 w-full">
+                  <label className="text-xs md:text-sm font-black text-muted-foreground uppercase tracking-widest shrink-0">Plazo (Meses)</label>
+                  <span className="text-2xl md:text-3xl font-black text-primary italic break-all">{plazo} Meses</span>
                 </div>
                 <Slider
                   min={48}
@@ -70,22 +70,22 @@ export const CalculatorSection = () => {
                   className="py-4 cursor-pointer"
                 />
                 <div className="flex justify-between text-[10px] text-muted-foreground font-black uppercase tracking-tighter">
+                  <span>12 Meses</span>
                   <span>48 Meses</span>
-                  <span>60 Meses</span>
                 </div>
               </div>
             </div>
 
             {/* Resultado */}
-            <div className="bg-navy rounded-[40px] p-10 md:p-14 text-white flex flex-col justify-between shadow-3xl shadow-navy/20">
+            <div className="bg-navy rounded-[32px] md:rounded-[40px] px-5 py-10 md:p-14 text-white flex flex-col justify-between shadow-3xl shadow-navy/20 w-full overflow-hidden">
               <div>
-                <div className="flex justify-between items-start mb-10">
-                  <div className="h-14 w-14 bg-gold rounded-2xl flex items-center justify-center shadow-2xl shadow-gold/40">
-                    <Calculator className="h-7 w-7 text-navy" />
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-6 mb-10">
+                  <div className="h-12 w-12 md:h-14 md:w-14 bg-gold rounded-2xl flex items-center justify-center shadow-2xl shadow-gold/40 shrink-0">
+                    <Calculator className="h-6 w-6 md:h-7 md:w-7 text-navy" />
                   </div>
-                  <div className="text-right">
+                  <div className="text-left sm:text-right w-full">
                     <div className="text-gold text-xs font-bold uppercase tracking-widest mb-1">Cuota Estimada</div>
-                    <div className="text-4xl md:text-5xl font-black italic">S/ {cuotaEstimada.toLocaleString()}*</div>
+                    <div className="text-3xl md:text-5xl font-black italic leading-tight break-all">S/ {cuotaEstimada.toLocaleString()}*</div>
                   </div>
                 </div>
 
@@ -111,10 +111,11 @@ export const CalculatorSection = () => {
                 </div>
               </div>
 
-              <div className="space-y-6 pt-10 border-t border-white/10">
-                <Button variant="gold" size="xl" className="w-full h-16 text-lg font-bold" asChild>
-                  <a href={`https://wa.me/51921010200?text=Hola PrestaClub, usé la calculadora de empresas y me interesa solicitar S/ ${monto.toLocaleString()} a ${plazo} meses.`} target="_blank">
-                    <MessageSquareText className="mr-3 h-6 w-6" /> CONTACTAR A UN ASESOR
+              <div className="space-y-4 pt-6 border-t border-white/10">
+                <Button variant="gold" className="w-full h-auto py-3.5 md:py-4 text-xs md:text-base font-black tracking-widest uppercase" asChild>
+                  <a href={`https://wa.me/51921010200?text=Hola PrestaClub, usé la calculadora de empresas y me interesa solicitar S/ ${monto.toLocaleString()} a ${plazo} meses.`} target="_blank" className="flex items-center justify-center gap-2">
+                    <MessageSquareText className="h-5 w-5 shrink-0" /> 
+                    <span>Contactar a un asesor</span>
                   </a>
                 </Button>
                 <div className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl border border-white/5">

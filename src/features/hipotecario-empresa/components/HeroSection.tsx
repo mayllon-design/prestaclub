@@ -14,11 +14,11 @@ export const HeroSection = () => {
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-primary-foreground leading-tight mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            Liquidez desde <span className="text-gradient-gold">S/ 150,000</span> para tu empresa en tiempo récord.
+            Liquidez para tu empresa desde <span className="text-gradient-gold">S/ 200,000</span> en tiempo récord.
           </h1>
 
           <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-10 max-w-2xl mx-auto font-body animate-in fade-in slide-in-from-bottom-6 duration-1000">
-            Sin la burocracia de los bancos. Financiamiento con garantía hipotecaria diseñado para expansión, licitaciones y capital de trabajo.
+            Sin la burocracia de los bancos. Financiamiento con garantía hipotecaria diseñado para expansión, licitaciones y capital de trabajo,  a través de fondos de inversión institucionales.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000">
