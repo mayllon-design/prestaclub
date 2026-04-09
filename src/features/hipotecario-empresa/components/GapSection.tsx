@@ -20,7 +20,7 @@ export const GapSection = () => {
               <h3 className="text-xl md:text-2xl font-bold uppercase tracking-widest">Bancos Tradicionales</h3>
             </div>
 
-            <ul className="space-y-6">
+            <ul className="space-y-4 md:space-y-6">
               {[
                 "Procesos de hasta 2 meses.",
                 "Rechazos por historial crediticio.",
@@ -48,7 +48,7 @@ export const GapSection = () => {
               <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-widest">PrestaClub</h3>
             </div>
 
-            <ul className="space-y-6">
+            <ul className="space-y-4 md:space-y-6">
               {[
                 "Desembolso en 3 días hábiles (luego de la firma de minuta).",
                 "Evaluamos el potencial de tu negocio, no solo el pasado.",

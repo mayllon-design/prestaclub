@@ -7,6 +7,7 @@ import Image from "next/image";
 import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import CreditWizard from "@/features/credit-wizard/components/CreditWizard";
+import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import heroVehicular from "@/assets/hero-vehicular.jpg";
 
 const institutions = [
@@ -236,7 +237,8 @@ const VehicularVideoSection = () => {
 };
 
 const Hero = ({ onSimulate }: { onSimulate: () => void }) => {
-  const whatsappUrl = "https://wa.me/51921010200?text=Hola%2C%20quiero%20información%20sobre%20el%20crédito%20con%20garantía%20vehicular%20con%20custodia";
+  const { getWhatsAppUrl } = useTrafficTracking();
+  const whatsappUrl = getWhatsAppUrl("Hola, quiero información sobre el crédito con garantía vehicular con custodia");
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">

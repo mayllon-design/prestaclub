@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 import { MessageSquare, Send, CheckCircle2, Star, UserCheck2, Landmark } from "lucide-react";
 
 export const ConversionForm = () => {
+  const { getWhatsAppUrl } = useTrafficTracking();
   const [formData, setFormData] = useState({
     ruc: "",
     nombre: "",
@@ -27,7 +29,7 @@ export const ConversionForm = () => {
     // Simular envío
     setTimeout(() => {
       const message = `Hola PrestaClub, mi nombre es ${formData.nombre} (${formData.ruc}), mi teléfono es ${formData.telefono} y solicito un financiamiento de S/ ${formData.monto}.`;
-      window.open(`https://wa.me/51921010200?text=${encodeURIComponent(message)}`, "_blank");
+      window.open(getWhatsAppUrl(message), "_blank");
       setIsSubmitting(false);
       setIsSuccess(true);
     }, 1500);

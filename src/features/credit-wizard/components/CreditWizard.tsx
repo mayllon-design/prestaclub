@@ -3,6 +3,7 @@
 import { useState, forwardRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ChevronRight, MessageCircle, Shield, Eye, FileText, Car, AlertTriangle, Lock } from "lucide-react";
+import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 
 // ─── SCORING DATA ───
 const BRANDS: Record<string, number> = {
@@ -77,6 +78,7 @@ const ProgressBar = ({ currentStep }: ProgressBarProps) => {
 interface CreditWizardProps { }
 
 const CreditWizard = forwardRef<HTMLDivElement, CreditWizardProps>((_, ref) => {
+    const { isPaid, source, campaign, getWhatsAppUrl } = useTrafficTracking();
     const [step, setStep] = useState(0);
     const [brand, setBrand] = useState("");
     const [customBrand, setCustomBrand] = useState("");
@@ -144,7 +146,7 @@ const CreditWizard = forwardRef<HTMLDivElement, CreditWizardProps>((_, ref) => {
             setShowCustodyInfo(true);
         } else {
             // User insists NO → redirect
-            window.open("https://wa.me/51921010200?text=Hola%2C%20quiero%20conocer%20otras%20opciones%20de%20crédito", "_blank");
+            window.open(getWhatsAppUrl("Hola, quiero conocer otras opciones de crédito"), "_blank");
         }
     };
 
@@ -167,7 +169,7 @@ Monto preaprobado: S/ ${preApproved.toLocaleString()}
 
 Quedo atento a su respuesta.`;
 
-        const whatsappUrl = `https://wa.me/51921010200?text=${encodeURIComponent(message)}`;
+        const whatsappUrl = getWhatsAppUrl(message);
         window.open(whatsappUrl, "_blank");
     };
 
@@ -236,7 +238,7 @@ Quedo atento a su respuesta.`;
                                     className="w-full max-w-sm mx-auto block p-3 rounded-xl border border-border bg-background text-foreground mb-4"
                                 />
                                 <a
-                                    href={`https://wa.me/51921010200?text=${encodeURIComponent(`Hola, vengo del simulador web. Mi marca no aparece en el listado. Mi vehículo es: ${customBrand}`)}`}
+                                    href={getWhatsAppUrl(`Hola, vengo del simulador web. Mi marca no aparece en el listado. Mi vehículo es: ${customBrand}`)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn-whatsapp inline-flex items-center gap-2"
@@ -274,7 +276,7 @@ Quedo atento a su respuesta.`;
                                                     Actualmente no califica para este producto, pero podemos evaluar otras opciones.
                                                 </p>
                                                 <a
-                                                    href="https://wa.me/51921010200?text=Hola%2C%20mi%20vehículo%20tiene%20más%20de%2010%20años.%20¿Tienen%20otras%20opciones?"
+                                                    href={getWhatsAppUrl("Hola, mi vehículo tiene más de 10 años. ¿Tienen otras opciones?")}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="btn-whatsapp inline-flex items-center gap-2 mt-3 !py-2 !px-4 !text-sm"
