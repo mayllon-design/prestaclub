@@ -13,12 +13,15 @@ export const HeroSection = () => {
             <span className="text-sm font-semibold text-gold tracking-wide uppercase">Capital para Empresas</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-primary-foreground leading-tight mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            Liquidez para tu empresa desde <span className="text-gradient-gold">S/ 200,000</span> en tiempo récord.
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-primary-foreground leading-tight mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000 flex flex-col items-center">
+            <span className="block">Liquidez para tu empresa</span>
+            <span className="block text-2xl md:text-3xl opacity-90 font-medium my-1">desde</span>
+            <span className="block text-5xl md:text-6xl lg:text-8xl text-gradient-gold mb-2">S/ 200,000</span>
+            <span className="block">en tiempo récord</span>
           </h1>
 
           <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-10 max-w-2xl mx-auto font-body animate-in fade-in slide-in-from-bottom-6 duration-1000">
-            Sin la burocracia de los bancos. Financiamiento con garantía hipotecaria diseñado para expansión, licitaciones y capital de trabajo,  a través de fondos de inversión institucionales.
+            Financiamiento con garantía hipotecaria diseñado para empresas a través de fondos de inversión institucionales.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000">

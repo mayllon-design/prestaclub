@@ -22,11 +22,10 @@ export const GapSection = () => {
 
             <ul className="space-y-6">
               {[
-                "Procesos de hasta 2 meses",
-                "Rechazos por historial crediticio",
-                "Copamiento de líneas de créditos.",
-                "Trámites infinitos",
-                "Evaluación de crédito rígida",
+                "Procesos de hasta 2 meses.",
+                "Rechazos por historial crediticio.",
+                "Copamiento de líneas de crédito.",
+                "Evaluación de crédito rígida.",
               ].map((p, i) => (
                 <li key={i} className="flex items-start gap-4">
                   <XCircle className="h-5 w-5 text-destructive shrink-0 mt-1" />
@@ -51,10 +50,11 @@ export const GapSection = () => {
 
             <ul className="space-y-6">
               {[
-                "Desembolso en 3 días hábiles (luego de la firma de minuta)",
-                "Evaluamos el potencial de tu negocio, no solo el pasado",
-                "Tasas competitivas y estructuras de pago diseñadas para empresas",
-                "Procesos ágiles con asesoría personalizada de inicio a fin",
+                "Desembolso en 3 días hábiles (luego de la firma de minuta).",
+                "Evaluamos el potencial de tu negocio, no solo el pasado.",
+                "Tasas competitivas y estructuras de pago diseñadas para empresas.",
+                "Procesos ágiles con asesoría personalizada de inicio a fin.",
+                "Flexibilidad ante complicaciones en el pago.",
               ].map((s, i) => (
                 <li key={i} className="flex items-start gap-4 animate-in fade-in slide-in-from-right-4 delay-200 duration-700">
                   <CheckCircle2 className="h-5 w-5 text-gold shrink-0 mt-1" />

@@ -30,8 +30,8 @@ export const CalculatorSection = () => {
       <div className="container mx-auto px-4 max-w-full">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-2xl md:text-5xl font-extrabold text-foreground mb-4 leading-tight">Calcula la Liquidez que tu EMPRESA necesita</h2>
-            <p className="text-muted-foreground font-body text-base md:text-lg">Proyecta el crecimiento de tu empresa hoy mismo.</p>
+            <h2 className="text-2xl md:text-5xl font-extrabold text-foreground mb-4 leading-tight">Calcula la liquidez que tu EMPRESA necesita</h2>
+
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 items-stretch pt-8">
@@ -114,7 +114,7 @@ export const CalculatorSection = () => {
               <div className="space-y-4 pt-6 border-t border-white/10">
                 <Button variant="gold" className="w-full h-auto py-3.5 md:py-4 text-xs md:text-base font-black tracking-widest uppercase" asChild>
                   <a href={`https://wa.me/51921010200?text=Hola PrestaClub, usé la calculadora de empresas y me interesa solicitar S/ ${monto.toLocaleString()} a ${plazo} meses.`} target="_blank" className="flex items-center justify-center gap-2">
-                    <MessageSquareText className="h-5 w-5 shrink-0" /> 
+                    <MessageSquareText className="h-5 w-5 shrink-0" />
                     <span>Contactar a un asesor</span>
                   </a>
                 </Button>
