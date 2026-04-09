@@ -1,6 +1,6 @@
 "use client";
 
-import { Zap, LayoutGrid, Scale, Building2, TrendingUp, HandCoins } from "lucide-react";
+import { Zap, LayoutGrid, CircleDollarSign, Building2, TrendingUp, HandCoins } from "lucide-react";
 
 export const BenefitsSection = () => {
   const benefits = [
@@ -19,7 +19,7 @@ export const BenefitsSection = () => {
     {
       title: "Mayor Financiamiento",
       description: "Montos significativamente mayores que cualquier préstamo personal o bancario tradicional.",
-      icon: Scale,
+      icon: CircleDollarSign,
       color: "gold",
     },
   ];

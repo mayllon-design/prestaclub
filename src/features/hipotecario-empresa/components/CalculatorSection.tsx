@@ -30,7 +30,10 @@ export const CalculatorSection = () => {
       <div className="container mx-auto px-4 max-w-full">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-2xl md:text-5xl font-extrabold text-foreground mb-4 leading-tight">Calcula la liquidez que tu EMPRESA necesita</h2>
+            <h2 className="text-2xl md:text-5xl font-extrabold text-foreground mb-4 leading-tight">
+              <span className="block">Calcula la liquidez que tu</span>
+              <span className="block text-primary uppercase">EMPRESA necesita</span>
+            </h2>
 
           </div>
 
@@ -39,7 +42,7 @@ export const CalculatorSection = () => {
             <div className="card-elevated px-4 py-8 md:p-12 space-y-8 md:space-y-12 bg-white/50 backdrop-blur-xl border border-white/20 w-full overflow-hidden">
               <div className="space-y-6 md:space-y-8">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-muted/30 p-4 md:p-6 rounded-2xl border border-muted/50 w-full">
-                  <label className="text-xs md:text-sm font-black text-muted-foreground uppercase tracking-widest shrink-0">Monto solicitado</label>
+                  <label className="text-xs md:text-sm font-black text-muted-foreground uppercase tracking-widest shrink-0">Monto requerido</label>
                   <span className="text-2xl md:text-3xl font-black text-primary italic break-all">S/ {monto.toLocaleString()}</span>
                 </div>
                 <Slider

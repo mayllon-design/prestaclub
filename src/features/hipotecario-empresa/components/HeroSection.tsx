@@ -5,7 +5,7 @@ import { ArrowRight, ShieldCheck, Landmark } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden hero-gradient py-20 md:py-32">
+    <section className="relative overflow-hidden hero-gradient py-12 md:py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 mb-8 animate-in fade-in slide-in-from-top-4 duration-1000">

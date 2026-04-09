@@ -96,7 +96,7 @@ export const ConversionForm = () => {
                 <Input id="telefono" type="tel" placeholder="999 999 999" className="h-14 rounded-2xl border-2 border-muted/50 focus:border-primary px-6" value={formData.telefono} onChange={handleChange} required />
               </div>
               <div className="space-y-3">
-                <label className="text-sm font-black text-navy uppercase tracking-widest italic" htmlFor="monto">Monto solicitado (S/)</label>
+                <label className="text-sm font-black text-navy uppercase tracking-widest italic" htmlFor="monto">Monto requerido (S/)</label>
                 <Input id="monto" type="number" placeholder="Ej: 100,000" className="h-14 rounded-2xl border-2 border-muted/50 focus:border-primary px-6" value={formData.monto} onChange={handleChange} required />
               </div>
 
