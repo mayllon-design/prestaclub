@@ -19,7 +19,7 @@ export const TestimonialsSection = () => {
     {
       title: "Financiamiento Alternativo",
       angle: "Opción a la Banca",
-      videoId: "DYqcB5vEq_g",
+      videoId: "SSUumDN0gZw",
       description: "La alternativa real cuando los bancos dicen que NO a tu Pyme.",
     },
   ];
