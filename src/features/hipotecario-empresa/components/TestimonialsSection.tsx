@@ -11,16 +11,16 @@ export const TestimonialsSection = () => {
       description: "Cómo logramos la liquidez para una licitación pública en tiempo récord.",
     },
     {
-      title: "Modernización de Planta",
+      title: "De Emprendedor a Empresario Textil",
       angle: "Escalamiento",
-      videoId: "t8WuJhqTfbQ",
+      videoId: "SSUumDN0gZw",
       description: "Financiamiento para maquinaria sin depender de la banca tradicional.",
     },
     {
       title: "Financiamiento Alternativo",
       angle: "Opción a la Banca",
-      videoId: "SSUumDN0gZw",
-      description: "La alternativa real cuando los bancos dicen que NO a tu Pyme.",
+      videoId: "t8WuJhqTfbQ",
+      description: "La alternativa real cuando los bancos dicen que NO a tu Proyecto inmobiliario.",
     },
   ];
 
