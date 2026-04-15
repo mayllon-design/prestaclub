@@ -28,7 +28,7 @@ export const ConversionForm = () => {
 
     // Simular envío
     setTimeout(() => {
-      const message = `Hola PrestaClub, mi nombre es ${formData.nombre} (${formData.ruc}), mi teléfono es ${formData.telefono} y solicito un financiamiento de S/ ${formData.monto}.`;
+      const message = `Hola PrestaClub, mi nombre es ${formData.nombre} (${formData.ruc}), mi teléfono es ${formData.telefono} y solicito un financiamiento empresarial de S/ ${formData.monto}.`;
       window.open(getWhatsAppUrl(message), "_blank");
       setIsSubmitting(false);
       setIsSuccess(true);
@@ -77,7 +77,7 @@ export const ConversionForm = () => {
           </div>
 
           {/* Form */}
-          <div className="bg-white rounded-[40px] p-10 md:p-14 shadow-3xl shadow-black/40 relative">
+          <div id="form-container" className="bg-white rounded-[40px] p-10 md:p-14 shadow-3xl shadow-black/40 relative">
             <div className="absolute -top-6 -right-6 flex rotate-12 scale-110">
               <div className="bg-gold text-navy font-black py-4 px-6 rounded-2xl shadow-2xl uppercase tracking-tighter text-center leading-none">
                 Evaluación<br /><span className="text-sm">Gratuita y confidencial</span>
