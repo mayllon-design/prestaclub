@@ -6,8 +6,8 @@ import { Button } from "@/shared/components/ui/button";
 import { Info, Calculator, MessageSquareText } from "lucide-react";
 
 export const CalculatorSection = () => {
-  const [monto, setMonto] = useState(100000);
-  const [plazo, setPlazo] = useState(12);
+  const [monto, setMonto] = useState(200000);
+  const [plazo, setPlazo] = useState(6);
 
   // Tasa estimada mensual (referencial)
   //const tasaMensual = 0.012; // 1.2% mensual
@@ -47,7 +47,7 @@ export const CalculatorSection = () => {
                 </div>
                 <Slider
                   min={200000}
-                  max={5000000}
+                  max={2000000}
                   step={20000}
                   value={[monto]}
                   onValueChange={(val) => setMonto(val[0])}
@@ -55,7 +55,7 @@ export const CalculatorSection = () => {
                 />
                 <div className="flex justify-between text-[10px] text-muted-foreground font-black uppercase tracking-tighter">
                   <span>S/ 200,000</span>
-                  <span>S/ 5,000,000</span>
+                  <span>S/ 2,000,000</span>
                 </div>
               </div>
 
@@ -65,15 +65,15 @@ export const CalculatorSection = () => {
                   <span className="text-2xl md:text-3xl font-black text-primary italic break-all">{plazo} Meses</span>
                 </div>
                 <Slider
-                  min={48}
-                  max={60}
+                  min={6}
+                  max={48}
                   step={3}
                   value={[plazo]}
                   onValueChange={(val) => setPlazo(val[0])}
                   className="py-4 cursor-pointer"
                 />
                 <div className="flex justify-between text-[10px] text-muted-foreground font-black uppercase tracking-tighter">
-                  <span>12 Meses</span>
+                  <span>6 Meses</span>
                   <span>48 Meses</span>
                 </div>
               </div>
