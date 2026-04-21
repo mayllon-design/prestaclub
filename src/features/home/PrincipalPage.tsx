@@ -99,7 +99,7 @@ const slides = [
   },
   {
     title: "Impulsa tu empresa con capital estratégico",
-    description: "Financiamiento de S/ 20,000 a S/ 2,000,000 para capital de trabajo o proyectos inmobiliarios. Evaluación ágil para empresarios.",
+    description: "Financiamiento de S/ 20,000 a S/ 2,000,000 para capital de trabajo. Evaluación ágil para empresarios.",
     image: equipoPresta,
     cta1: { text: "SOLICITAR PARA MI EMPRESA", link: "/prestamos-con-garantia-hipotecaria-para-empresas" },
     cta2: { text: "Beneficios", link: "/prestamos-con-garantia-hipotecaria-para-empresas" },
