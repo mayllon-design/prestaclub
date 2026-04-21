@@ -8,7 +8,7 @@ import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import CreditWizard from "@/features/credit-wizard/components/CreditWizard";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
-import heroVehicular from "@/assets/hero-vehicular.jpg";
+import heroVehicular from "@/assets/hero-vehicular.png";
 
 const institutions = [
   {

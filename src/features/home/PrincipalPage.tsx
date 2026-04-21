@@ -1,10 +1,23 @@
+"use client";
+import React from "react";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
 import { Shield, Clock, TrendingUp, Users, Building2, CheckCircle2, ArrowRight, Star } from "lucide-react";
 import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/shared/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { motion } from "framer-motion";
 import heroPrincipal from "@/assets/prestamo-garantia-hipotecaria-home.png";
+import heroVehicular from "@/assets/hero-vehicular.png";
+import teamWorking from "@/assets/saneamiento-pedrial.png";
+import equipoPresta from "@/assets/Prestamo-con-garantia-hipotecaria-para-empresas.png";
 
 const stats = [
   { value: "+23", label: "Años en el mercado" },
@@ -62,44 +75,141 @@ const testimonials = [
   },
 ];
 
+const slides = [
+  {
+    title: "Financiamiento con respaldo real",
+    description: "Conectamos personas y empresas que necesitan financiamiento con inversionistas institucionales. El repago se garantiza con una propiedad.",
+    image: heroPrincipal,
+    cta1: { text: "PRECALIFICAR AHORA", link: "/financiamiento-con-garantia-hipotecaria#precalificar" },
+    cta2: { text: "Conoce más", link: "/nosotros" },
+  },
+  {
+    title: "Convierte tu vehículo en liquidez en pocas horas",
+    description: "Obtén el capital que necesitas usando tu auto como garantía. Tasas competitivas and desembolso rápido sin dejar de usar tu vehículo.",
+    image: heroVehicular,
+    cta1: { text: "SOLICITAR CRÉDITO", link: "/prestamo-con-garantia-vehicular" },
+    cta2: { text: "Más información", link: "/prestamo-con-garantia-vehicular" },
+  },
+  {
+    title: "Regulariza tu propiedad de manera legal y segura",
+    description: "Saneamos legalmente tu inmueble para que puedas acceder a mejores oportunidades financieras o vender tu propiedad sin problemas.",
+    image: teamWorking,
+    cta1: { text: "SANEAR MI PROPIEDAD", link: "/saneamiento-predial" },
+    cta2: { text: "Ver detalles", link: "/saneamiento-predial" },
+  },
+  {
+    title: "Impulsa tu empresa con capital estratégico",
+    description: "Financiamiento de S/ 20,000 a S/ 2,000,000 para capital de trabajo o proyectos inmobiliarios. Evaluación ágil para empresarios.",
+    image: equipoPresta,
+    cta1: { text: "SOLICITAR PARA MI EMPRESA", link: "/prestamos-con-garantia-hipotecaria-para-empresas" },
+    cta2: { text: "Beneficios", link: "/prestamos-con-garantia-hipotecaria-para-empresas" },
+  }
+];
+
 const Principal = () => {
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!api) return;
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative overflow-hidden hero-gradient">
-        <div className="absolute inset-0">
-          <Image src={heroPrincipal} alt="PrestaClub oficinas Lima" className="w-full h-full object-cover opacity-15" priority fill />
-        </div>
-        <div className="relative container mx-auto px-4 py-20 md:py-32 lg:py-40">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 mb-6">
-              <Shield className="h-4 w-4 text-gold" />
-              <span className="text-sm font-semibold text-gold">Registrados en la SBS</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6">
-              Financiamiento con <span className="text-gradient-gold">respaldo real </span>
-            </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 max-w-2xl font-body">
-              Conectamos personas y empresas que necesitan financiamiento con inversionistas institucionales. El repago se garantiza con una propiedad.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="xl" asChild>
-                <Link href="/financiamiento-con-garantia-hipotecaria#precalificar">
-                  PRECALIFICAR AHORA <ArrowRight className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button 
-                variant="outline" 
-                size="xl" 
-                className="rounded-[20px] border-2 border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/50 hover:text-white font-semibold px-8 h-14"
-                asChild
-              >
-                <Link href="/nosotros">Conoce más</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Slider */}
+      <Carousel
+        setApi={setApi}
+        plugins={[
+          Autoplay({
+            delay: 5000,
+          }),
+        ]}
+        className="w-full"
+      >
+        <CarouselContent className="-ml-0">
+          {slides.map((slide, index) => (
+            <CarouselItem key={index} className="pl-0">
+              <section className="relative overflow-hidden hero-gradient">
+                <div className="absolute inset-0">
+                  <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full h-full object-cover opacity-15"
+                    priority={index === 0}
+                    fill
+                  />
+                </div>
+                <div className="relative container mx-auto px-4 py-20 md:py-32 lg:py-40">
+                  <div className="max-w-4xl">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={current === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                      transition={{ duration: 0.6, delay: 0.1 }}
+                      className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 mb-6"
+                    >
+                      <Shield className="h-4 w-4 text-gold" />
+                      <span className="text-sm font-semibold text-gold">Registrados en la SBS</span>
+                    </motion.div>
+
+                    <motion.h1
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={current === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                      transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                      className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6"
+                    >
+                      {slide.title.includes("respaldo real") ? (
+                        <>Financiamiento con <br /><span className="text-gradient-gold">respaldo real</span></>
+                      ) : slide.title.includes("vehículo") ? (
+                        <>Convierte tu <span className="text-gradient-gold">vehículo</span> en liquidez en pocas horas</>
+                      ) : slide.title.includes("Regulariza") ? (
+                        <>Regulariza tu <span className="text-gradient-gold">propiedad</span> de manera legal y segura</>
+                      ) : (
+                        <>Impulsa tu <span className="text-gradient-gold">empresa</span> con capital estratégico</>
+                      )}
+                    </motion.h1>
+
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={current === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                      className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 max-w-2xl font-body"
+                    >
+                      {slide.description}
+                    </motion.p>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={current === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                      transition={{ duration: 0.6, delay: 0.6 }}
+                      className="flex flex-col sm:flex-row gap-4"
+                    >
+                      <Button variant="hero" size="xl" asChild>
+                        <Link href={slide.cta1.link}>
+                          {slide.cta1.text} <ArrowRight className="h-5 w-5" />
+                        </Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="xl"
+                        className="rounded-[20px] border-2 border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/50 hover:text-white font-semibold px-8 h-14"
+                        asChild
+                      >
+                        <Link href={slide.cta2.link}>{slide.cta2.text}</Link>
+                      </Button>
+                    </motion.div>
+                  </div>
+                </div>
+              </section>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
 
       {/* Stats */}
       <section className="relative -mt-8 z-10">

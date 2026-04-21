@@ -55,16 +55,18 @@ const Header = () => {
               Productos <ChevronDown className="h-4 w-4" />
             </button>
             {productsOpen && (
-              <div className="absolute top-full left-0 mt-1 w-80 bg-card rounded-2xl shadow-xl border border-border p-2 animate-fade-in">
-                {products.map((p) => (
-                  <Link
-                    key={p.path}
-                    href={p.path}
-                    className="block px-4 py-3 rounded-xl text-sm font-medium text-foreground/80 hover:bg-primary/5 hover:text-primary transition-colors"
-                  >
-                    {p.name}
-                  </Link>
-                ))}
+              <div className="absolute top-full left-0 pt-2 w-80 animate-fade-in">
+                <div className="bg-card rounded-2xl shadow-xl border border-border p-2">
+                  {products.map((p) => (
+                    <Link
+                      key={p.path}
+                      href={p.path}
+                      className="block px-4 py-3 rounded-xl text-sm font-medium text-foreground/80 hover:bg-primary/5 hover:text-primary transition-colors"
+                    >
+                      {p.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>
