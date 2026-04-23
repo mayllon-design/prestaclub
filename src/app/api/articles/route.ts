@@ -1,9 +1,18 @@
 import { NextResponse } from 'next/server';
 import pool from '@/shared/lib/db';
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    const [rows] = await pool.query('SELECT * FROM articles ORDER BY published_at DESC');
+    const { searchParams } = new URL(request.url);
+    const isAdmin = searchParams.get('admin') === 'true';
+    
+    let query = 'SELECT * FROM articles';
+    if (!isAdmin) {
+      query += ' WHERE published_at <= NOW()';
+    }
+    query += ' ORDER BY published_at DESC';
+
+    const [rows] = await pool.query(query);
     return NextResponse.json(rows);
   } catch (error: any) {
     console.error('Database error details:', {
@@ -26,20 +35,30 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { 
       slug, title, excerpt, content, image_url, 
-      category, author, seo_title, seo_description 
+      category, author, seo_title, seo_description, published_at 
     } = body;
 
     const [result] = await pool.execute(
       `INSERT INTO articles (
         slug, title, excerpt, content, image_url, 
-        category, author, seo_title, seo_description
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [slug, title, excerpt, content, image_url, category, author, seo_title, seo_description]
+        category, author, seo_title, seo_description, published_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [slug, title, excerpt, content, image_url, category, author, seo_title, seo_description, published_at]
     );
 
     return NextResponse.json({ id: (result as any).insertId, ...body });
-  } catch (error) {
-    console.error('Database error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  } catch (error: any) {
+    console.error('Database error in POST /api/articles:', {
+      message: error.message,
+      code: error.code,
+      errno: error.errno,
+      sqlState: error.sqlState,
+      sqlMessage: error.sqlMessage
+    });
+    return NextResponse.json({ 
+      error: 'Error de base de datos',
+      message: error.sqlMessage || error.message,
+      code: error.code
+    }, { status: 500 });
   }
 }

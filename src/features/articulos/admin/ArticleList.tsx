@@ -28,7 +28,7 @@ export function ArticleList() {
 
   async function loadArticles() {
     try {
-      const data = await articlesApi.getAll();
+      const data = await articlesApi.getAll(true);
       setArticles(data);
     } catch (err) {
       console.error('Error loading articles:', err);
@@ -91,7 +91,20 @@ export function ArticleList() {
                     </span>
                   </TableCell>
                   <TableCell>
-                    {new Date(article.published_at).toLocaleDateString()}
+                    <div className="flex flex-col">
+                      <span className="text-sm">
+                        {new Date(article.published_at).toLocaleDateString()} {new Date(article.published_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                      {new Date(article.published_at) > new Date() ? (
+                        <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider mt-1">
+                          ● Programado
+                        </span>
+                      ) : (
+                        <span className="text-[10px] font-bold text-green-600 uppercase tracking-wider mt-1">
+                          ● Publicado
+                        </span>
+                      )}
+                    </div>
                   </TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">

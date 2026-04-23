@@ -14,5 +14,5 @@ export interface Article {
     updated_at: string;
 }
 
-export type CreateArticleInput = Omit<Article, 'id' | 'created_at' | 'updated_at' | 'published_at'>;
+export type CreateArticleInput = Omit<Article, 'id' | 'created_at' | 'updated_at'>;
 export type UpdateArticleInput = Partial<CreateArticleInput>;

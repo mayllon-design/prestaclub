@@ -27,15 +27,15 @@ export async function PUT(
     const body = await request.json();
     const { 
       slug, title, excerpt, content, image_url, 
-      category, author, seo_title, seo_description 
+      category, author, seo_title, seo_description, published_at
     } = body;
 
     await pool.execute(
       `UPDATE articles SET 
         slug = ?, title = ?, excerpt = ?, content = ?, image_url = ?, 
-        category = ?, author = ?, seo_title = ?, seo_description = ?
+        category = ?, author = ?, seo_title = ?, seo_description = ?, published_at = ?
       WHERE id = ?`,
-      [slug, title, excerpt, content, image_url, category, author, seo_title, seo_description, id]
+      [slug, title, excerpt, content, image_url, category, author, seo_title, seo_description, published_at, id]
     );
 
     return NextResponse.json({ id, ...body });

@@ -37,6 +37,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
     author: initialData?.author || 'Equipo PrestaClub',
     seo_title: initialData?.seo_title || '',
     seo_description: initialData?.seo_description || '',
+    published_at: initialData?.published_at ? new Date(initialData.published_at).toISOString().slice(0, 16) : new Date().toISOString().slice(0, 16),
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -106,17 +107,23 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
     setLoading(true);
 
     try {
+      // Formatear fecha para MySQL (YYYY-MM-DD HH:mm:ss)
+      const dataToSave = {
+        ...formData,
+        published_at: formData.published_at ? formData.published_at.replace('T', ' ') + ':00' : null
+      };
+
       if (initialData) {
-        await articlesApi.update(initialData.id, formData);
+        await articlesApi.update(initialData.id, dataToSave as any);
         toast.success('Artículo actualizado');
       } else {
-        await articlesApi.create(formData);
+        await articlesApi.create(dataToSave as any);
         toast.success('Artículo creado');
       }
       router.push('/admin/articulos');
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error saving article:', err);
-      toast.error('Error al guardar el artículo. Revisa si el slug ya existe.');
+      toast.error(err.message || 'Error al guardar el artículo. Revisa si el slug ya existe.');
     } finally {
       setLoading(false);
     }
@@ -221,6 +228,19 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                     value={formData.author || ''} 
                     onChange={handleChange} 
                   />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="grid gap-2">
+                  <Label htmlFor="published_at">Fecha y Hora de Publicación</Label>
+                  <Input 
+                    id="published_at" 
+                    name="published_at" 
+                    type="datetime-local"
+                    value={formData.published_at} 
+                    onChange={handleChange} 
+                  />
+                  <p className="text-xs text-muted-foreground">Programa cuándo será visible el artículo en la web.</p>
                 </div>
               </div>
               <div className="grid gap-2">

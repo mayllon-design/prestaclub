@@ -7,7 +7,10 @@ export async function GET(
 ) {
   const { slug } = await params;
   try {
-    const [rows]: any = await pool.query('SELECT * FROM articles WHERE slug = ?', [slug]);
+    const [rows]: any = await pool.query(
+      'SELECT * FROM articles WHERE slug = ? AND published_at <= NOW()', 
+      [slug]
+    );
     if (rows.length === 0) {
       return NextResponse.json({ error: 'Not Found' }, { status: 404 });
     }

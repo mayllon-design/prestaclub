@@ -3,8 +3,9 @@ import { Article, CreateArticleInput, UpdateArticleInput } from './types';
 const API_BASE = '/api/articles';
 
 export const articlesApi = {
-  async getAll(): Promise<Article[]> {
-    const res = await fetch(API_BASE);
+  async getAll(admin: boolean = false): Promise<Article[]> {
+    const url = admin ? `${API_BASE}?admin=true` : API_BASE;
+    const res = await fetch(url);
     if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
         throw new Error(errorData.message || 'Failed to fetch articles');
@@ -30,7 +31,10 @@ export const articlesApi = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
-    if (!res.ok) throw new Error('Failed to create article');
+    if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Error al crear el artículo');
+    }
     return res.json();
   },
 
@@ -40,7 +44,10 @@ export const articlesApi = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
-    if (!res.ok) throw new Error('Failed to update article');
+    if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Error al actualizar el artículo');
+    }
     return res.json();
   },
 
