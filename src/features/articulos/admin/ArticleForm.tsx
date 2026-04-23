@@ -23,6 +23,16 @@ interface ArticleFormProps {
   initialData?: Article;
 }
 
+const getLocalDatetime = (dateString?: string) => {
+  const d = dateString ? new Date(dateString) : new Date();
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  const hours = String(d.getHours()).padStart(2, '0');
+  const minutes = String(d.getMinutes()).padStart(2, '0');
+  return `${year}-${month}-${day}T${hours}:${minutes}`;
+};
+
 export function ArticleForm({ initialData }: ArticleFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -37,7 +47,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
     author: initialData?.author || 'Equipo PrestaClub',
     seo_title: initialData?.seo_title || '',
     seo_description: initialData?.seo_description || '',
-    published_at: initialData?.published_at ? new Date(initialData.published_at).toISOString().slice(0, 16) : new Date().toISOString().slice(0, 16),
+    published_at: getLocalDatetime(initialData?.published_at),
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
