@@ -23,14 +23,25 @@ interface ArticleFormProps {
   initialData?: Article;
 }
 
-const getLocalDatetime = (dateString?: string) => {
-  const d = dateString ? new Date(dateString) : new Date();
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  const hours = String(d.getHours()).padStart(2, '0');
-  const minutes = String(d.getMinutes()).padStart(2, '0');
-  return `${year}-${month}-${day}T${hours}:${minutes}`;
+// Helpers para manejar la conversión entre UTC (Base de datos) y GMT-5 Lima (Frontend)
+const toLimaTimeString = (utcStr?: string) => {
+  if (!utcStr) return '';
+  // Parseamos la cadena asumiendo que es UTC agregando 'Z'
+  const date = new Date(utcStr + (utcStr.includes('Z') ? '' : 'Z'));
+  if (isNaN(date.getTime())) return '';
+  // Restamos 5 horas para llegar a la hora de Lima
+  date.setHours(date.getHours() - 5);
+  return date.toISOString().slice(0, 16);
+};
+
+const toUtcString = (limaStr: string) => {
+  if (!limaStr) return '';
+  // Asumimos que la cadena local es UTC para manipularla fácilmente
+  const date = new Date(limaStr + (limaStr.includes('Z') ? '' : 'Z'));
+  if (isNaN(date.getTime())) return '';
+  // Sumamos 5 horas para llegar al UTC real
+  date.setHours(date.getHours() + 5);
+  return date.toISOString().slice(0, 16);
 };
 
 export function ArticleForm({ initialData }: ArticleFormProps) {
@@ -47,7 +58,9 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
     author: initialData?.author || 'Equipo PrestaClub',
     seo_title: initialData?.seo_title || '',
     seo_description: initialData?.seo_description || '',
-    published_at: getLocalDatetime(initialData?.published_at),
+    published_at: initialData?.published_at 
+      ? new Date(initialData.published_at).toISOString().slice(0, 16) 
+      : new Date().toISOString().slice(0, 16),
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -247,8 +260,13 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                     id="published_at" 
                     name="published_at" 
                     type="datetime-local"
-                    value={formData.published_at} 
-                    onChange={handleChange} 
+                    value={toLimaTimeString(formData.published_at)} 
+                    onChange={(e) => {
+                      setFormData(prev => ({
+                        ...prev,
+                        published_at: toUtcString(e.target.value)
+                      }));
+                    }} 
                   />
                   <p className="text-xs text-muted-foreground">Programa cuándo será visible el artículo en la web.</p>
                 </div>
