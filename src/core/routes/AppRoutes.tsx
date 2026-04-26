@@ -10,7 +10,6 @@ import Articulos from "@/features/content/ArticulosPage";
 import Faq from "@/features/content/FaqPage";
 import Privacy from "@/features/legal/PrivacyPage";
 import Terms from "@/features/legal/TermsPage";
-import NotFound from "@/core/pages/NotFoundPage";
 
 export const AppRoutes = () => {
     return (
@@ -30,7 +29,7 @@ export const AppRoutes = () => {
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/politica-de-privacidad" element={<Privacy />} />
             <Route path="/terminos-y-condiciones" element={<Terms />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     );
 };
