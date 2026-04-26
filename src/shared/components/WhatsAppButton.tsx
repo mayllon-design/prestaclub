@@ -80,7 +80,7 @@ const WhatsAppButton = () => {
         onClick={handleClick}
         target={isBusinessPage ? undefined : "_blank"}
         rel={isBusinessPage ? undefined : "noopener noreferrer"}
-        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-[hsl(142,70%,45%)] text-primary-foreground shadow-xl hover:shadow-2xl hover:brightness-110 flex items-center justify-center transition-all duration-200 hover:scale-105"
+        className="fixed bottom-20 lg:bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-[hsl(142,70%,45%)] text-primary-foreground shadow-xl hover:shadow-2xl hover:brightness-110 flex items-center justify-center transition-all duration-200 hover:scale-105"
         aria-label="Escríbenos por WhatsApp"
       >
         <MessageCircle className="h-7 w-7" />

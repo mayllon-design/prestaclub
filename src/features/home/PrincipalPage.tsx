@@ -145,7 +145,7 @@ const Principal = () => {
                     fill
                   />
                 </div>
-                <div className="relative container mx-auto px-4 py-20 md:py-32 lg:py-40">
+                <div className="relative container mx-auto px-4 pt-8 pb-20 md:py-32 lg:py-40">
                   <div className="max-w-4xl">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}

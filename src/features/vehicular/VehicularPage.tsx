@@ -254,7 +254,7 @@ const Hero = ({ onSimulate }: { onSimulate: () => void }) => {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
       </div>
 
-      <div className="relative z-10 container mx-auto section-padding">
+      <div className="relative z-10 container mx-auto px-4 pt-8 pb-20 md:py-32 lg:py-40">
         <div className="max-w-2xl">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
