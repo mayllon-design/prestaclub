@@ -14,7 +14,7 @@ export const useDesarrolloWhatsApp = () => {
             message = `["${campaign}"] ${baseMessage}`;
         }
 
-        return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+        return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     }, [campaign]);
 
     return whatsappUrl;
