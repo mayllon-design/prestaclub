@@ -156,18 +156,18 @@ const WizardHipotecario = ({ buyerType, onComplete }: { buyerType: string; onCom
       )}
 
       {/* Navigation */}
-      <div className="flex justify-between mt-8">
+      <div className="flex flex-col-reverse sm:flex-row justify-center sm:justify-between items-center gap-4 mt-8 w-full">
         {step > 0 ? (
-          <Button variant="outline" onClick={() => setStep(step - 1)}>
+          <Button variant="outline" className="w-full sm:w-auto" onClick={() => setStep(step - 1)}>
             <ArrowLeft className="h-4 w-4" /> Anterior
           </Button>
-        ) : <div />}
+        ) : <div className="hidden sm:block" />}
         {step < totalSteps - 1 ? (
-          <Button variant="gold" onClick={() => setStep(step + 1)} disabled={!canNext()}>
+          <Button variant="gold" className="w-full sm:w-auto" onClick={() => setStep(step + 1)} disabled={!canNext()}>
             Siguiente <ArrowRight className="h-4 w-4" />
           </Button>
         ) : (
-          <Button variant="gold" size="lg" onClick={() => onComplete(data)} disabled={!canNext()}>
+          <Button variant="gold" size="lg" className="w-full sm:w-auto" onClick={() => onComplete(data)} disabled={!canNext()}>
             ENVIAR POR WHATSAPP <ArrowRight className="h-4 w-4" />
           </Button>
         )}

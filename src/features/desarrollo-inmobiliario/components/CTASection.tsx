@@ -14,14 +14,14 @@ const CTASection = () => {
             {/* Background gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-background via-card to-background" />
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-center p-8 md:p-16 rounded-3xl bg-gradient-card border border-secondary/20 shadow-elevated relative overflow-hidden"
+                        className="text-center px-4 py-8 sm:p-8 md:p-16 rounded-3xl bg-gradient-card border border-secondary/20 shadow-elevated relative overflow-hidden"
                     >
                         {/* Decorative elements */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl" />

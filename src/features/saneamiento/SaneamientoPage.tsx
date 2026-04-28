@@ -175,8 +175,8 @@ const SaneamientoPredial = () => {
                       <label className="block text-sm font-semibold text-foreground mb-1">Ubicación del inmueble *</label>
                       <input type="text" value={data.ubicacion} onChange={e => update("ubicacion", e.target.value)} className="w-full h-11 px-4 rounded-xl border border-input bg-background text-foreground outline-none focus:ring-2 focus:ring-ring" placeholder="Distrito, provincia" maxLength={100} />
                     </div>
-                    <div className="flex justify-end mt-4">
-                      <Button variant="gold" onClick={() => setStep(1)} disabled={!data.nombre || !data.celular || !data.ubicacion}>
+                    <div className="flex justify-end mt-6 w-full">
+                      <Button variant="gold" className="w-full sm:w-auto" onClick={() => setStep(1)} disabled={!data.nombre || !data.celular || !data.ubicacion}>
                         Siguiente <ArrowRight className="h-4 w-4" />
                       </Button>
                     </div>
@@ -205,9 +205,9 @@ const SaneamientoPredial = () => {
                       <input type="checkbox" checked={data.privacidad} onChange={e => update("privacidad", e.target.checked)} className="mt-1 h-4 w-4 rounded border-input accent-primary" />
                       <span className="text-sm text-muted-foreground">Acepto la <a href="/politica-de-privacidad-de-prestaclub.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline">Política de Privacidad</a></span>
                     </label>
-                    <div className="flex justify-between mt-4">
-                      <Button variant="outline" onClick={() => setStep(0)}><ArrowLeft className="h-4 w-4" /> Anterior</Button>
-                      <Button variant="gold" onClick={() => setShowSummary(true)} disabled={!data.tipoProblema || !data.tieneDocumentos || !data.privacidad}>
+                    <div className="flex flex-col-reverse sm:flex-row justify-center sm:justify-between items-center gap-4 mt-6 w-full">
+                      <Button variant="outline" className="w-full sm:w-auto" onClick={() => setStep(0)}><ArrowLeft className="h-4 w-4" /> Anterior</Button>
+                      <Button variant="gold" className="w-full sm:w-auto" onClick={() => setShowSummary(true)} disabled={!data.tipoProblema || !data.tieneDocumentos || !data.privacidad}>
                         Ver resumen <ArrowRight className="h-4 w-4" />
                       </Button>
                     </div>
@@ -224,8 +224,8 @@ const SaneamientoPredial = () => {
                   <div className="flex justify-between"><span className="text-sm text-muted-foreground">Problema:</span><span className="text-sm font-semibold text-foreground">{data.tipoProblema}</span></div>
                   <div className="flex justify-between"><span className="text-sm text-muted-foreground">Documentos:</span><span className="text-sm font-semibold text-foreground">{data.tieneDocumentos}</span></div>
                 </div>
-                <div className="flex justify-center">
-                  <Button variant="gold" size="lg" onClick={handleWhatsApp}>
+                <div className="flex justify-center mt-6 w-full">
+                  <Button variant="gold" size="lg" className="w-full sm:w-auto" onClick={handleWhatsApp}>
                     ENVIAR POR WHATSAPP <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>

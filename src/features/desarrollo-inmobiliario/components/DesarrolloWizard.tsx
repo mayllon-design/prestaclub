@@ -380,7 +380,7 @@ ${campaign ? `\nCampaña: ${campaign}` : ""}`;
                 </div>
             </div>
 
-            <div className="glass-card border-secondary/20 p-5 sm:p-12 relative overflow-hidden min-h-[350px] flex flex-col">
+            <div className="glass-card border-secondary/20 p-4 sm:p-8 md:p-12 relative overflow-hidden min-h-[350px] flex flex-col">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl -mr-16 -mt-16" />
 
                 <div>
@@ -427,16 +427,16 @@ ${campaign ? `\nCampaña: ${campaign}` : ""}`;
                 </div>
 
                 {/* Footer Navigation - Image Matching */}
-                <div className="mt-6 pt-6 border-t border-border/20 flex flex-row items-center justify-between gap-2 sm:gap-4 w-full">
+                <div className="mt-6 pt-6 border-t border-border/20 flex flex-col-reverse sm:flex-row items-center justify-center sm:justify-between gap-4 w-full">
                     {step > 1 ? (
                         <button
                             onClick={prevStep}
-                            className="h-12 flex-1 sm:flex-none sm:px-6 rounded-xl border border-border/50 hover:bg-muted font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1 sm:gap-2"
+                            className="h-12 w-full sm:w-auto sm:px-6 rounded-xl border border-border/50 hover:bg-muted font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1 sm:gap-2"
                         >
                             <ArrowLeft className="w-4 h-4" /> ANTERIOR
                         </button>
                     ) : (
-                        <div className="hidden sm:block" />
+                        <div className="hidden sm:block w-full sm:w-auto" />
                     )}
 
                     {step < 4 ? (
@@ -444,7 +444,7 @@ ${campaign ? `\nCampaña: ${campaign}` : ""}`;
                             <Button
                                 variant="gold"
                                 onClick={handleNextStep}
-                                className="h-12 flex-1 sm:flex-none sm:px-10 text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center"
+                                className="h-12 w-full sm:w-auto sm:px-10 text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center"
                             >
                                 Continuar
                                 <ChevronRight className="w-4 h-4 ml-1 sm:ml-2" />
@@ -454,10 +454,9 @@ ${campaign ? `\nCampaña: ${campaign}` : ""}`;
                         <Button
                             variant="gold"
                             onClick={handleFinalSubmit}
-                            className="h-12 sm:h-14 flex-1 sm:flex-none sm:px-10 text-xs sm:text-sm font-bold uppercase tracking-widest shadow-lg shadow-gold/20 flex items-center justify-center"
+                            className="h-12 sm:h-14 w-full sm:w-auto sm:px-10 text-xs sm:text-sm font-bold uppercase tracking-widest shadow-lg shadow-gold/20 flex items-center justify-center"
                         >
-                            <span className="hidden sm:inline">Enviar por WhatsApp</span>
-                            <span className="sm:hidden">Enviar</span>
+                            <span>Enviar por WhatsApp</span>
                             <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 ml-1 sm:ml-2" />
                         </Button>
                     )}
