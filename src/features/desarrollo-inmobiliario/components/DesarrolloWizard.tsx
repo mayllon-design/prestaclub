@@ -349,7 +349,7 @@ const DesarrolloWizard = () => {
 
 ${campaign ? `\nCampaña: ${campaign}` : ""}`;
 
-        const phone = "51924274894";
+        const phone = "51921010200";
         const source = (typeof window !== 'undefined' && localStorage.getItem('pc_last_source')) || '';
         const campaignName = campaign || '';
 

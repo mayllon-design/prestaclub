@@ -5,7 +5,7 @@ import { useTrafficTracking } from '@/shared/hooks/useTrafficTracking';
 
 export const useDesarrolloWhatsApp = () => {
     const { campaign } = useTrafficTracking();
-    const phone = "51924274894";
+    const phone = "51921010200";
     const baseMessage = "Hola *PrestaClub*. Deseo evaluar mi Proyecto para financiamiento.";
 
     const whatsappUrl = useMemo(() => {

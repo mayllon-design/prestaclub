@@ -49,7 +49,7 @@ const CTASection = () => {
                             {/* Contact info */}
                             <div className="grid md:grid-cols-3 gap-6 pt-8 border-t border-border">
                                 <a
-                                    href="tel:+51924274894"
+                                    href="tel:+51921010200"
                                     className="flex items-center justify-center gap-3 text-muted-foreground hover:text-secondary transition-colors"
                                 >
                                     <Phone className="w-5 h-5 text-secondary shrink-0" />
