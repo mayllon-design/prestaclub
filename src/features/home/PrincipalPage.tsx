@@ -140,7 +140,7 @@ const Principal = () => {
                   <Image
                     src={slide.image}
                     alt={slide.title}
-                    className="w-full h-full object-cover opacity-15"
+                    className="w-full h-full object-cover opacity-30"
                     priority={index === 0}
                     fill
                   />
