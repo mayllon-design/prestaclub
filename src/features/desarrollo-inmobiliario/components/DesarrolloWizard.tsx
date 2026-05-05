@@ -328,7 +328,7 @@ const DesarrolloWizard = () => {
         nextStep();
     };
 
-    const handleFinalSubmit = () => {
+    const handleFinalSubmit = async () => {
         if (!isStepValid()) {
             setShowErrors(true);
             return;
@@ -357,6 +357,31 @@ ${campaign ? `\nCampaña: ${campaign}` : ""}`;
         const prefix = sourcePart ? `[${sourcePart}] - ` : '';
 
         const finalMessage = `${prefix}${baseMessage}`;
+        
+        const campanaFormateada = sourcePart || "Organico";
+
+        try {
+            // Quitamos el 'await' para que esto se ejecute en segundo plano y no demore la apertura de WhatsApp
+            fetch('https://script.google.com/a/macros/prestaclub.com/s/AKfycbzj1St6pPB2bbswQS_kwJrWPmN1gi2b8783AzCqKbZDJ2NjyxYhbd8wLXDT9fhhiJLm0g/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    tipoProyecto: data.tipoProyecto,
+                    ubicacion: data.ubicacion,
+                    fase: data.fase,
+                    unidades: data.unidades,
+                    monto: data.monto,
+                    razonSocial: data.razonSocial,
+                    campana: campanaFormateada
+                })
+            }).catch(error => console.error('Error guardando en Sheets:', error));
+        } catch (error) {
+            console.error('Error general guardando en Sheets:', error);
+        }
+
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
 
         window.open(url, "_blank");
