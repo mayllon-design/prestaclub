@@ -6,6 +6,7 @@ export interface Article {
     content: string;
     image_url: string | null;
     category: string | null;
+    section: string | null;
     author: string | null;
     published_at: string;
     seo_title: string | null;

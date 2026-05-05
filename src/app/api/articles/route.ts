@@ -35,15 +35,15 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { 
       slug, title, excerpt, content, image_url, 
-      category, author, seo_title, seo_description, published_at 
+      category, section, author, seo_title, seo_description, published_at 
     } = body;
 
     const [result] = await pool.execute(
       `INSERT INTO articles (
         slug, title, excerpt, content, image_url, 
-        category, author, seo_title, seo_description, published_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [slug, title, excerpt, content, image_url, category, author, seo_title, seo_description, published_at]
+        category, section, author, seo_title, seo_description, published_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [slug, title, excerpt, content, image_url, category, section, author, seo_title, seo_description, published_at]
     );
 
     return NextResponse.json({ id: (result as any).insertId, ...body });

@@ -10,6 +10,13 @@ import { Textarea } from '@/shared/components/ui/textarea';
 import { Label } from '@/shared/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/components/ui/tabs';
 import { Card, CardContent } from '@/shared/components/ui/card';
+import { 
+  Select, 
+  SelectContent, 
+  SelectItem, 
+  SelectTrigger, 
+  SelectValue 
+} from '@/shared/components/ui/select';
 import { toast } from 'sonner';
 import Link from 'next/link';
 import { RichTextEditor } from './RichTextEditor';
@@ -55,6 +62,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
     content: initialData?.content || '',
     image_url: initialData?.image_url || '',
     category: initialData?.category || '',
+    section: initialData?.section || '',
     author: initialData?.author || 'Equipo PrestaClub',
     seo_title: initialData?.seo_title || '',
     seo_description: initialData?.seo_description || '',
@@ -235,13 +243,45 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">
                   <Label htmlFor="category">Categoría</Label>
-                  <Input 
-                    id="category" 
-                    name="category" 
+                  <Select 
                     value={formData.category || ''} 
-                    onChange={handleChange} 
-                    placeholder="Ej: Educación Financiera" 
-                  />
+                    onValueChange={(val) => setFormData(prev => ({ ...prev, category: val }))}
+                  >
+                    <SelectTrigger id="category">
+                      <SelectValue placeholder="Selecciona una categoría" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Emprendimiento">Emprendimiento</SelectItem>
+                      <SelectItem value="Educación financiera">Educación financiera</SelectItem>
+                      <SelectItem value="Tecnología">Tecnología</SelectItem>
+                      <SelectItem value="Marketing">Marketing</SelectItem>
+                      <SelectItem value="Economía">Economía</SelectItem>
+                      <SelectItem value="Institucional">Institucional</SelectItem>
+                      <SelectItem value="Noticias">Noticias</SelectItem>
+                      <SelectItem value="Finanzas">Finanzas</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="section">Sección</Label>
+                  <Select 
+                    value={formData.section || ''} 
+                    onValueChange={(val) => setFormData(prev => ({ ...prev, section: val }))}
+                  >
+                    <SelectTrigger id="section">
+                      <SelectValue placeholder="Selecciona una sección" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Capital de Trabajo">Capital de Trabajo</SelectItem>
+                      <SelectItem value="Crédito con garantía hipotecaria para Empresas">Crédito con garantía hipotecaria para Empresas</SelectItem>
+                      <SelectItem value="Construcción">Construcción</SelectItem>
+                      <SelectItem value="Consolidación de deudas">Consolidación de deudas</SelectItem>
+                      <SelectItem value="Compra de Hipoteca">Compra de Hipoteca</SelectItem>
+                      <SelectItem value="Desarrollo Inmobiliario">Desarrollo Inmobiliario</SelectItem>
+                      <SelectItem value="Educación">Educación</SelectItem>
+                      <SelectItem value="Contenido Comercial">Contenido Comercial</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="author">Autor</Label>
