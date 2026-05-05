@@ -328,7 +328,7 @@ const DesarrolloWizard = () => {
         nextStep();
     };
 
-    const handleFinalSubmit = () => {
+    const handleFinalSubmit = async () => {
         if (!isStepValid()) {
             setShowErrors(true);
             return;
@@ -357,6 +357,21 @@ ${campaign ? `\nCampaña: ${campaign}` : ""}`;
         const prefix = sourcePart ? `[${sourcePart}] - ` : '';
 
         const finalMessage = `${prefix}${baseMessage}`;
+
+        try {
+            await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    subject: 'Nuevo Lead: Desarrollo Inmobiliario',
+                    message: finalMessage,
+                    to: 'mayllon@prestaclub.com'
+                }),
+            });
+        } catch (error) {
+            console.error('Error enviando email:', error);
+        }
+
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
 
         window.open(url, "_blank");
