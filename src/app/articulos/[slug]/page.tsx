@@ -132,7 +132,7 @@ export default async function ArticleDetailPage({ params }: Props) {
 
               {/* Actual Content - Injected as HTML */}
               <div 
-                className="prose prose-lg md:prose-xl max-w-none prose-headings:text-primary prose-gold font-body prose-img:rounded-2xl prose-img:shadow-xl prose-a:text-gold hover:prose-a:text-gold/80 break-words"
+                className="article-content prose prose-lg md:prose-xl max-w-none prose-headings:text-primary prose-gold font-body prose-img:rounded-2xl prose-img:shadow-xl prose-a:text-gold hover:prose-a:text-gold/80 break-words"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
 
