@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import pool from '@/shared/lib/db';
 import Layout from '@/core/layouts/MainLayout';
-import { Calendar, User, ArrowLeft, BookOpen } from 'lucide-react';
+import { Calendar, User, ArrowLeft, BookOpen, MessageCircle, ClipboardList } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Article } from '@/features/articulos/types';
@@ -135,6 +135,39 @@ export default async function ArticleDetailPage({ params }: Props) {
                 className="prose prose-lg md:prose-xl max-w-none prose-headings:text-primary prose-gold font-body prose-img:rounded-2xl prose-img:shadow-xl prose-a:text-gold hover:prose-a:text-gold/80 break-words"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
+
+              {/* CTA WhatsApp */}
+              <div className="mt-14 rounded-2xl overflow-hidden border border-muted/20 shadow-lg bg-gradient-to-br from-[#002D72] to-[#003d99] p-8 md:p-10">
+                <div className="max-w-2xl mx-auto text-center">
+                  <p className="text-xs font-bold text-gold uppercase tracking-widest mb-2">¿Te interesó este artículo?</p>
+                  <h3 className="text-xl md:text-2xl font-extrabold text-white mb-2 leading-tight">
+                    Nuestros asesores están listos para ayudarte
+                  </h3>
+                  <p className="text-white/70 text-sm mb-8">
+                    Cuéntanos tu caso y te orientamos sin compromiso.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                      href={`https://wa.me/51921010200?text=${encodeURIComponent('[Blog] - Hola deseo evaluar mi caso')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2.5 bg-gold text-gold-foreground font-bold px-6 py-3.5 rounded-xl hover:brightness-110 active:scale-95 transition-all duration-200 shadow-md hover:shadow-gold/40 text-sm"
+                    >
+                      <ClipboardList className="h-4 w-4 flex-shrink-0" />
+                      Evaluar mi caso
+                    </a>
+                    <a
+                      href={`https://wa.me/51921010200?text=${encodeURIComponent('[Blog] - Hola quisiera más información')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2.5 bg-white/10 border border-white/25 text-white font-bold px-6 py-3.5 rounded-xl hover:bg-white/20 active:scale-95 transition-all duration-200 text-sm"
+                    >
+                      <MessageCircle className="h-4 w-4 flex-shrink-0" />
+                      Hablar por WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </div>
 
               {/* Related Articles */}
               {related.length > 0 && (
