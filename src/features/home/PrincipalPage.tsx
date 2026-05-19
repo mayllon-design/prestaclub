@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
-import { Shield, Clock, TrendingUp, Users, Building2, CheckCircle2, ArrowRight, Star } from "lucide-react";
+import { Shield, Clock, TrendingUp, Users, Building2, CheckCircle2, ArrowRight, Star, ExternalLink } from "lucide-react";
 import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import Image from "next/image";
@@ -145,23 +145,28 @@ const Principal = () => {
                     fill
                   />
                 </div>
-                <div className="relative container mx-auto px-4 pt-8 pb-20 md:py-32 lg:py-40">
+                <div className="relative container mx-auto px-4 pt-4 pb-12 md:py-32 lg:py-40">
                   <div className="max-w-4xl">
-                    <motion.div
+                    <motion.a
+                      href="/uploads/articulos/Resolucion-SBS.PDF"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Ver resolución SBS de PrestaClub (PDF)"
                       initial={{ opacity: 0, y: 20 }}
                       animate={current === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                       transition={{ duration: 0.6, delay: 0.1 }}
-                      className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 mb-6"
+                      className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 mb-3 md:mb-6 hover:bg-gold/30 transition-colors cursor-pointer"
                     >
                       <Shield className="h-4 w-4 text-gold" />
                       <span className="text-sm font-semibold text-gold">Registrados en la SBS</span>
-                    </motion.div>
+                      <ExternalLink className="h-3.5 w-3.5 text-gold" />
+                    </motion.a>
 
                     <motion.h1
                       initial={{ opacity: 0, y: 30 }}
                       animate={current === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                       transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                      className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6"
+                      className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-4 md:mb-6"
                     >
                       {slide.title.includes("respaldo real") ? (
                         <>Financiamiento con <br /><span className="text-gradient-gold">respaldo real</span></>
@@ -178,7 +183,7 @@ const Principal = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={current === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
-                      className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 max-w-2xl font-body"
+                      className="text-base md:text-xl text-primary-foreground/80 leading-relaxed mb-5 md:mb-8 max-w-2xl font-body"
                     >
                       {slide.description}
                     </motion.p>
