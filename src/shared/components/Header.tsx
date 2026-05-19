@@ -21,10 +21,21 @@ const Header = () => {
 
   const isActive = (path: string) => pathname === path;
   const isDevoluciones = pathname === "/gestion-de-devoluciones-de-saldo";
-  const isVehicular = pathname === "/prestamo-con-garantia-vehicular";
   const isSaneamiento = pathname === "/saneamiento-predial";
-  
-  const precalificarHref = isVehicular ? "#simulador" : isSaneamiento ? "#formulario" : "/financiamiento-con-garantia-hipotecaria#precalificar";
+
+  const wizardAnchors: Record<string, string> = {
+    "/prestamo-con-garantia-vehicular": "#simulador",
+    "/saneamiento-predial": "#formulario",
+    "/financiamiento-con-garantia-hipotecaria": "#precalificar",
+    "/capital-de-trabajo": "#wizard",
+    "/financiamiento-con-garantia-hipotecaria/construccion": "#wizard",
+    "/financiamiento-con-garantia-hipotecaria/consolidacion-de-deudas": "#wizard",
+    "/financiamiento-con-garantia-hipotecaria/compra-de-hipoteca": "#wizard",
+    "/prestamos-con-garantia-hipotecaria-para-empresas": "#convertir",
+    "/desarrollo-inmobiliario": "#evaluacion",
+  };
+
+  const precalificarHref = wizardAnchors[pathname] ?? "/financiamiento-con-garantia-hipotecaria#precalificar";
   const precalificarText = isSaneamiento ? "CONSULTAR AHORA" : "PRECALIFICAR";
 
   return (
