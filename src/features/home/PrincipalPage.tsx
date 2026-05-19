@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/shared/components/ui/button";
-import { Shield, Clock, TrendingUp, Users, Building2, CheckCircle2, ArrowRight, Star, ExternalLink } from "lucide-react";
+import { Shield, Clock, TrendingUp, Users, Building2, CheckCircle2, ArrowRight, Star, ExternalLink, Loader2 } from "lucide-react";
 import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import Image from "next/image";
@@ -109,6 +110,16 @@ const slides = [
 const Principal = () => {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
+  const [loadingIndex, setLoadingIndex] = React.useState<number | null>(null);
+  const [isPending, startTransition] = React.useTransition();
+  const router = useRouter();
+
+  const handleCtaClick = (link: string, index: number) => {
+    setLoadingIndex(index);
+    startTransition(() => {
+      router.push(link);
+    });
+  };
 
   React.useEffect(() => {
     if (!api) return;
@@ -119,6 +130,13 @@ const Principal = () => {
       setCurrent(api.selectedScrollSnap());
     });
   }, [api]);
+
+  React.useEffect(() => {
+    slides.forEach((slide) => {
+      router.prefetch(slide.cta1.link);
+      router.prefetch(slide.cta2.link);
+    });
+  }, [router]);
 
   return (
     <Layout>
@@ -194,10 +212,17 @@ const Principal = () => {
                       transition={{ duration: 0.6, delay: 0.6 }}
                       className="flex flex-col sm:flex-row gap-4"
                     >
-                      <Button variant="hero" size="xl" asChild>
-                        <Link href={slide.cta1.link}>
-                          {slide.cta1.text} <ArrowRight className="h-5 w-5" />
-                        </Link>
+                      <Button
+                        variant="hero"
+                        size="xl"
+                        disabled={isPending && loadingIndex === index}
+                        onClick={() => handleCtaClick(slide.cta1.link, index)}
+                      >
+                        {isPending && loadingIndex === index ? (
+                          <>Cargando... <Loader2 className="h-5 w-5 animate-spin" /></>
+                        ) : (
+                          <>{slide.cta1.text} <ArrowRight className="h-5 w-5" /></>
+                        )}
                       </Button>
                       <Button
                         variant="outline"
@@ -205,7 +230,7 @@ const Principal = () => {
                         className="rounded-[20px] border-2 border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/50 hover:text-white font-semibold px-8 h-14"
                         asChild
                       >
-                        <Link href={slide.cta2.link}>{slide.cta2.text}</Link>
+                        <Link href={slide.cta2.link} prefetch>{slide.cta2.text}</Link>
                       </Button>
                     </motion.div>
                   </div>
@@ -244,6 +269,7 @@ const Principal = () => {
               <Link
                 key={i}
                 href={product.link}
+                prefetch
                 className="card-elevated p-8 group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
@@ -317,7 +343,7 @@ const Principal = () => {
             Precalifica en pocos minutos.
           </p>
           <Button variant="hero" size="xl" asChild>
-            <Link href="/financiamiento-con-garantia-hipotecaria#precalificar">
+            <Link href="/financiamiento-con-garantia-hipotecaria#precalificar" prefetch>
               PRECALIFICAR AHORA <ArrowRight className="h-5 w-5" />
             </Link>
           </Button>
