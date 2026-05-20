@@ -24,7 +24,7 @@ const WhatsAppButton = () => {
 
   const getComputedWhatsappUrl = () => {
     if (isBusinessPage) return "#convertir";
-    if (isVehicularPage) return getWhatsAppUrl("Hola, quiero información sobre el crédito con garantía vehicular con custodia");
+    if (isVehicularPage) return "#simulador";
     return whatsappUrl;
   };
 
@@ -44,7 +44,7 @@ const WhatsAppButton = () => {
       const element = document.getElementById("convertir");
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
-        
+
         // Efecto visual para llamar la atención (shake) en el contenedor del formulario
         const formContainer = document.getElementById("form-container");
         const targetToShake = formContainer || element;
@@ -52,6 +52,16 @@ const WhatsAppButton = () => {
         targetToShake.classList.remove("animate-shake");
         void targetToShake.offsetWidth;
         targetToShake.classList.add("animate-shake");
+      }
+    } else if (isVehicularPage) {
+      e.preventDefault();
+      const element = document.getElementById("simulador");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+
+        element.classList.remove("animate-shake");
+        void element.offsetWidth;
+        element.classList.add("animate-shake");
       }
     } else if (shouldShowModal) {
       e.preventDefault();
@@ -78,8 +88,8 @@ const WhatsAppButton = () => {
         id="whatsapp-floating-button"
         href={getComputedWhatsappUrl()}
         onClick={handleClick}
-        target={isBusinessPage ? undefined : "_blank"}
-        rel={isBusinessPage ? undefined : "noopener noreferrer"}
+        target={isBusinessPage || isVehicularPage ? undefined : "_blank"}
+        rel={isBusinessPage || isVehicularPage ? undefined : "noopener noreferrer"}
         className="fixed bottom-20 lg:bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-[hsl(142,70%,45%)] text-primary-foreground shadow-xl hover:shadow-2xl hover:brightness-110 flex items-center justify-center transition-all duration-200 hover:scale-105"
         aria-label="Escríbenos por WhatsApp"
       >

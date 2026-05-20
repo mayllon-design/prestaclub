@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, forwardRef } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, ChevronRight, MessageCircle, Shield, Eye, FileText, Car, AlertTriangle, Lock } from "lucide-react";
+import { Check, ChevronRight, MessageCircle, Shield, Eye, FileText, Car, AlertTriangle, Lock, Home, Ban } from "lucide-react";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 
 // ─── SCORING DATA ───
@@ -79,6 +80,7 @@ interface CreditWizardProps { }
 
 const CreditWizard = forwardRef<HTMLDivElement, CreditWizardProps>((_, ref) => {
     const { isPaid, source, campaign, getWhatsAppUrl } = useTrafficTracking();
+    const router = useRouter();
     const [step, setStep] = useState(0);
     const [brand, setBrand] = useState("");
     const [customBrand, setCustomBrand] = useState("");
@@ -90,6 +92,7 @@ const CreditWizard = forwardRef<HTMLDivElement, CreditWizardProps>((_, ref) => {
     const [showCustodyInfo, setShowCustodyInfo] = useState(false);
     const [showOtherBrand, setShowOtherBrand] = useState(false);
     const [preApproved, setPreApproved] = useState(0);
+    const [propertyResponse, setPropertyResponse] = useState<"yes" | "no" | null>(null);
 
     // Final form
     const [nombre, setNombre] = useState("");
@@ -263,33 +266,64 @@ Quedo atento a su respuesta.`;
                                     max={currentYear}
                                     placeholder={`Ej: ${currentYear - 3}`}
                                     value={year}
-                                    onChange={(e) => setYear(e.target.value)}
+                                    onChange={(e) => { setYear(e.target.value); setPropertyResponse(null); }}
                                     className="w-full p-4 rounded-xl border border-border bg-background text-foreground text-lg mb-4"
                                 />
                                 {yearTooOld && (
                                     <div className="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-4">
                                         <div className="flex items-start gap-3">
-                                            <AlertTriangle className="w-5 h-5 text-accent mt-0.5" />
-                                            <div>
+                                            <AlertTriangle className="w-5 h-5 text-accent mt-0.5 shrink-0" />
+                                            <div className="flex-1">
                                                 <p className="font-semibold text-foreground">Tu vehículo supera los 10 años de antigüedad.</p>
-                                                <p className="text-muted-foreground text-sm mt-1">
-                                                    Actualmente no califica para este producto, pero podemos evaluar otras opciones.
-                                                </p>
-                                                <a
-                                                    href={getWhatsAppUrl("Hola, mi vehículo tiene más de 10 años. ¿Tienen otras opciones?")}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="btn-whatsapp inline-flex items-center gap-2 mt-3 !py-2 !px-4 !text-sm"
-                                                >
-                                                    <MessageCircle size={16} />
-                                                    Ver otras opciones
-                                                </a>
+
+                                                {propertyResponse === null && (
+                                                    <>
+                                                        <p className="text-muted-foreground text-sm mt-2">
+                                                            Sin embargo, podemos evaluarte con nuestro <strong className="text-foreground">Préstamo con Garantía Hipotecaria</strong> si cuentas con un inmueble en <strong className="text-foreground">Lima Metropolitana o Callao</strong>.
+                                                        </p>
+                                                        <p className="font-semibold text-foreground text-sm mt-4 mb-2">
+                                                            ¿Cuentas con un inmueble en Lima Metropolitana o Callao?
+                                                        </p>
+                                                        <div className="flex flex-col sm:flex-row gap-2 mt-3">
+                                                            <button
+                                                                onClick={() => {
+                                                                    setPropertyResponse("yes");
+                                                                    router.push("/financiamiento-con-garantia-hipotecaria#precalificar");
+                                                                }}
+                                                                className="btn-cta inline-flex items-center justify-center gap-2 !py-2 !px-4 !text-sm"
+                                                            >
+                                                                <Home size={16} />
+                                                                Sí, cuento con inmueble
+                                                            </button>
+                                                            <button
+                                                                onClick={() => setPropertyResponse("no")}
+                                                                className="btn-secondary-cta inline-flex items-center justify-center gap-2 !py-2 !px-4 !text-sm"
+                                                            >
+                                                                No cuento con inmueble
+                                                            </button>
+                                                        </div>
+                                                    </>
+                                                )}
+
+                                                {propertyResponse === "no" && (
+                                                    <div className="mt-3 p-4 rounded-xl bg-destructive/5 border border-destructive/20">
+                                                        <div className="flex items-start gap-2">
+                                                            <Ban className="w-5 h-5 text-destructive mt-0.5 shrink-0" />
+                                                            <div>
+                                                                <p className="font-semibold text-foreground text-sm">Lo sentimos</p>
+                                                                <p className="text-muted-foreground text-sm mt-1">
+                                                                    Por el momento tu caso no califica con nuestros productos. Te invitamos a conocer más sobre nosotros o contactarnos para consultar opciones futuras.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
                                 )}
                                 <div className="flex gap-3">
-                                    <button onClick={() => setStep(0)} className="btn-secondary-cta !py-3 !px-6 !text-sm">Atrás</button>
+                                    <button onClick={() => { setStep(0); setPropertyResponse(null); }} className="btn-secondary-cta !py-3 !px-6 !text-sm">Atrás</button>
                                     <button onClick={handleYearNext} disabled={!year || !!yearTooOld} className="btn-cta flex-1 !py-3 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                                         Continuar <ChevronRight size={18} />
                                     </button>
