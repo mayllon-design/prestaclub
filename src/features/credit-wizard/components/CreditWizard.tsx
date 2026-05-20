@@ -125,7 +125,7 @@ const CreditWizard = forwardRef<HTMLDivElement, CreditWizardProps>((_, ref) => {
 
     const handleYearNext = () => {
         const y = parseInt(year);
-        if (currentYear - y > 10) {
+        if (currentYear - y > 11) {
             // Too old - show redirect
             return;
         }
@@ -176,7 +176,7 @@ Quedo atento a su respuesta.`;
         window.open(whatsappUrl, "_blank");
     };
 
-    const yearTooOld = year && (currentYear - parseInt(year)) > 10;
+    const yearTooOld = year && (currentYear - parseInt(year)) > 11;
 
     const stepVariants = {
         initial: { opacity: 0, x: 40 },
@@ -274,15 +274,15 @@ Quedo atento a su respuesta.`;
                                         <div className="flex items-start gap-3">
                                             <AlertTriangle className="w-5 h-5 text-accent mt-0.5 shrink-0" />
                                             <div className="flex-1">
-                                                <p className="font-semibold text-foreground">Tu vehículo supera los 10 años de antigüedad.</p>
+                                                <p className="font-semibold text-foreground text-sm">Vehículo con más de 10 años.</p>
 
                                                 {propertyResponse === null && (
                                                     <>
                                                         <p className="text-muted-foreground text-sm mt-2">
-                                                            Sin embargo, podemos evaluarte con nuestro <strong className="text-foreground">Préstamo con Garantía Hipotecaria</strong> si cuentas con un inmueble en <strong className="text-foreground">Lima Metropolitana o Callao</strong>.
+                                                            Podemos evaluarte con <strong className="text-foreground">Garantía Hipotecaria</strong> si tienes inmueble en Lima o Callao.
                                                         </p>
-                                                        <p className="font-semibold text-foreground text-sm mt-4 mb-2">
-                                                            ¿Cuentas con un inmueble en Lima Metropolitana o Callao?
+                                                        <p className="font-semibold text-foreground text-sm mt-3 mb-2">
+                                                            ¿Tienes inmueble en Lima o Callao?
                                                         </p>
                                                         <div className="flex flex-col sm:flex-row gap-2 mt-3">
                                                             <button
