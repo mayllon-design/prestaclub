@@ -7,7 +7,6 @@ import Image from "next/image";
 import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import CreditWizard from "@/features/credit-wizard/components/CreditWizard";
-import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import heroVehicular from "@/assets/hero-vehicular.png";
 
 const institutions = [
@@ -237,9 +236,6 @@ const VehicularVideoSection = () => {
 };
 
 const Hero = ({ onSimulate }: { onSimulate: () => void }) => {
-  const { getWhatsAppUrl } = useTrafficTracking();
-  const whatsappUrl = getWhatsAppUrl("Hola, quiero información sobre el crédito con garantía vehicular con custodia");
-
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background image */}
@@ -297,15 +293,13 @@ const Hero = ({ onSimulate }: { onSimulate: () => void }) => {
             >
               Simular mi crédito
             </button>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={onSimulate}
               className="btn-whatsapp flex items-center justify-center gap-2 py-4 px-8"
             >
               <MessageCircle size={22} />
               Hablar por WhatsApp
-            </a>
+            </button>
           </motion.div>
         </div>
       </div>
