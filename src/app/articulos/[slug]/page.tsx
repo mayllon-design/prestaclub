@@ -96,11 +96,15 @@ export default async function ArticleDetailPage({ params }: Props) {
             </div>
           )}
           <div className="absolute inset-0 bg-black/50" />
-          <div className="absolute inset-0 flex items-center md:items-end">
-            <div className="container mx-auto px-4 pb-10 md:pb-40">
-              <Link href="/articulos" className="inline-flex items-center text-white/80 hover:text-white mb-6 text-sm font-medium">
+          <div className="absolute top-4 md:top-6 left-0 right-0 z-10">
+            <div className="container mx-auto px-4">
+              <Link href="/articulos" className="inline-flex items-center text-white/80 hover:text-white text-sm font-medium drop-shadow">
                 <ArrowLeft className="h-4 w-4 mr-2" /> Volver al Blog
               </Link>
+            </div>
+          </div>
+          <div className="absolute inset-0 flex items-center md:items-end">
+            <div className="container mx-auto px-4 pt-12 pb-10 md:pt-16 md:pb-40">
               <div className="max-w-3xl">
                 <span className="bg-gold text-gold-foreground text-[10px] md:text-xs font-bold px-3 py-1 rounded-full mb-3 md:mb-4 inline-block">
                   {article.category || 'General'}
