@@ -82,9 +82,20 @@ const NosotrosPage = () => {
                                 <Building2 className="h-6 w-6 text-gold" />
                             </div>
                             <h3 className="text-xl font-bold text-foreground mb-3">Registro SBS</h3>
-                            <p className="text-muted-foreground font-body leading-relaxed">
+                            <p className="text-muted-foreground font-body leading-relaxed mb-4">
                                 Estamos inscritos en la Superintendencia de Banca, Seguros y AFP (SBS) en el Registro de Empresas de Préstamo. Reportamos a la Unidad de Inteligencia Financiera (UIF).
                             </p>
+                            <a
+                                href="/uploads/articulos/Resolucion-SBS.PDF"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Ver resolución SBS de PrestaClub (PDF)"
+                                className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 hover:bg-gold/30 transition-colors cursor-pointer"
+                            >
+                                <Shield className="h-4 w-4 text-gold" />
+                                <span className="text-sm font-semibold text-gold">Ver Resolución SBS</span>
+                                <ExternalLink className="h-3.5 w-3.5 text-gold" />
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -97,7 +108,14 @@ const NosotrosPage = () => {
                     <p className="text-muted-foreground text-center mb-12 font-body">Profesionales comprometidos con tu éxito financiero.</p>
                     <div className="grid md:grid-cols-3 gap-6">
                         {team.map((member, i) => (
-                            <div key={i} className="card-elevated p-6 text-center">
+                            <a
+                                key={i}
+                                href={member.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`Ver perfil de LinkedIn de ${member.name}`}
+                                className="card-elevated p-6 text-center block hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group"
+                            >
                                 <div className="h-28 w-28 rounded-full overflow-hidden mx-auto mb-4 border-2 border-primary/20 shadow-md">
                                     <Image
                                         src={member.image}
@@ -109,10 +127,10 @@ const NosotrosPage = () => {
                                 </div>
                                 <h3 className="font-bold text-foreground text-lg">{member.name}</h3>
                                 <p className="text-sm text-muted-foreground mb-4">{member.role}</p>
-                                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+                                <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:text-primary/80 transition-colors">
                                     Ver perfil en LinkedIn <ExternalLink className="h-3 w-3" />
-                                </a>
-                            </div>
+                                </span>
+                            </a>
                         ))}
                     </div>
                 </div>
@@ -123,7 +141,13 @@ const NosotrosPage = () => {
                 <div className="container mx-auto max-w-5xl">
                     <h2 className="text-3xl font-extrabold text-foreground mb-8 text-center">Nuestras Oficinas</h2>
                     <div className="grid md:grid-cols-2 gap-6">
-                        <div className="card-elevated overflow-hidden group">
+                        <a
+                            href="https://www.google.com/maps?q=Prestaclub+Lima+Centro"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Ver Oficina Principal en Google Maps"
+                            className="card-elevated overflow-hidden group block hover:shadow-xl transition-shadow duration-200"
+                        >
                             <div className="h-64 relative overflow-hidden bg-white">
                                 <Image
                                     src={ubicacionPresta}
@@ -133,11 +157,20 @@ const NosotrosPage = () => {
                                 />
                             </div>
                             <div className="p-5">
-                                <h3 className="font-bold text-foreground">Oficina Principal - Cercado de Lima</h3>
+                                <h3 className="font-bold text-foreground flex items-center gap-2">
+                                    Oficina Principal - Cercado de Lima
+                                    <ExternalLink className="h-3.5 w-3.5 text-primary opacity-60 group-hover:opacity-100 transition-opacity" />
+                                </h3>
                                 <p className="text-sm text-muted-foreground font-body">Av. Nicolás de Piérola 950, frente a la Plaza San Martín</p>
                             </div>
-                        </div>
-                        <div className="card-elevated overflow-hidden group">
+                        </a>
+                        <a
+                            href="https://www.google.com/maps?q=Prestaclub+Ventanilla"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Ver Oficina Comercial Ventanilla en Google Maps"
+                            className="card-elevated overflow-hidden group block hover:shadow-xl transition-shadow duration-200"
+                        >
                             <div className="h-64 relative overflow-hidden bg-white">
                                 <Image
                                     src={sedeVentanilla}
@@ -147,10 +180,13 @@ const NosotrosPage = () => {
                                 />
                             </div>
                             <div className="p-5">
-                                <h3 className="font-bold text-foreground">Oficina Comercial - Ventanilla</h3>
+                                <h3 className="font-bold text-foreground flex items-center gap-2">
+                                    Oficina Comercial - Ventanilla
+                                    <ExternalLink className="h-3.5 w-3.5 text-primary opacity-60 group-hover:opacity-100 transition-opacity" />
+                                </h3>
                                 <p className="text-sm text-muted-foreground font-body">Pj. 51 Mz G6 Lt. 4 (Angamos), Ventanilla</p>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </section>
