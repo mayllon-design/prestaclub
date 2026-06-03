@@ -86,7 +86,8 @@ const slides = [
   },
   {
     title: "Convierte tu vehículo en liquidez en pocas horas",
-    description: "Obtén el capital que necesitas usando tu auto como garantía. Tasas competitivas y desembolso rápido. Tu vehículo queda protegido en custodia segura hasta cancelar el crédito.",
+    description: "Obtén el capital que necesitas usando tu auto como garantía. Tasas competitivas y desembolso rápido.",
+    note: "Tu vehículo queda protegido en custodia segura hasta cancelar el crédito.",
     image: heroVehicular,
     cta1: { text: "SOLICITAR CRÉDITO", link: "/prestamo-con-garantia-vehicular" },
     cta2: { text: "Más información", link: "/prestamo-con-garantia-vehicular" },
@@ -205,6 +206,17 @@ const Principal = () => {
                     >
                       {slide.description}
                     </motion.p>
+
+                    {slide.note && (
+                      <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={current === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
+                        className="text-sm md:text-base text-primary-foreground/60 leading-relaxed mb-5 md:mb-8 max-w-2xl font-body"
+                      >
+                        {slide.note}
+                      </motion.p>
+                    )}
 
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
