@@ -86,7 +86,7 @@ const slides = [
   },
   {
     title: "Convierte tu vehículo en liquidez en pocas horas",
-    description: "Obtén el capital que necesitas usando tu auto como garantía. Tasas competitivas y desembolso rápido dejando tu auto en garantía.",
+    description: "Obtén el capital que necesitas usando tu auto como garantía. Tasas competitivas y desembolso rápido. Tu vehículo queda protegido en custodia segura hasta cancelar el crédito.",
     image: heroVehicular,
     cta1: { text: "SOLICITAR CRÉDITO", link: "/prestamo-con-garantia-vehicular" },
     cta2: { text: "Más información", link: "/prestamo-con-garantia-vehicular" },
