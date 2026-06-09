@@ -148,8 +148,8 @@ const CreditWizard = forwardRef<HTMLDivElement, CreditWizardProps>((_, ref) => {
         if (!showCustodyInfo) {
             setShowCustodyInfo(true);
         } else {
-            // User insists NO → redirect
-            window.open(getWhatsAppUrl("Hola, quiero conocer otras opciones de crédito"), "_blank");
+            // User insists NO → ofrecer el préstamo con garantía hipotecaria
+            router.push("/financiamiento-con-garantia-hipotecaria");
         }
     };
 
