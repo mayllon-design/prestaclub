@@ -8,6 +8,7 @@ import VideoSection from "@/shared/components/VideoSection";
 import Image from "next/image";
 import heroHipotecario from "@/assets/financiamiento-con-garantia-hipotecaria.png";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
+import { trackWhatsAppClick } from "@/shared/lib/tracking";
 import { useState } from "react";
 import { LocationModal } from "@/shared/components/LocationModal";
 
@@ -52,6 +53,11 @@ const FinanciamientoHipotecario = () => {
   };
 
   const proceedToWhatsApp = (data: { location: string; useType: string }) => {
+    trackWhatsAppClick({
+      button_location: "hipotecario_cta",
+      destino: data.useType,
+      ubicacion: data.location,
+    });
     clearTracking();
     const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
     const url = getWhatsAppUrl(customMessage);

@@ -7,6 +7,7 @@ import { CheckCircle2, ArrowRight, ArrowLeft, Star, Banknote, Ban } from "lucide
 import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
+import { trackWhatsAppClick } from "@/shared/lib/tracking";
 
 import { WizardData } from "@/shared/types/hipotecario";
 import { LocationModal } from "@/shared/components/LocationModal";
@@ -198,6 +199,11 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
   };
 
   const proceedToWhatsApp = (data: { location: string; useType: string }) => {
+    trackWhatsAppClick({
+      button_location: "hipotecario_buyer_cta",
+      destino: data.useType,
+      ubicacion: data.location,
+    });
     clearTracking();
     const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
     const url = getWhatsAppUrl(customMessage);
@@ -210,6 +216,13 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
       `Tipo: ${data.tipoPersona}\nMonto: ${data.montoAprox}\n` +
       `Inmueble: ${data.tipoInmueble} en ${data.ubicacionInmueble}\n` +
       `Registral: ${data.situacionRegistral}\nUso: ${data.usoDelCapital}${campaign ? `\n\nRef: [${campaign}]` : ''}`;
+
+    trackWhatsAppClick({
+      button_location: "hipotecario_wizard",
+      destino: data.usoDelCapital,
+      monto: data.montoAprox,
+      ubicacion: data.ubicacionInmueble,
+    });
 
     window.open(getWhatsAppUrl(message), "_blank");
     clearTracking();
