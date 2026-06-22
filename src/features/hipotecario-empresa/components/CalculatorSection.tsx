@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { trackWhatsAppClick } from "@/shared/lib/tracking";
 import { Slider } from "@/shared/components/ui/slider";
 import { Button } from "@/shared/components/ui/button";
 import { Info, Calculator, MessageSquareText } from "lucide-react";
@@ -116,7 +117,18 @@ export const CalculatorSection = () => {
 
               <div className="space-y-4 pt-6 border-t border-white/10">
                 <Button variant="gold" className="w-full h-auto py-3.5 md:py-4 text-xs md:text-base font-black tracking-widest uppercase" asChild>
-                  <a href={`https://wa.me/51921010200?text=Hola PrestaClub, usé la calculadora de empresas y me interesa solicitar S/ ${monto.toLocaleString()} a ${plazo} meses.`} target="_blank" className="flex items-center justify-center gap-2">
+                  <a
+                    href={`https://wa.me/51921010200?text=Hola PrestaClub, usé la calculadora de empresas y me interesa solicitar S/ ${monto.toLocaleString()} a ${plazo} meses.`}
+                    target="_blank"
+                    onClick={() =>
+                      trackWhatsAppClick({
+                        button_location: "empresa_calculadora",
+                        destino: "Financiamiento Empresarial",
+                        monto,
+                      })
+                    }
+                    className="flex items-center justify-center gap-2"
+                  >
                     <MessageSquareText className="h-5 w-5 shrink-0" />
                     <span>Contactar a un asesor</span>
                   </a>

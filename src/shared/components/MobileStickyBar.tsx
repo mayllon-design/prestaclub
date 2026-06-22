@@ -2,6 +2,7 @@
 
 import { Phone, MessageCircle } from "lucide-react";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
+import { trackWhatsAppClick } from "@/shared/lib/tracking";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { LocationModal } from "@/shared/components/LocationModal";
@@ -30,11 +31,24 @@ const MobileStickyBar = () => {
       e.preventDefault();
       setIsModalOpen(true);
     } else {
+      if (isVehicularPage) {
+        trackWhatsAppClick({
+          button_location: "mobile_bar_vehicular",
+          destino: "Garantía Vehicular",
+        });
+      } else {
+        trackWhatsAppClick({ button_location: "mobile_bar_global" });
+      }
       clearTracking();
     }
   };
 
   const proceedToWhatsApp = (data: { location: string; useType: string }) => {
+    trackWhatsAppClick({
+      button_location: "mobile_bar_hipotecario",
+      destino: data.useType,
+      ubicacion: data.location,
+    });
     clearTracking();
     const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
     const url = getWhatsAppUrl(customMessage);

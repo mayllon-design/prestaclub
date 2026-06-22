@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ChevronRight, MessageCircle, Shield, Eye, FileText, Car, AlertTriangle, Lock, Home, Ban } from "lucide-react";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
+import { trackWhatsAppClick } from "@/shared/lib/tracking";
 
 // ─── SCORING DATA ───
 const BRANDS: Record<string, number> = {
@@ -172,6 +173,12 @@ Monto preaprobado: S/ ${preApproved.toLocaleString()}
 
 Quedo atento a su respuesta.`;
 
+        trackWhatsAppClick({
+          button_location: "vehicular_simulador",
+          destino: "Garantía Vehicular",
+          monto: preApproved,
+        });
+
         const whatsappUrl = getWhatsAppUrl(message);
         window.open(whatsappUrl, "_blank");
     };
@@ -244,6 +251,12 @@ Quedo atento a su respuesta.`;
                                     href={getWhatsAppUrl(`Hola, vengo del simulador web. Mi marca no aparece en el listado. Mi vehículo es: ${customBrand}`)}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    onClick={() =>
+                                        trackWhatsAppClick({
+                                            button_location: "vehicular_otras_marcas",
+                                            destino: "Garantía Vehicular",
+                                        })
+                                    }
                                     className="btn-whatsapp inline-flex items-center gap-2"
                                 >
                                     <MessageCircle size={20} />

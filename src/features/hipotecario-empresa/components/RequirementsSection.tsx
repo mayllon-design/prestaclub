@@ -1,6 +1,7 @@
 "use client";
 
 import { LayoutGrid } from "lucide-react";
+import { trackWhatsAppClick } from "@/shared/lib/tracking";
 
 export const RequirementsSection = () => {
   return (
@@ -13,9 +14,15 @@ export const RequirementsSection = () => {
               <p className="text-muted-foreground font-body text-lg">No te preocupes, evaluamos cada caso de manera confidencial y flexible.</p>
             </div>
             <div className="h-1 w-20 md:h-16 md:w-1 bg-gold/20 rounded-full" />
-            <a 
-              href="https://wa.me/51921010200?text=Hola PrestaClub, no estoy seguro si califico para un préstamo empresarial, ¿me podrían asesorar?" 
+            <a
+              href="https://wa.me/51921010200?text=Hola PrestaClub, no estoy seguro si califico para un préstamo empresarial, ¿me podrían asesorar?"
               target="_blank"
+              onClick={() =>
+                trackWhatsAppClick({
+                  button_location: "empresa_requisitos",
+                  destino: "Financiamiento Empresarial",
+                })
+              }
               className="flex items-center gap-3 font-black text-primary hover:text-gold transition-all group tracking-widest uppercase italic"
             >
               Preguntar por WhatsApp <LayoutGrid className="h-6 w-6 group-hover:rotate-90 transition-transform" />

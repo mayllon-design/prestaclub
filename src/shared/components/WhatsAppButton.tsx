@@ -2,6 +2,7 @@
 
 import { MessageCircle } from "lucide-react";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
+import { trackWhatsAppClick } from "@/shared/lib/tracking";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { LocationModal } from "@/shared/components/LocationModal";
@@ -28,14 +29,15 @@ const WhatsAppButton = () => {
     return whatsappUrl;
   };
 
-  const trackWhatsAppConversion = (location: string) => {
-    if (typeof window !== "undefined" && (window as any).dataLayer) {
-      (window as any).dataLayer.push({
-        event: "whatsapp_click",
-        button_location: location,
-        page_path: pathname,
-      });
-    }
+  const trackWhatsAppConversion = (
+    location: string,
+    extra?: { destino?: string; ubicacion?: string }
+  ) => {
+    trackWhatsAppClick({
+      button_location: location,
+      destino: extra?.destino,
+      ubicacion: extra?.ubicacion,
+    });
   };
 
   const handleClick = (e: React.MouseEvent) => {
@@ -73,7 +75,10 @@ const WhatsAppButton = () => {
   };
 
   const proceedToWhatsApp = (data: { location: string; useType: string }) => {
-    trackWhatsAppConversion(isHomePage ? "home_floating_button" : "hipotecario_floating_button");
+    trackWhatsAppConversion(
+      isHomePage ? "home_floating_button" : "hipotecario_floating_button",
+      { destino: data.useType, ubicacion: data.location }
+    );
     clearTracking();
     
     const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
+import { trackWhatsAppClick } from "@/shared/lib/tracking";
 import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 import { MessageSquare, Send, CheckCircle2, Star, UserCheck2, Landmark } from "lucide-react";
@@ -29,6 +30,11 @@ export const ConversionForm = () => {
     // Simular envío
     setTimeout(() => {
       const message = `Hola PrestaClub, mi nombre es ${formData.nombre} (${formData.ruc}), mi teléfono es ${formData.telefono} y solicito un financiamiento empresarial de S/ ${formData.monto}.`;
+      trackWhatsAppClick({
+        button_location: "empresa_form",
+        destino: "Financiamiento Empresarial",
+        monto: formData.monto,
+      });
       window.open(getWhatsAppUrl(message), "_blank");
       setIsSubmitting(false);
       setIsSuccess(true);
