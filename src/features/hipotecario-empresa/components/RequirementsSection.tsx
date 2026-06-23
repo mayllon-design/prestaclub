@@ -1,9 +1,11 @@
 "use client";
 
 import { LayoutGrid } from "lucide-react";
+import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import { trackWhatsAppClick } from "@/shared/lib/tracking";
 
 export const RequirementsSection = () => {
+  const { getWhatsAppUrl } = useTrafficTracking();
   return (
     <section className="py-12 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
@@ -15,7 +17,7 @@ export const RequirementsSection = () => {
             </div>
             <div className="h-1 w-20 md:h-16 md:w-1 bg-gold/20 rounded-full" />
             <a
-              href="https://wa.me/51921010200?text=Hola PrestaClub, no estoy seguro si califico para un préstamo empresarial, ¿me podrían asesorar?"
+              href={getWhatsAppUrl("Hola PrestaClub, no estoy seguro si califico para un préstamo empresarial, ¿me podrían asesorar?")}
               target="_blank"
               onClick={() =>
                 trackWhatsAppClick({

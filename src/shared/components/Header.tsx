@@ -10,6 +10,7 @@ import Image from "next/image";
 
 const products = [
   { name: "Financiamiento con Garantía Hipotecaria", path: "/financiamiento-con-garantia-hipotecaria" },
+  { name: "Préstamos con Garantía Hipotecaria para Empresas", path: "/prestamos-con-garantia-hipotecaria-para-empresas" },
   { name: "Crédito con Garantía Vehicular", path: "/prestamo-con-garantia-vehicular" },
   { name: "Saneamiento Predial", path: "/saneamiento-predial" },
 ];

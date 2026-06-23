@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import pool from '@/shared/lib/db';
 import Layout from '@/core/layouts/MainLayout';
-import { Calendar, User, ArrowLeft, BookOpen, MessageCircle, ClipboardList } from 'lucide-react';
+import { Calendar, User, ArrowLeft, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Article } from '@/features/articulos/types';
+import { ArticleWhatsAppCTA } from '@/features/articulos/ArticleWhatsAppCTA';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -146,26 +147,7 @@ export default async function ArticleDetailPage({ params }: Props) {
                   <p className="text-white/70 text-sm mb-8">
                     Cuéntanos tu caso y te orientamos sin compromiso.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a
-                      href={`https://wa.me/51921010200?text=${encodeURIComponent('[Blog] - Hola deseo evaluar mi caso')}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2.5 bg-gold text-gold-foreground font-bold px-6 py-3.5 rounded-xl hover:brightness-110 active:scale-95 transition-all duration-200 shadow-md hover:shadow-gold/40 text-sm"
-                    >
-                      <ClipboardList className="h-4 w-4 flex-shrink-0" />
-                      Evaluar mi caso
-                    </a>
-                    <a
-                      href={`https://wa.me/51921010200?text=${encodeURIComponent('[Blog] - Hola quisiera más información')}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2.5 bg-white/10 border border-white/25 text-white font-bold px-6 py-3.5 rounded-xl hover:bg-white/20 active:scale-95 transition-all duration-200 text-sm"
-                    >
-                      <MessageCircle className="h-4 w-4 flex-shrink-0" />
-                      Hablar por WhatsApp
-                    </a>
-                  </div>
+                  <ArticleWhatsAppCTA blogId={article.id} />
                 </div>
               </div>
 

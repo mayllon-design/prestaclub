@@ -8,7 +8,7 @@ import { useState } from "react";
 import { LocationModal } from "@/shared/components/LocationModal";
 
 const MobileStickyBar = () => {
-  const { whatsappUrl, getWhatsAppUrl, clearTracking, isPaid } = useTrafficTracking();
+  const { whatsappUrl, getWhatsAppUrl, clearTracking } = useTrafficTracking();
   const pathname = usePathname();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -21,18 +21,8 @@ const MobileStickyBar = () => {
 
   const shouldShowModal = isHipotecarioPage || isHomePage || isArticulosPage || isNosotrosPage || isContactoPage;
 
-  // Para tráfico orgánico (sin campaña), usamos las 3 primeras letras de la
-  // página actual como prefijo del mensaje. Ej: "/" -> "hom", "/nosotros" -> "nos".
-  const getPagePrefix = () => {
-    const segment = pathname === "/" ? "home" : (pathname?.split("/").filter(Boolean)[0] ?? "web");
-    return segment.slice(0, 3).toLowerCase();
-  };
-
   const getComputedWhatsappUrl = () => {
-    const prefix = isPaid ? "" : `[${getPagePrefix()}] `;
-    if (isVehicularPage) return getWhatsAppUrl(`${prefix}Hola, quiero información sobre el crédito con garantía vehicular con custodia`);
-    // Orgánico: inyectamos [xxx] con la página de origen.
-    if (!isPaid) return getWhatsAppUrl(`${prefix}Hola *PrestaClub*. Necesito más información sobre financiamientos.`);
+    if (isVehicularPage) return getWhatsAppUrl("Hola, quiero información sobre el crédito con garantía vehicular con custodia");
     return whatsappUrl;
   };
 
@@ -60,9 +50,7 @@ const MobileStickyBar = () => {
       ubicacion: data.location,
     });
     clearTracking();
-    // Orgánico: anteponemos [xxx] con la página de origen al mensaje.
-    const prefix = isPaid ? "" : `[${getPagePrefix()}] `;
-    const customMessage = `${prefix}Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
+    const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
     const url = getWhatsAppUrl(customMessage);
     window.open(url, "_blank", "noopener,noreferrer");
   };

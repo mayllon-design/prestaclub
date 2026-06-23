@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import { trackWhatsAppClick } from "@/shared/lib/tracking";
 import { Slider } from "@/shared/components/ui/slider";
 import { Button } from "@/shared/components/ui/button";
 import { Info, Calculator, MessageSquareText } from "lucide-react";
 
 export const CalculatorSection = () => {
+  const { getWhatsAppUrl } = useTrafficTracking();
   const [monto, setMonto] = useState(200000);
   const [plazo, setPlazo] = useState(6);
 
@@ -118,7 +120,7 @@ export const CalculatorSection = () => {
               <div className="space-y-4 pt-6 border-t border-white/10">
                 <Button variant="gold" className="w-full h-auto py-3.5 md:py-4 text-xs md:text-base font-black tracking-widest uppercase" asChild>
                   <a
-                    href={`https://wa.me/51921010200?text=Hola PrestaClub, usé la calculadora de empresas y me interesa solicitar S/ ${monto.toLocaleString()} a ${plazo} meses.`}
+                    href={getWhatsAppUrl(`Hola PrestaClub, usé la calculadora de empresas y me interesa solicitar S/ ${monto.toLocaleString()} a ${plazo} meses.`)}
                     target="_blank"
                     onClick={() =>
                       trackWhatsAppClick({

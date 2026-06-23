@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, usePathname } from 'next/navigation';
 
 export const useTrafficTracking = () => {
     const searchParams = useSearchParams();
+    const pathname = usePathname();
 
     const [tracking, setTracking] = useState({
         isPaid: false,
@@ -38,7 +39,7 @@ export const useTrafficTracking = () => {
         });
     }, [searchParams]);
 
-    const getWhatsAppUrl = useCallback((customMessage?: string) => {
+    const getWhatsAppUrl = useCallback((customMessage?: string, options?: { organicPrefix?: string }) => {
         if (tracking.isPaid) {
             const s = tracking.source?.trim() || '';
             const c = tracking.campaign?.trim() || '';
@@ -53,11 +54,16 @@ export const useTrafficTracking = () => {
 
             return `https://wa.me/51921010200?text=${encodeURIComponent(finalMsg)}`;
         } else {
-            // Tráfico orgánico: Número predeterminado y mensaje base
-            const msg = customMessage || 'Hola *PrestaClub*. Ingrese a su web. Necesito más información sobre financiamientos.';
+            // Tráfico orgánico: anteponemos un prefijo de origen.
+            // Por defecto, las 3 primeras letras de la página ("/" -> [hom], "/nosotros" -> [nos]).
+            // Si se pasa options.organicPrefix (ej. "Blog 1"), se usa ese en su lugar.
+            const segment = pathname === '/' ? 'home' : (pathname?.split('/').filter(Boolean)[0] ?? 'web');
+            const pagePrefix = options?.organicPrefix ?? segment.slice(0, 3).toLowerCase();
+            const baseText = customMessage || 'Hola *PrestaClub*. Ingrese a su web. Necesito más información sobre financiamientos.';
+            const msg = `[${pagePrefix}] ${baseText}`;
             return `https://wa.me/51921010200?text=${encodeURIComponent(msg)}`;
         }
-    }, [tracking.isPaid, tracking.source, tracking.campaign]);
+    }, [tracking.isPaid, tracking.source, tracking.campaign, pathname]);
 
     const whatsappUrl = useMemo(() => getWhatsAppUrl(), [getWhatsAppUrl]);
     const whatsappNumber = useMemo(() => tracking.isPaid ? '51921010200' : '51921010200', [tracking.isPaid]);
