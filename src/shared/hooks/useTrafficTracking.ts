@@ -3,6 +3,26 @@
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useSearchParams, usePathname } from 'next/navigation';
 
+// Códigos de origen por landing (tráfico orgánico). Se hace match por ruta completa
+// para poder diferenciar las sub-landings de hipotecario. Lo que no esté aquí cae
+// al automático: las 3 primeras letras del primer segmento de la ruta.
+const LANDING_PREFIXES: Record<string, string> = {
+    '/': 'home',
+    '/capital-de-trabajo': 'catra',
+    '/financiamiento-con-garantia-hipotecaria': 'finhi',
+    '/financiamiento-con-garantia-hipotecaria/construccion': 'const',
+    '/financiamiento-con-garantia-hipotecaria/consolidacion-de-deudas': 'conde',
+    '/financiamiento-con-garantia-hipotecaria/compra-de-hipoteca': 'comph',
+    '/prestamo-con-garantia-vehicular': 'vehi',
+    '/prestamos-con-garantia-hipotecaria-para-empresas': 'empr',
+    '/preguntas-frecuentes': 'pfrec',
+    '/saneamiento-predial': 'sapre',
+    '/desarrollo-inmobiliario': 'deinm',
+    '/nosotros': 'noso',
+    '/contacto': 'conta',
+    '/articulos': 'arti',
+};
+
 export const useTrafficTracking = () => {
     const searchParams = useSearchParams();
     const pathname = usePathname();
@@ -55,10 +75,11 @@ export const useTrafficTracking = () => {
             return `https://wa.me/51921010200?text=${encodeURIComponent(finalMsg)}`;
         } else {
             // Tráfico orgánico: anteponemos un prefijo de origen.
-            // Por defecto, las 3 primeras letras de la página ("/" -> [hom], "/nosotros" -> [nos]).
-            // Si se pasa options.organicPrefix (ej. "Blog 1"), se usa ese en su lugar.
+            // Prioridad: options.organicPrefix (ej. "Blog 1") > mapa LANDING_PREFIXES > automático (3 letras).
+            const mapped = pathname ? LANDING_PREFIXES[pathname] : undefined;
             const segment = pathname === '/' ? 'home' : (pathname?.split('/').filter(Boolean)[0] ?? 'web');
-            const pagePrefix = options?.organicPrefix ?? segment.slice(0, 3).toLowerCase();
+            const fallback = segment.slice(0, 3).toLowerCase();
+            const pagePrefix = options?.organicPrefix ?? mapped ?? fallback;
             const baseText = customMessage || 'Hola *PrestaClub*. Ingrese a su web. Necesito más información sobre financiamientos.';
             const msg = `[${pagePrefix}] ${baseText}`;
             return `https://wa.me/51921010200?text=${encodeURIComponent(msg)}`;
