@@ -5,15 +5,28 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const isAdmin = searchParams.get('admin') === 'true';
-    
-    let query = 'SELECT * FROM articles';
+
+    // Para el listado público NO traemos el `content` (HTML completo, muy pesado):
+    // solo las columnas que la tarjeta necesita. El admin sí trae todo.
+    const fields = isAdmin
+      ? '*'
+      : 'id, slug, title, excerpt, image_url, category, section, author, published_at';
+
+    let query = `SELECT ${fields} FROM articles`;
     if (!isAdmin) {
       query += ' WHERE published_at <= NOW()';
     }
     query += ' ORDER BY published_at DESC';
 
     const [rows] = await pool.query(query);
-    return NextResponse.json(rows);
+
+    // Caché: el listado público se sirve desde caché (CDN + navegador),
+    // así las visitas repetidas son instantáneas. El admin nunca se cachea.
+    const headers = isAdmin
+      ? { 'Cache-Control': 'no-store' }
+      : { 'Cache-Control': 'public, max-age=60, s-maxage=300, stale-while-revalidate=600' };
+
+    return NextResponse.json(rows, { headers });
   } catch (error: any) {
     console.error('Database error details:', {
       message: error.message,

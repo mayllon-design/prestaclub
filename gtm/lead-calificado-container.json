@@ -104,7 +104,7 @@
           {
             "type": "TEMPLATE",
             "key": "html",
-            "value": "<script>\n  (function () {\n    if (typeof fbq !== 'function') { return; }\n    fbq('trackSingleCustom', '1295651951696236', 'LeadCalificado', {\n      destino: \"{{DLV - destino}}\",\n      ubicacion: \"{{DLV - ubicacion}}\",\n      monto: {{DLV - monto}},\n      origen_boton: \"{{DLV - button_location}}\",\n      currency: 'PEN',\n      value: {{DLV - monto}}\n    });\n  })();\n</script>"
+            "value": "<script>\n  (function () {\n    if (typeof fbq !== 'function') { return; }\n    var monto = parseFloat(\"{{DLV - monto}}\");\n    if (isNaN(monto)) { monto = 0; }\n    fbq('trackCustom', 'LeadCalificado', {\n      destino: \"{{DLV - destino}}\",\n      ubicacion: \"{{DLV - ubicacion}}\",\n      monto: monto,\n      origen_boton: \"{{DLV - button_location}}\",\n      currency: 'PEN',\n      value: monto\n    });\n  })();\n</script>"
           },
           { "type": "BOOLEAN", "key": "supportDocumentWrite", "value": "false" }
         ],
