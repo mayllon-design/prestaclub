@@ -64,6 +64,9 @@ const WizardHipotecario = ({ buyerType, onComplete }: { buyerType: string; onCom
             <label className="block text-sm font-semibold text-foreground mb-1">Email (opcional)</label>
             <input type="email" value={data.email} onChange={e => update("email", e.target.value)} className="w-full h-11 px-4 rounded-xl border border-input bg-background text-foreground focus:ring-2 focus:ring-ring outline-none" placeholder="tu@email.com" maxLength={255} />
           </div>
+          <p className="text-xs text-muted-foreground pt-1">
+            Al continuar, aceptas nuestra <a href="/politica-de-privacidad-de-prestaclub.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline">Política de Privacidad</a> y el tratamiento de tus datos personales.
+          </p>
         </div>
       )}
 
