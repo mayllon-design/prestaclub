@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
-import { Building2, CheckCircle2, ArrowRight, Shield, FileText, Banknote, Star } from "lucide-react";
+import { Building2, CheckCircle2, ArrowRight, Shield, FileText, Banknote, Star, Scale, MapPin } from "lucide-react";
 import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import Image from "next/image";
@@ -11,6 +11,12 @@ import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import { trackWhatsAppClick } from "@/shared/lib/tracking";
 import { useState } from "react";
 import { LocationModal } from "@/shared/components/LocationModal";
+
+const heroBadges = [
+  { icon: FileText, label: "Registrados ante la SBS" },
+  { icon: Scale, label: "Asesoría legal en todo el proceso" },
+  { icon: MapPin, label: "Lima Metropolitana y Callao" },
+];
 
 const buyers = [
   { title: "Capital de Trabajo", description: "Impulsa tu negocio con liquidez inmediata usando tu propiedad como garantía.", link: "/capital-de-trabajo", icon: Banknote },
@@ -72,16 +78,17 @@ const FinanciamientoHipotecario = () => {
           <Image src={heroHipotecario} alt="Financiamiento con garantía hipotecaria" className="w-full h-full object-cover opacity-15" fill />
         </div>
         <div className="relative container mx-auto px-4 py-20 md:py-32">
-          <div className="max-w-3xl">
+          <div className="max-w-5xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 mb-6">
               <Building2 className="h-4 w-4 text-gold" />
               <span className="text-sm font-semibold text-gold">Financiamiento con garantía Hipotecaria</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6">
-              Tu propiedad es tu mejor <span className="text-gradient-gold">respaldo financiero</span>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary-foreground leading-tight mb-6">
+              <span className="inline sm:block" style={{ color: "#f2ad36" }}>Préstamo con Garantía Hipotecaria</span>{" "}
+              <span className="inline sm:block sm:text-2xl md:text-3xl lg:text-4xl">convierte tu propiedad en liquidez</span>
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 max-w-2xl font-body">
-              Conectamos personas y empresas que necesitan financiamiento con inversionistas institucionales. El repago se garantiza con una propiedad.
+              ¿Tienes casa, local o terreno en SUNARP? Obtén de S/10,000 a 1 Millón de soles usando tu inmueble como respaldo y aunque estés en Infocorp.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="hero" size="xl" asChild>
@@ -96,6 +103,45 @@ const FinanciamientoHipotecario = () => {
                 Hablar por WhatsApp
               </Button>
             </div>
+
+            {/* Badges de confianza */}
+            <div className="flex flex-wrap gap-3 mt-8">
+              {heroBadges.map((badge) => (
+                <div
+                  key={badge.label}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-4 py-2 backdrop-blur-sm"
+                >
+                  <badge.icon className="h-4 w-4 text-gold shrink-0" />
+                  <span className="text-xs sm:text-sm font-semibold text-primary-foreground whitespace-nowrap">
+                    {badge.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Qué es y cómo funciona */}
+      <section className="section-padding bg-background pb-0">
+        <div className="container mx-auto max-w-3xl">
+          <p className="text-sm font-bold text-gold uppercase tracking-widest mb-3">
+            Empecemos por lo básico
+          </p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground leading-tight mb-6">
+            ¿Qué es un préstamo con garantía hipotecaria y cómo funciona?
+          </h2>
+          <div className="space-y-4 text-muted-foreground font-body leading-relaxed">
+            <p>
+              Es un financiamiento en el que tu inmueble respalda la operación.{" "}
+              <strong className="text-foreground">Tú sigues siendo el dueño</strong> y sigues viviendo o
+              trabajando en él; la propiedad solo queda inscrita como garantía mientras pagas.
+            </p>
+            <p>
+              Ojo con la confusión más común:{" "}
+              <strong className="text-foreground">esto NO es un crédito hipotecario para comprar casa.</strong>{" "}
+              Es lo contrario — tú ya tienes la propiedad, y la usas como herramienta para obtener liquidez.
+            </p>
           </div>
         </div>
       </section>
