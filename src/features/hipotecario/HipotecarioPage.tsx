@@ -547,13 +547,8 @@ const FinanciamientoHipotecario = () => {
         </div>
       </section>
 
-      {/* FAQ — OCULTA VISUALMENTE A PROPÓSITO (decisión de negocio).
-          El contenido permanece en el HTML para que los crawlers de Google y de
-          LLMs (GEO) lo lean, junto con el JSON-LD FAQPage que emite page.tsx.
-          NO quitar la clase `hidden` sin consultar: es intencional, no un bug.
-          Nota: Google exige que el contenido con schema FAQPage sea visible;
-          se asumió ese riesgo conscientemente. */}
-      <section className="section-padding bg-muted/50 hidden" id="faq">
+      {/* FAQ */}
+      <section className="section-padding bg-muted/50" id="faq">
         <div className="container mx-auto max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-8 text-center">Preguntas frecuentes</h2>
           <div className="flex flex-col gap-4">
