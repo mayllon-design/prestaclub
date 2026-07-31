@@ -90,8 +90,15 @@ const Footer = () => {
               <a href="https://www.google.com/maps?q=Prestaclub+Ventanilla" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 text-sm text-primary-foreground/70 hover:text-gold transition-colors">
                 <MapPin className="h-4 w-4 shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-medium text-primary-foreground/90">Oficina Ventanilla</p>
+                  <p className="font-medium text-primary-foreground/90">Punto Comercial Ventanilla</p>
                   <p>Pj. 51 Mz G6 Lt. 4 (Angamos), Ventanilla</p>
+                </div>
+              </a>
+              <a href="https://www.google.com/maps?q=Jir%C3%B3n+Pocitos+380+Ciudad+Comercial+Caquet%C3%A1+SMP" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 text-sm text-primary-foreground/70 hover:text-gold transition-colors">
+                <MapPin className="h-4 w-4 shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium text-primary-foreground/90">Punto Comercial Caquetá</p>
+                  <p>Jirón Pocitos 380, SMP (Ciudad Comercial Caquetá)</p>
                 </div>
               </a>
             </div>
