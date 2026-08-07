@@ -62,7 +62,7 @@ const ContactoPage = () => {
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div className="card-elevated p-6">
                             <a href="https://www.google.com/maps?q=Prestaclub+Lima+Centro" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 mb-4 group hover:opacity-80 transition-opacity cursor-pointer">
                                 <MapPin className="h-5 w-5 text-primary shrink-0 mt-1 group-hover:scale-110 transition-transform" />
@@ -96,6 +96,24 @@ const ContactoPage = () => {
                                     allowFullScreen
                                     loading="lazy"
                                     title="Oficina Comercial Ventanilla"
+                                />
+                            </div>
+                        </div>
+                        <div className="card-elevated p-6">
+                            <a href="https://maps.app.goo.gl/yPxDBLBwnF2HgBHdA" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 mb-4 group hover:opacity-80 transition-opacity cursor-pointer">
+                                <MapPin className="h-5 w-5 text-primary shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+                                <div>
+                                    <h3 className="font-bold text-foreground mb-1 group-hover:text-primary transition-colors">Oficina Comercial Caquetá</h3>
+                                    <p className="text-sm text-muted-foreground font-body">Jirón Pocitos 380, SMP (Ciudad Comercial Caquetá)</p>
+                                </div>
+                            </a>
+                            <div className="rounded-2xl overflow-hidden h-48 bg-muted flex items-center justify-center">
+                                <iframe
+                                    src="https://maps.google.com/maps?cid=13227913463002621200&z=17&output=embed"
+                                    className="w-full h-full border-0"
+                                    allowFullScreen
+                                    loading="lazy"
+                                    title="Oficina Comercial Caquetá"
                                 />
                             </div>
                         </div>
