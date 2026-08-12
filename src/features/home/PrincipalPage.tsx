@@ -30,7 +30,7 @@ const stats = [
 const products = [
   {
     icon: Building2,
-    title: "Financiamiento con Garantía Hipotecaria",
+    title: "Préstamo con Garantía Hipotecaria",
     description: "Obtén capital respaldado por tu propiedad a través de fondos de inversión. Soluciones para capital de trabajo, construcción, consolidación de deudas y compra de hipoteca.",
     link: "/financiamiento-con-garantia-hipotecaria",
   },

@@ -3,8 +3,8 @@ import FinanciamientoHipotecario from "@/features/hipotecario/HipotecarioPage";
 import { faqsHipotecario } from "@/features/hipotecario/faqs";
 
 export const metadata: Metadata = {
-    title: "Financiamiento con Garantía Hipotecaria - PrestaClub",
-    description: "Obtén financiamiento usando tu propiedad como garantía. Capital de trabajo, construcción, consolidación de deudas y compra de hipoteca. Evaluamos aunque estés en Infocorp.",
+    title: "Préstamo con Garantía Hipotecaria - PrestaClub",
+    description: "Préstamo con garantía hipotecaria en Lima y Callao: usa tu casa, local o terreno para obtener liquidez desde S/10,000, aunque estés en Infocorp.",
 };
 
 // Datos estructurados FAQPage (schema.org). Se generan desde el mismo array que
