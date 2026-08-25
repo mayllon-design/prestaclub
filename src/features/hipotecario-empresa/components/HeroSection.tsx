@@ -61,7 +61,7 @@ export const HeroSection = () => {
             <div className="h-8 w-px bg-white/20 hidden md:block" />
 
             <div className="flex items-center gap-2">
-              <div className="text-lg font-bold text-white italic">+23 años</div>
+              <div className="text-lg font-bold text-white italic">+24 años</div>
               <div className="text-xs text-white/60 leading-none">de trayectoria<br />en el mercado</div>
             </div>
           </div>

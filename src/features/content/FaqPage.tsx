@@ -12,7 +12,7 @@ const FaqPage = () => {
     {
       group: "General",
       items: [
-        { q: "¿Qué es PrestaClub?", a: "PrestaClub es una plataforma que facilita el acceso a financiamiento conectando a personas y empresas que tienen una propiedad con inversionistas institucionales. Tenemos más de 23 años en el mercado peruano." },
+        { q: "¿Qué es PrestaClub?", a: "PrestaClub es una plataforma que facilita el acceso a financiamiento conectando a personas y empresas que tienen una propiedad con inversionistas institucionales. Tenemos más de 24 años en el mercado peruano." },
         { q: "¿Están supervisados por la SBS?", a: "Sí, estamos inscritos en el Registro de Empresas de Préstamos y Empeños de la SBS (Resolución N° 02627-2020) y reportamos a la Unidad de Inteligencia Financiera (UIF)." }
       ]
     },

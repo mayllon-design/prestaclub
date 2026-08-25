@@ -21,7 +21,7 @@ import teamWorking from "@/assets/saneamiento-pedrial.png";
 import equipoPresta from "@/assets/Prestamo-con-garantia-hipotecaria-para-empresas.png";
 
 const stats = [
-  { value: "+23", label: "Años en el mercado" },
+  { value: "+24", label: "Años en el mercado" },
   { value: "+15,000", label: "Operaciones gestionadas" },
   { value: "+S/700M", label: "Desembolsados gestionados" },
   { value: "+ Confianza", label: "Registrados en la SBS" },
@@ -273,7 +273,7 @@ const Principal = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Nuestros servicios financieros</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-body">
-              Soluciones diseñadas para cada necesidad, con el respaldo de más de 23 años de experiencia.
+              Soluciones diseñadas para cada necesidad, con el respaldo de más de 24 años de experiencia.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">

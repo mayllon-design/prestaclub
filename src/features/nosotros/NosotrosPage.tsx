@@ -26,7 +26,7 @@ const NosotrosPage = () => {
             <section className="hero-gradient section-padding">
                 <div className="container mx-auto max-w-4xl text-center">
                     <h1 className="text-4xl md:text-5xl font-extrabold text-primary-foreground leading-tight mb-6">
-                        Más de 23 años conectando <span className="text-gradient-gold">oportunidades financieras</span>
+                        Más de 24 años conectando <span className="text-gradient-gold">oportunidades financieras</span>
                     </h1>
                     <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto font-body">
                         Somos una empresa inscrita en la SBS, especializada en conectar personas y empresas que necesitan financiamiento con inversionistas institucionales.
