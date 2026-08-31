@@ -58,7 +58,7 @@ const ContactoPage = () => {
                                 <Clock className="h-6 w-6 text-celeste" />
                             </div>
                             <h3 className="font-bold text-foreground mb-1">Horario</h3>
-                            <p className="text-sm text-muted-foreground font-body">Lun-Vie 9am - 6pm</p>
+                            <p className="text-sm text-muted-foreground font-body">Lun-Vie 8:30am - 6:30pm</p>
                         </div>
                     </div>
 
