@@ -361,10 +361,11 @@ ${campaign ? `\nCampaña: ${campaign}` : ""}`;
         const campanaFormateada = sourcePart || "Organico";
 
         try {
-            // Quitamos el 'await' para que esto se ejecute en segundo plano y no demore la apertura de WhatsApp
-            fetch('https://script.google.com/a/macros/prestaclub.com/s/AKfycbzj1St6pPB2bbswQS_kwJrWPmN1gi2b8783AzCqKbZDJ2NjyxYhbd8wLXDT9fhhiJLm0g/exec', {
+            // Sin 'await': se ejecuta en segundo plano para no demorar la apertura de WhatsApp.
+            // Pegamos a nuestra propia ruta API (mismo dominio, sin CORS); el servidor
+            // reenvía el lead a Power Automate -> Excel en OneDrive/SharePoint (Microsoft 365).
+            fetch('/api/lead-desarrollo', {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -377,9 +378,9 @@ ${campaign ? `\nCampaña: ${campaign}` : ""}`;
                     razonSocial: data.razonSocial,
                     campana: campanaFormateada
                 })
-            }).catch(error => console.error('Error guardando en Sheets:', error));
+            }).catch(error => console.error('Error guardando el lead:', error));
         } catch (error) {
-            console.error('Error general guardando en Sheets:', error);
+            console.error('Error general guardando el lead:', error);
         }
 
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;

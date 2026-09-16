@@ -15,6 +15,7 @@ import {
 } from "@/shared/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
+import SecurityAnnouncementPopup from "./SecurityAnnouncementPopup";
 import heroPrincipal from "@/assets/prestamo-garantia-hipotecaria-home.png";
 import heroVehicular from "@/assets/hero-vehicular.png";
 import teamWorking from "@/assets/saneamiento-pedrial.png";
@@ -141,6 +142,7 @@ const Principal = () => {
 
   return (
     <Layout>
+      <SecurityAnnouncementPopup />
       {/* Hero Slider */}
       <Carousel
         setApi={setApi}
