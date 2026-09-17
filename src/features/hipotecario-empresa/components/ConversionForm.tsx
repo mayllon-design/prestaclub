@@ -115,7 +115,7 @@ export const ConversionForm = () => {
               </div>
 
               <p className="text-[10px] text-muted-foreground text-center font-body italic uppercase tracking-widest mt-6">
-                Al enviar este formulario, aceptas nuestra <a href="/politica-de-privacidad-de-prestaclub.pdf" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">política de privacidad</a> y el tratamiento de tus datos personales conforme a la ley peruana.
+                Al enviar este formulario, aceptas nuestra <a href="/politica-de-privacidad-de-prestaclub-2026.pdf" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">política de privacidad</a> y el tratamiento de tus datos personales conforme a la ley peruana.
               </p>
             </form>
           </div>

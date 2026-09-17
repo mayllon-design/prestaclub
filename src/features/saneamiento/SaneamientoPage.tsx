@@ -203,7 +203,7 @@ const SaneamientoPredial = () => {
                     </div>
                     <label className="flex items-start gap-3 cursor-pointer mt-2">
                       <input type="checkbox" checked={data.privacidad} onChange={e => update("privacidad", e.target.checked)} className="mt-1 h-4 w-4 rounded border-input accent-primary" />
-                      <span className="text-sm text-muted-foreground">Acepto la <a href="/politica-de-privacidad-de-prestaclub.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline">Política de Privacidad</a></span>
+                      <span className="text-sm text-muted-foreground">Acepto la <a href="/politica-de-privacidad-de-prestaclub-2026.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline">Política de Privacidad</a></span>
                     </label>
                     <div className="flex flex-col-reverse sm:flex-row justify-center sm:justify-between items-center gap-4 mt-6 w-full">
                       <Button variant="outline" className="w-full sm:w-auto" onClick={() => setStep(0)}><ArrowLeft className="h-4 w-4" /> Anterior</Button>

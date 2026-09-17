@@ -82,7 +82,7 @@ const Footer = () => {
                         <ul className="space-y-2">
                             <li>
                                 <a
-                                    href="https://prestaclub.com/politica-de-privacidad/"
+                                    href="/politica-de-privacidad-de-prestaclub-2026.pdf"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-muted-foreground font-body text-sm hover:text-secondary transition-colors"

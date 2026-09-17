@@ -539,7 +539,7 @@ Quedo atento a su respuesta.`;
                                     Sujeto a evaluación mecánica, estética y documentaria del vehículo.
                                 </p>
                                 <p className="text-xs text-muted-foreground text-center mt-2">
-                                    Al continuar, aceptas nuestra <a href="/politica-de-privacidad-de-prestaclub.pdf" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">Política de Privacidad</a> y el tratamiento de tus datos personales.
+                                    Al continuar, aceptas nuestra <a href="/politica-de-privacidad-de-prestaclub-2026.pdf" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">Política de Privacidad</a> y el tratamiento de tus datos personales.
                                 </p>
                             </motion.div>
                         )}

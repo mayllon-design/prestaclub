@@ -275,7 +275,7 @@ const Resumen = ({ data, onPrivacidadChange, showErrors }: { data: WizardData, o
                     </div>
                 </div>
                 <span className={`text-sm md:text-base leading-relaxed select-none ${showErrors && !data.privacidad ? 'text-red-500' : 'text-muted-foreground'}`}>
-                    Acepto la <a href="/politica-de-privacidad-de-prestaclub.pdf" target="_blank" rel="noopener noreferrer" className="text-secondary font-bold hover:underline decoration-2 underline-offset-4">Política de Privacidad</a> y autorizo el tratamiento de mis datos personales.
+                    Acepto la <a href="/politica-de-privacidad-de-prestaclub-2026.pdf" target="_blank" rel="noopener noreferrer" className="text-secondary font-bold hover:underline decoration-2 underline-offset-4">Política de Privacidad</a> y autorizo el tratamiento de mis datos personales.
                 </span>
             </label>
             {showErrors && !data.privacidad && (

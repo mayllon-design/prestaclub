@@ -65,7 +65,7 @@ const WizardHipotecario = ({ buyerType, onComplete }: { buyerType: string; onCom
             <input type="email" value={data.email} onChange={e => update("email", e.target.value)} className="w-full h-11 px-4 rounded-xl border border-input bg-background text-foreground focus:ring-2 focus:ring-ring outline-none" placeholder="tu@email.com" maxLength={255} />
           </div>
           <p className="text-xs text-muted-foreground pt-1">
-            Al continuar, aceptas nuestra <a href="/politica-de-privacidad-de-prestaclub.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline">Política de Privacidad</a> y el tratamiento de tus datos personales.
+            Al continuar, aceptas nuestra <a href="/politica-de-privacidad-de-prestaclub-2026.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline">Política de Privacidad</a> y el tratamiento de tus datos personales.
           </p>
         </div>
       )}
@@ -154,7 +154,7 @@ const WizardHipotecario = ({ buyerType, onComplete }: { buyerType: string; onCom
           </div>
           <label className="flex items-start gap-3 cursor-pointer">
             <input type="checkbox" checked={data.privacidad} onChange={e => update("privacidad", e.target.checked)} className="mt-1 h-4 w-4 rounded border-input accent-primary" />
-            <span className="text-sm text-muted-foreground">Acepto la <a href="/politica-de-privacidad-de-prestaclub.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline">Política de Privacidad</a> y autorizo el tratamiento de mis datos personales.</span>
+            <span className="text-sm text-muted-foreground">Acepto la <a href="/politica-de-privacidad-de-prestaclub-2026.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline">Política de Privacidad</a> y autorizo el tratamiento de mis datos personales.</span>
           </label>
         </div>
       )}
