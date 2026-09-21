@@ -5,6 +5,9 @@ import { Suspense } from "react";
 export const metadata: Metadata = {
     title: "Gestión de devoluciones de saldo - PrestaClub",
     description: "Gestión de devoluciones de saldo",
+    alternates: {
+        canonical: "/gestion-de-devoluciones-de-saldo",
+    },
 };
 
 export default function Page() {

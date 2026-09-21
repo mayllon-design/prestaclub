@@ -5,6 +5,9 @@ import { faqsHipotecario } from "@/features/hipotecario/faqs";
 export const metadata: Metadata = {
     title: "Préstamo con Garantía Hipotecaria - PrestaClub",
     description: "Préstamo con garantía hipotecaria en Lima y Callao: usa tu casa, local o terreno para obtener liquidez desde S/10,000, aunque estés en Infocorp.",
+    alternates: {
+        canonical: "/financiamiento-con-garantia-hipotecaria",
+    },
 };
 
 // Datos estructurados FAQPage (schema.org). Se generan desde el mismo array que

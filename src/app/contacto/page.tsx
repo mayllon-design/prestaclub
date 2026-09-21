@@ -5,6 +5,9 @@ import { Suspense } from "react"; // 1. Importamos Suspense
 export const metadata: Metadata = {
     title: "Contacto - PrestaClub",
     description: "Ponte en contacto con nuestros asesores financieros. Oficinas en Cercado de Lima y Ventanilla. Atención personalizada por WhatsApp, teléfono y correo.",
+    alternates: {
+        canonical: "/contacto",
+    },
 };
 
 export default function Page() {

@@ -1,10 +1,14 @@
-"use client"; // 1. Añadimos esto para permitir manejadores de eventos
-
+import type { Metadata } from "next";
 import ArticulosPage from "@/features/articulos/ArticulosPage";
 import { Suspense } from "react";
 
-// Nota: Cuando usas "use client", la metadata se debe manejar de forma distinta 
-// o dejarla en un archivo separado. Para no complicarnos, mantengamos la estructura:
+export const metadata: Metadata = {
+    title: "Artículos y Blog - PrestaClub",
+    description: "Guías y consejos sobre préstamos con garantía hipotecaria y vehicular, saneamiento predial y finanzas en Perú.",
+    alternates: {
+        canonical: "/articulos",
+    },
+};
 
 export default function Page() {
     return (
