@@ -5,31 +5,11 @@ import { ArrowRight, HelpCircle } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import Layout from "@/core/layouts/MainLayout";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
+import { faqGroups } from "@/features/content/faqData";
 
 const FaqPage = () => {
   const { whatsappUrl, clearTracking } = useTrafficTracking();
-  const faqs = [
-    {
-      group: "General",
-      items: [
-        { q: "¿Qué es PrestaClub?", a: "PrestaClub es una plataforma que facilita el acceso a financiamiento conectando a personas y empresas que tienen una propiedad con inversionistas institucionales. Tenemos más de 24 años en el mercado peruano." },
-        { q: "¿Están supervisados por la SBS?", a: "Sí, estamos inscritos en el Registro de Empresas de Préstamos y Empeños de la SBS (Resolución N° 02627-2020) y reportamos a la Unidad de Inteligencia Financiera (UIF)." }
-      ]
-    },
-    {
-      group: "Préstamos Hipotecarios",
-      items: [
-        { q: "¿Qué requisitos necesito para precalificar?", a: "Documento de identidad (DNI), copia literal de la partida registral del inmueble actualizada (HR/PU) y un recibo de servicios." },
-        { q: "¿Puedo obtener un préstamo si estoy en Infocorp?", a: "Sí, evaluamos tu caso de forma personalizada. Al contar con una garantía real, tu historial crediticio no es el único factor determinante." }
-      ]
-    },
-    {
-      group: "Saneamiento",
-      items: [
-        { q: "¿Qué es el saneamiento predial?", a: "Es el proceso técnico-legal para regularizar la situación de una propiedad e inscribirla correctamente ante la SUNARP, permitiendo que sea apta para hipotecas o venta." }
-      ]
-    }
-  ];
+  const faqs = faqGroups;
 
   return (
     <Layout>

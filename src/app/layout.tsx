@@ -4,6 +4,7 @@ import "./globals.css";
 import Script from "next/script";
 import { Suspense } from "react"; // 1. Importamos Suspense
 import { Toaster } from "sonner";
+import { organizationSchema } from "@/shared/lib/structuredData";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -47,6 +48,10 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-53GQ6FB');
           `}
         </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
       </head>
       <body
         className={`${plusJakartaSans.variable} ${dmSans.variable} font-sans antialiased`}

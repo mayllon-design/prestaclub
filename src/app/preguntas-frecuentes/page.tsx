@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import FaqPage from "@/features/content/FaqPage";
+import { faqFlat } from "@/features/content/faqData";
+import { faqPageSchema } from "@/shared/lib/structuredData";
 
 export const metadata: Metadata = {
     title: "Preguntas Frecuentes - PrestaClub",
@@ -10,5 +12,14 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    return <FaqPage />;
+    const faqLd = faqPageSchema(faqFlat);
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+            />
+            <FaqPage />
+        </>
+    );
 }
