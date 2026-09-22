@@ -34,18 +34,21 @@ const products = [
     title: "Préstamo con Garantía Hipotecaria",
     description: "Obtén capital respaldado por tu propiedad a través de fondos de inversión. Soluciones para capital de trabajo, construcción, consolidación de deudas y compra de hipoteca.",
     link: "/financiamiento-con-garantia-hipotecaria",
+    cta: "Ver préstamo con garantía hipotecaria",
   },
   {
     icon: TrendingUp,
-    title: "Crédito con Garantía Vehicular",
+    title: "Préstamo con Garantía Vehicular",
     description: "Usa tu vehículo como respaldo y accede a financiamiento rápido con tasas competitivas.",
     link: "/prestamo-con-garantia-vehicular",
+    cta: "Ver préstamo con garantía vehicular",
   },
   {
     icon: Shield,
     title: "Saneamiento Predial",
     description: "Regulariza la situación legal de tu propiedad con nuestro equipo especializado.",
     link: "/saneamiento-predial",
+    cta: "Ver saneamiento predial",
   },
 ];
 
@@ -80,13 +83,13 @@ const testimonials = [
 const slides = [
   {
     title: "Financiamiento con respaldo real",
-    description: "Conectamos personas y empresas que necesitan financiamiento con inversionistas institucionales. El repago se garantiza con una propiedad.",
+    description: "Conectamos personas y empresas que necesitan financiamiento con inversionistas institucionales. El préstamo se respalda con tu propiedad.",
     image: heroPrincipal,
     cta1: { text: "PRECALIFICAR AHORA", link: "/financiamiento-con-garantia-hipotecaria#precalificar" },
     cta2: { text: "Conoce más", link: "/nosotros" },
   },
   {
-    title: "Convierte tu vehículo en liquidez en pocas horas",
+    title: "Consigue liquidez con tu auto en custodia segura",
     description: "Obtén el capital que necesitas usando tu auto como garantía. Tasas competitivas y desembolso rápido.",
     note: "Tu vehículo queda protegido en custodia segura hasta cancelar el crédito.",
     image: heroVehicular,
@@ -183,22 +186,24 @@ const Principal = () => {
                       <ExternalLink className="h-3.5 w-3.5 text-gold" />
                     </motion.a>
 
-                    <motion.h1
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={current === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                      transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                      className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-4 md:mb-6"
-                    >
-                      {slide.title.includes("respaldo real") ? (
+                    {React.createElement(
+                      (index === 0 ? motion.h1 : motion.h2) as React.ElementType,
+                      {
+                        initial: { opacity: 0, y: 30 },
+                        animate: current === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+                        transition: { duration: 0.8, delay: 0.2, ease: "easeOut" },
+                        className: "text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-4 md:mb-6",
+                      },
+                      slide.title.includes("respaldo real") ? (
                         <>Financiamiento con <br /><span className="text-gradient-gold">respaldo real</span></>
-                      ) : slide.title.includes("vehículo") ? (
-                        <>Convierte tu <span className="text-gradient-gold">vehículo</span> en liquidez en pocas horas</>
+                      ) : slide.title.includes("custodia") ? (
+                        <>Consigue liquidez con tu auto en <span className="text-gradient-gold">custodia segura</span></>
                       ) : slide.title.includes("Regulariza") ? (
                         <>Regulariza tu <span className="text-gradient-gold">propiedad</span> de manera legal y segura</>
                       ) : (
                         <>Impulsa tu <span className="text-gradient-gold">empresa</span> con capital estratégico</>
-                      )}
-                    </motion.h1>
+                      )
+                    )}
 
                     <motion.p
                       initial={{ opacity: 0, y: 20 }}
@@ -292,7 +297,7 @@ const Principal = () => {
                 <h3 className="text-xl font-bold text-foreground mb-3">{product.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed font-body mb-4">{product.description}</p>
                 <span className="text-sm font-semibold text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
-                  Conocer más <ArrowRight className="h-4 w-4" />
+                  {product.cta} <ArrowRight className="h-4 w-4" />
                 </span>
               </Link>
             ))}

@@ -16,6 +16,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/financiamiento-con-garantia-hipotecaria/construccion`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/financiamiento-con-garantia-hipotecaria/consolidacion-de-deudas`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/financiamiento-con-garantia-hipotecaria/compra-de-hipoteca`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/financiamiento-con-garantia-hipotecaria/terreno`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/financiamiento-con-garantia-hipotecaria/estando-en-infocorp`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/prestamos-con-garantia-hipotecaria-para-empresas`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/prestamo-con-garantia-vehicular`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/desarrollo-inmobiliario`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },

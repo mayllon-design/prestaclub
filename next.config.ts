@@ -9,6 +9,17 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // 301: artículo "proceso…" se fusiona en el artículo "financiamiento…" (consolidar señales SEO).
+      // El contenido de B sigue en la BD (editable por ID en el admin) para hacer la fusión luego.
+      {
+        source: '/articulos/proceso-financiamiento-garantia-hipotecaria-peru',
+        destination: '/articulos/financiamiento-garantia-hipotecaria-peru',
+        statusCode: 301,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

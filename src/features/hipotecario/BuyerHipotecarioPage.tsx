@@ -405,9 +405,9 @@ export const Construccion = () => (
 
 export const ConsolidacionDeudas = () => (
   <BuyerPage
-    title="Consolidación de Deudas"
+    title="Junta todas tus deudas en una sola cuota con la garantía de tu casa"
     subtitle="Consolidación de Deudas"
-    heroDescription="Unifica todas tus deudas en una sola cuota. Reduce tu carga financiera mensual y recupera la tranquilidad."
+    heroDescription="Unifica todas tus deudas en una sola cuota con la garantía de tu propiedad —aunque estés en Infocorp—. Reduce tu carga mensual y recupera la tranquilidad."
     problems={[
       "Tienes múltiples deudas con diferentes entidades",
       "Las cuotas mensuales totales son muy altas",
