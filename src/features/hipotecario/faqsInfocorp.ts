@@ -17,7 +17,7 @@ export const faqsInfocorp: Faq[] = [
     a: "El primer paso es una consulta sin costo: nos cuentas cuánto necesitas y qué propiedad tienes, y revisamos si tu caso es evaluable. Tener una propiedad inscrita en SUNARP es lo que permite avanzar aunque estés reportado. Evita a quien te ofrezca dinero \"sin revisar nada\" y sin contrato: esa es la vía informal y la de mayor riesgo para ti.",
   },
   {
-    q: "¿Existe un préstamo con garantía hipotecaria \"sin buró\"?",
+    q: "¿Existe un préstamo con garantía hipotecaria sin revisar Infocorp?",
     a: "No en el sentido literal: toda operación formal implica evaluación y PrestaClub reporta a la UIF. Lo que sí ofrecemos es no exigir un historial crediticio impecable para iniciar tu evaluación. La garantía real permite mirar más allá de tu score, pero siempre dentro de una operación regulada y con escritura pública.",
   },
   {

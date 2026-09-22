@@ -202,16 +202,16 @@ const InfocorpPage = () => {
         </div>
       </section>
 
-      {/* 3. Sin buró */}
+      {/* 3. Estando en Infocorp: qué es cierto y qué no */}
       <section className="section-padding bg-background">
         <div className="container mx-auto max-w-3xl">
           <p className="text-sm font-bold text-gold uppercase tracking-widest mb-3">Con transparencia</p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground leading-tight mb-6">
-            &ldquo;Sin buró&rdquo;, &ldquo;sin importar mi historial&rdquo;: qué es cierto y qué no
+            &ldquo;Estando en Infocorp&rdquo;, &ldquo;sin que revisen tu historial&rdquo;: qué es cierto y qué no
           </h2>
           <div className="space-y-4 text-muted-foreground font-body leading-relaxed">
             <p>
-              Mucha gente busca un préstamo &ldquo;sin buró&rdquo; o &ldquo;sin que revisen Infocorp&rdquo;. Seamos
+              Mucha gente busca un préstamo &ldquo;sin que revisen Infocorp&rdquo; o &ldquo;sin importar mi historial&rdquo;. Seamos
               claros: una operación formal y regulada siempre implica una evaluación, y PrestaClub reporta a la UIF. Lo
               que sí es cierto es que no exigimos un Infocorp impecable ni boletas de pago para iniciar tu evaluación.
             </p>
