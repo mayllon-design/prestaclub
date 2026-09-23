@@ -26,10 +26,9 @@ const heroBadges: { icon: LucideIcon; label: string; href?: string }[] = [
 ];
 
 const requisitos = [
-  "El terreno inscrito en SUNARP, a tu nombre o de un garante que participe voluntariamente",
   "Tu DNI (y el del cónyuge o garante)",
-  "La partida registral del terreno y el HR y PU",
-  "Cuando aplican: los planos, la partida donde conste la independización y la información para revisar su situación legal",
+  "La partida registral del terreno y el HR y PU (Autovalúo Municipal)",
+  "La información para revisar su situación legal",
 ];
 
 const noRequisitos = [
@@ -89,7 +88,7 @@ const TerrenoPage = () => {
               <span className="text-sm font-semibold text-gold">Garantía de terreno / título de propiedad</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6">
-              Préstamo con garantía de tu <span className="text-gradient-gold">terreno en Lima y Callao</span>
+              Préstamo con garantía de<br />tu <span className="text-gradient-gold">terreno en Lima y Callao</span>
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 max-w-2xl font-body">
               Tu terreno inscrito en SUNARP puede darte liquidez sin que lo vendas. Sigues siendo el dueño y
@@ -157,7 +156,7 @@ const TerrenoPage = () => {
             <p>
               Es un financiamiento en el que tu terreno respalda la operación sin que tengas que venderlo. Sigues
               siendo el dueño del lote; lo único que ocurre es que se inscribe una hipoteca sobre él en SUNARP
-              mientras dure el préstamo, y al terminar de pagar la garantía se levanta. No es un crédito para comprar
+              mientras dure el préstamo y, al terminar de pagar, la garantía se levanta. No es un crédito para comprar
               un terreno: es lo contrario, tú ya tienes el terreno inscrito y lo usas como herramienta para obtener
               capital.
             </p>
@@ -185,8 +184,7 @@ const TerrenoPage = () => {
             <p>
               Lo que define si tu terreno es apto no es solo el tamaño, sino tres cosas: que esté inscrito a tu nombre
               (o al de un familiar que participe como garante), su valor de realización según la tasación, y su
-              situación legal y registral. Si tu terreno todavía no está inscrito o está en proceso de independización,
-              no necesariamente quedas fuera: primero se revisa qué falta para sanearlo.
+              situación legal y registral.
             </p>
           </div>
         </div>
@@ -267,7 +265,7 @@ const TerrenoPage = () => {
             <div className="card-elevated bg-background p-6 md:p-8">
               <div className="flex items-center gap-2.5 mb-6">
                 <FileText className="h-5 w-5 text-gold shrink-0" />
-                <h3 className="text-lg font-bold text-foreground">No te pedimos</h3>
+                <h3 className="text-lg font-bold text-foreground">No es obligatorio presentar</h3>
               </div>
               <ul className="space-y-4">
                 {noRequisitos.map((r) => (
@@ -284,10 +282,13 @@ const TerrenoPage = () => {
                 <Link href="/saneamiento-predial" className="font-semibold text-primary hover:text-gold transition-colors">
                   saneamiento predial
                 </Link>{" "}
-                antes de avanzar.
+                (*) antes de avanzar.
               </p>
             </div>
           </div>
+          <p className="mt-6 text-xs text-muted-foreground/80 font-body italic">
+            (*) El Saneamiento Predial podría tener un costo, dependiendo de la evaluación legal.
+          </p>
         </div>
       </section>
 
@@ -299,7 +300,7 @@ const TerrenoPage = () => {
             ¿Cómo funciona?
           </h2>
           <p className="text-muted-foreground font-body leading-relaxed mb-10 max-w-3xl mx-auto text-center">
-            El proceso es por etapas y sin costo para consultar. Primero nos cuentas cuánto necesitas y sobre qué
+            Primero nos cuentas cuánto necesitas y sobre qué
             terreno; luego evaluamos el lote y tu caso; se realiza la tasación con un perito inscrito en el REPEV para
             determinar el valor de realización; se estructura la operación con fondos de inversión institucionales; se
             formaliza ante notario con la hipoteca inscrita en SUNARP; y, cumplidas las condiciones, recibes el

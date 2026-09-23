@@ -31,13 +31,13 @@ const paraQuien = [
   "Tienes deudas atrasadas que ensuciaron tu calificación.",
   "Eres independiente y no puedes demostrar ingresos con boletas.",
   "Necesitas capital con urgencia y no quieres caer con un prestamista informal.",
-  "Un familiar con propiedad quiere participar como garante para ayudarte.",
+  "Si no tienes un inmueble propio, un familiar con propiedad puede participar como garante para ayudarte.",
 ];
 
 const requisitos = [
   "Una propiedad inscrita en SUNARP (tuya o de un garante)",
   "Tu DNI (y el del cónyuge o garante)",
-  "La partida registral del inmueble y el HR y PU",
+  "La partida registral del inmueble y el HR y PU (Autovalúo Municipal)",
 ];
 
 const noRequisitos = [
@@ -93,7 +93,7 @@ const InfocorpPage = () => {
               Préstamo con garantía hipotecaria <span className="text-gradient-gold">aunque estés en Infocorp</span>
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 max-w-2xl font-body">
-              Con una garantía real puedes ser evaluado en Lima y Callao: la garantía pesa más que tu historial. Ser
+              Puedes ser evaluado en Lima y Callao: la garantía pesa más que tu historial. Ser
               evaluado no es aprobación garantizada, pero sí es un camino formal cuando el banco te dijo que no.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -157,7 +157,7 @@ const InfocorpPage = () => {
           <div className="space-y-4 text-muted-foreground font-body leading-relaxed">
             <p>
               <strong className="text-foreground">Sí, puedes ser evaluado.</strong> Estar reportado en Infocorp o tener
-              un historial con observaciones no te descalifica de forma automática en una operación con garantía real.
+              un historial con observaciones no te descalifica de forma automática en una operación con garantía hipotecaria.
               La razón es simple: cuando existe un inmueble que respalda el préstamo, la evaluación deja de depender
               exclusivamente de tu score crediticio y pasa a considerar el valor de la garantía, el destino del dinero y
               la viabilidad de tu caso.
@@ -172,12 +172,12 @@ const InfocorpPage = () => {
         </div>
       </section>
 
-      {/* 2. Por qué la garantía real cambia la ecuación */}
+      {/* 2. Por qué la garantía de inmueble cambia la ecuación */}
       <section className="section-padding bg-muted/50">
         <div className="container mx-auto max-w-3xl">
           <p className="text-sm font-bold text-gold uppercase tracking-widest mb-3">El fundamento</p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground leading-tight mb-6">
-            Por qué la garantía real cambia la ecuación
+            Por qué la garantía de inmueble cambia la ecuación
           </h2>
           <div className="space-y-4 text-muted-foreground font-body leading-relaxed">
             <p>
@@ -234,7 +234,7 @@ const InfocorpPage = () => {
             ¿Para quién es esta opción?
           </h2>
           <p className="text-muted-foreground font-body leading-relaxed mb-10 max-w-3xl">
-            Es para ti si tienes una propiedad inscrita en SUNARP &mdash;casa, local o terreno&mdash; y estás en alguna
+            Es para ti si tienes una propiedad inscrita en SUNARP &mdash;casa, departamento, local o terreno&mdash; y estás en alguna
             de estas situaciones:
           </p>
           <div className="grid sm:grid-cols-2 gap-6">
