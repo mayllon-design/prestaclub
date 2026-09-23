@@ -82,7 +82,7 @@ const testimonials = [
 
 const slides = [
   {
-    title: "Financiamiento con respaldo real",
+    title: "Con tu propiedad de respaldo, consigue la liquidez que buscas",
     description: "Conectamos personas y empresas que necesitan financiamiento con inversionistas institucionales. El préstamo se respalda con tu propiedad.",
     image: heroPrincipal,
     cta1: { text: "PRECALIFICAR AHORA", link: "/financiamiento-con-garantia-hipotecaria#precalificar" },
@@ -194,14 +194,14 @@ const Principal = () => {
                         transition: { duration: 0.8, delay: 0.2, ease: "easeOut" },
                         className: "text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-4 md:mb-6",
                       },
-                      slide.title.includes("respaldo real") ? (
-                        <>Financiamiento con <br /><span className="text-gradient-gold">respaldo real</span></>
+                      slide.title.includes("propiedad de respaldo") ? (
+                        <>Con tu propiedad<br />de respaldo, consigue<br /><span className="text-gradient-gold">la liquidez que buscas</span></>
                       ) : slide.title.includes("custodia") ? (
-                        <>Consigue liquidez con tu auto en <span className="text-gradient-gold">custodia segura</span></>
+                        <>Consigue liquidez con<br />tu auto en <span className="text-gradient-gold">custodia segura</span></>
                       ) : slide.title.includes("Regulariza") ? (
-                        <>Regulariza tu <span className="text-gradient-gold">propiedad</span> de manera legal y segura</>
+                        <>Regulariza tu <span className="text-gradient-gold">propiedad</span><br />de manera legal y segura</>
                       ) : (
-                        <>Impulsa tu <span className="text-gradient-gold">empresa</span> con capital estratégico</>
+                        <>Impulsa tu <span className="text-gradient-gold">empresa</span><br />con capital estratégico</>
                       )
                     )}
 
