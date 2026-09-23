@@ -28,7 +28,7 @@ const buyers = [
 ];
 
 const advantages = [
-  "+23 años en el mercado",
+  "+24 años en el mercado",
   "+15,000 operaciones realizadas",
   "+S/700 millones desembolsados",
   "Registrados en la SBS",
@@ -168,9 +168,12 @@ const FinanciamientoHipotecario = () => {
               <Building2 className="h-4 w-4 text-gold" />
               <span className="text-sm font-semibold text-gold">Financiamiento con garantía Hipotecaria</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6">
-              Tu propiedad es tu mejor <span className="text-gradient-gold">respaldo financiero</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-4">
+              Tu propiedad es tu mejor <br /><span className="text-gradient-gold">respaldo financiero</span>
             </h1>
+            <h2 className="text-xl md:text-2xl font-semibold text-gold mb-6">
+              Préstamos con garantía de inmueble
+            </h2>
             <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 max-w-2xl font-body">
               ¿Tienes casa, local o terreno en SUNARP? Obtén de S/10,000 a 1 Millón de soles usando tu inmueble como respaldo y aunque estés en Infocorp.
             </p>
