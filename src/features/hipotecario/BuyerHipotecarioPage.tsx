@@ -451,7 +451,7 @@ export const Construccion = () => (
     isVertical={true}
     intro={{
       title: "¿Qué es un préstamo para construcción con garantía hipotecaria?",
-      body: "Es un financiamiento pensado para levantar, ampliar o terminar una obra —tu casa, un local o un proyecto sobre tu terreno— usando ese mismo terreno o una propiedad como respaldo, sin venderla. La operación se estructura con fondos de inversión institucionales tomando como garantía un inmueble inscrito en SUNARP, y el dinero puede entregarse en desembolsos progresivos según avanza la construcción. Como la evaluación mira el valor de tu propiedad y la viabilidad del proyecto más que tu historial, incluso si el banco te rechazó o estás reportado en Infocorp puedes acceder a financiamiento para construir con condiciones flexibles en Lima y Callao.",
+      body: "Es un financiamiento pensado para levantar, ampliar o terminar una obra —tu casa, un local o un proyecto sobre tu terreno— usando ese mismo terreno o una propiedad como respaldo, sin venderla. La operación se estructura con fondos de inversión institucionales tomando como garantía un inmueble inscrito en SUNARP. Como la evaluación mira el valor de tu propiedad más que tu historial, incluso si el banco te rechazó o estás reportado en Infocorp puedes acceder a financiamiento para construir con condiciones flexibles en Lima y Callao.",
     }}
     faqs={faqsConstruccion}
   />

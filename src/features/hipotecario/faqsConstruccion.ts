@@ -8,8 +8,8 @@ export const faqsConstruccion: FaqItem[] = [
     a: "Para construir tu casa desde cero, ampliar o remodelar, terminar una obra que quedó parada o levantar un local o proyecto sobre tu terreno. Puedes usarlo tanto en un terreno propio como en una propiedad ya construida que quieras mejorar.",
   },
   {
-    q: "¿Cuánto puedo financiar y cómo se entrega el dinero?",
-    a: "Desde S/ 10,000 hasta S/ 1,000,000 (un millón de soles). El monto final depende del valor de realización del inmueble o terreno en garantía, determinado por una tasación durante la evaluación. En proyectos de construcción, el dinero puede entregarse en desembolsos progresivos según el avance de la obra.",
+    q: "¿Cuánto puedo financiar?",
+    a: "Desde S/ 10,000 hasta S/ 1,000,000 (un millón de soles). El monto final depende del valor de realización del inmueble o terreno en garantía, determinado por una tasación durante la evaluación.",
   },
   {
     q: "¿Qué inmueble o terreno puede usarse como garantía?",
@@ -17,7 +17,7 @@ export const faqsConstruccion: FaqItem[] = [
   },
   {
     q: "¿Puedo acceder si estoy en Infocorp o el banco me rechazó?",
-    a: "Sí, puedes ser evaluado. Al existir una garantía con inmueble, el valor de la propiedad y la viabilidad del proyecto pesan más que tu historial crediticio. La decisión final queda sujeta a los criterios del fondo de inversión; no ofrecemos aprobación garantizada.",
+    a: "Sí, puedes ser evaluado. Al existir una garantía con inmueble, el valor de la propiedad pesa más que tu historial crediticio. La decisión final queda sujeta a los criterios del fondo de inversión; no ofrecemos aprobación garantizada.",
   },
   {
     q: "¿Qué requisitos necesito?",
