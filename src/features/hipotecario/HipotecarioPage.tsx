@@ -530,6 +530,14 @@ const FinanciamientoHipotecario = () => {
               </Link>
             ))}
           </div>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-10 text-center">
+            <Link href="/financiamiento-con-garantia-hipotecaria/terreno" className="text-sm font-semibold text-primary hover:text-gold transition-colors inline-flex items-center gap-1">
+              Préstamo con garantía de terreno <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="/financiamiento-con-garantia-hipotecaria/estando-en-infocorp" className="text-sm font-semibold text-primary hover:text-gold transition-colors inline-flex items-center gap-1">
+              Préstamo estando en Infocorp <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 

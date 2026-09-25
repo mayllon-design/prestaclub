@@ -7,6 +7,7 @@ import { CalculatorSection } from "./components/CalculatorSection";
 import { BenefitsSection } from "./components/BenefitsSection";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { RequirementsSection } from "./components/RequirementsSection";
+import { FaqSection } from "./components/FaqSection";
 import { ConversionForm } from "./components/ConversionForm";
 
 const HipotecarioEmpresaPage = () => {
@@ -30,8 +31,11 @@ const HipotecarioEmpresaPage = () => {
         
         {/* Bloque 6: Requisitos Simplificados */}
         <RequirementsSection />
-        
-        {/* Bloque 7: Footer de Conversión */}
+
+        {/* Bloque 7: Preguntas frecuentes */}
+        <FaqSection />
+
+        {/* Bloque 8: Footer de Conversión */}
         <ConversionForm />
       </main>
     </Layout>
