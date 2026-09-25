@@ -88,7 +88,7 @@ const TerrenoPage = () => {
               <span className="text-sm font-semibold text-gold">Garantía de terreno / título de propiedad</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6">
-              Préstamo con garantía de<br />tu <span className="text-gradient-gold">terreno en Lima y Callao</span>
+              Préstamo con garantía de <br />tu <span className="text-gradient-gold">terreno en Lima y Callao</span>
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 max-w-2xl font-body">
               Tu terreno inscrito en SUNARP puede darte liquidez sin que lo vendas. Sigues siendo el dueño y
