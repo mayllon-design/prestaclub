@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { CompraHipoteca } from "@/features/hipotecario/BuyerHipotecarioPage";
+import { faqsCompraHipoteca } from "@/features/hipotecario/faqsCompraHipoteca";
+import { faqPageSchema } from "@/shared/lib/structuredData";
 
 export const metadata: Metadata = {
     title: "Compra de Hipoteca - Refinanciamiento Hipotecario - PrestaClub",
@@ -10,5 +12,14 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    return <CompraHipoteca />;
+    const faqLd = faqPageSchema(faqsCompraHipoteca);
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+            />
+            <CompraHipoteca />
+        </>
+    );
 }

@@ -8,6 +8,10 @@ import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import { trackWhatsAppClick } from "@/shared/lib/tracking";
+import { faqsCapitalTrabajo } from "@/features/hipotecario/faqsCapitalTrabajo";
+import { faqsConstruccion } from "@/features/hipotecario/faqsConstruccion";
+import { faqsConsolidacion } from "@/features/hipotecario/faqsConsolidacion";
+import { faqsCompraHipoteca } from "@/features/hipotecario/faqsCompraHipoteca";
 
 import { WizardData } from "@/shared/types/hipotecario";
 import { LocationModal } from "@/shared/components/LocationModal";
@@ -189,9 +193,12 @@ interface BuyerPageProps {
   buyerType: string;
   videoId?: string;
   isVertical?: boolean;
+  heroKeyword?: string;
+  intro?: { title: string; body: string };
+  faqs?: { q: string; a: string }[];
 }
 
-const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyerType, videoId, isVertical }: BuyerPageProps) => {
+const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyerType, videoId, isVertical, heroKeyword, intro, faqs }: BuyerPageProps) => {
   const { getWhatsAppUrl, clearTracking, campaign } = useTrafficTracking();
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
   const leadId = `LEAD-${Date.now().toString(36).toUpperCase()}`;
@@ -240,13 +247,28 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
             <Banknote className="h-4 w-4 text-gold" />
             <span className="text-sm font-semibold text-gold">{subtitle}</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-primary-foreground leading-tight mb-6">{title}</h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto font-body mb-8">{heroDescription}</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-primary-foreground leading-tight mb-6">
+            {title}
+            {heroKeyword && (
+              <span className="block text-lg md:text-2xl font-semibold text-gold max-w-2xl mx-auto mt-4">{heroKeyword}</span>
+            )}
+          </h1>
+          <h2 className="text-lg font-normal text-primary-foreground/80 max-w-2xl mx-auto font-body mb-8">{heroDescription}</h2>
           <Button variant="hero" size="xl" asChild>
             <a href="#wizard">PRECALIFICAR AHORA <ArrowRight className="h-5 w-5" /></a>
           </Button>
         </div>
       </section>
+
+      {/* Intro / ¿Qué es? (opcional, solo si se pasa la prop) */}
+      {intro && (
+        <section className="section-padding bg-muted/50">
+          <div className="container mx-auto max-w-3xl">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6 leading-tight">{intro.title}</h2>
+            <p className="text-lg text-muted-foreground font-body leading-relaxed">{intro.body}</p>
+          </div>
+        </section>
+      )}
 
       {/* Problems */}
       <section className="section-padding bg-background">
@@ -345,6 +367,28 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
         </div>
       </section>
 
+      {/* FAQ (opcional, solo si se pasa la prop) */}
+      {faqs && faqs.length > 0 && (
+        <section className="section-padding bg-background" id="preguntas-frecuentes">
+          <div className="container mx-auto max-w-3xl">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-8 text-center leading-tight">Preguntas frecuentes</h2>
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <details key={i} className="card-elevated group overflow-hidden">
+                  <summary className="p-6 cursor-pointer font-bold text-foreground flex justify-between items-center gap-4 bg-card hover:bg-muted/30 transition-colors list-none">
+                    {faq.q}
+                    <span className="text-gold shrink-0 text-2xl leading-none transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <div className="p-6 pt-0 text-muted-foreground font-body leading-relaxed border-t border-border/50">
+                    {faq.a}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* CTA */}
       <section className="hero-gradient section-padding">
         <div className="container mx-auto text-center max-w-3xl">
@@ -381,12 +425,17 @@ export const CapitalDeTrabajo = () => (
     solution="Te conectamos con inversionistas institucionales que financian tu capital de trabajo usando tu propiedad como respaldo. Proceso rápido, tasas competitivas y acompañamiento personalizado."
     buyerType="Capital de Trabajo"
     videoId="W-yAvCtOj1E"
+    intro={{
+      title: "¿Qué es un préstamo de capital de trabajo con garantía hipotecaria?",
+      body: "Es un financiamiento que le da a tu negocio la liquidez que necesita para operar y crecer —comprar mercadería, cubrir planillas, pagar proveedores o aprovechar una oportunidad— usando tu propiedad como respaldo, sin venderla. La operación se estructura con fondos de inversión institucionales tomando como garantía un inmueble inscrito en SUNARP, así que la decisión mira el valor de tu propiedad y no solo tu historial. Por eso, incluso si el banco te rechazó o estás reportado en Infocorp, tu negocio puede acceder a capital de trabajo con condiciones flexibles y un proceso rápido en Lima y Callao.",
+    }}
+    faqs={faqsCapitalTrabajo}
   />
 );
 
 export const Construccion = () => (
   <BuyerPage
-    title="Financiamiento para Construcción"
+    title="Préstamo para construir o remodelar con garantía de tu terreno o propiedad"
     subtitle="Construcción"
     heroDescription="Haz realidad tu proyecto de construcción o remodelación. Financiamos con tu terreno o propiedad como garantía."
     problems={[
@@ -400,12 +449,17 @@ export const Construccion = () => (
     buyerType="Construcción"
     videoId="OXdKXds4mds"
     isVertical={true}
+    intro={{
+      title: "¿Qué es un préstamo para construcción con garantía hipotecaria?",
+      body: "Es un financiamiento pensado para levantar, ampliar o terminar una obra —tu casa, un local o un proyecto sobre tu terreno— usando ese mismo terreno o una propiedad como respaldo, sin venderla. La operación se estructura con fondos de inversión institucionales tomando como garantía un inmueble inscrito en SUNARP, y el dinero puede entregarse en desembolsos progresivos según avanza la construcción. Como la evaluación mira el valor de tu propiedad y la viabilidad del proyecto más que tu historial, incluso si el banco te rechazó o estás reportado en Infocorp puedes acceder a financiamiento para construir con condiciones flexibles en Lima y Callao.",
+    }}
+    faqs={faqsConstruccion}
   />
 );
 
 export const ConsolidacionDeudas = () => (
   <BuyerPage
-    title="Junta todas tus deudas en una sola cuota con la garantía de tu casa"
+    title="Consolidación de deudas con garantía hipotecaria, incluso estando en Infocorp"
     subtitle="Consolidación de Deudas"
     heroDescription="Unifica todas tus deudas en una sola cuota con la garantía de tu propiedad —aunque estés en Infocorp—. Reduce tu carga mensual y recupera la tranquilidad."
     problems={[
@@ -417,12 +471,17 @@ export const ConsolidacionDeudas = () => (
     ]}
     solution="Consolidamos todas tus deudas en un solo crédito con garantía hipotecaria. Una sola cuota, una sola tasa, y respiras tranquilo."
     buyerType="Consolidación de Deudas"
+    intro={{
+      title: "¿Qué es la consolidación de deudas con garantía hipotecaria?",
+      body: "Es juntar varias deudas —tarjetas, préstamos personales, cuotas con distintas entidades— en un solo crédito respaldado por tu inmueble, para pasar de muchas cuotas y fechas a una sola cuota al mes, normalmente con una tasa más baja. La operación se estructura con fondos de inversión institucionales tomando como garantía un inmueble inscrito en SUNARP, así que la decisión mira el valor de tu propiedad y no solo tu clasificación de riesgo. Por eso, incluso si estás reportado en Infocorp o el banco no te da un refinanciamiento, puedes ordenar tus deudas y reducir tu carga mensual en Lima y Callao.",
+    }}
+    faqs={faqsConsolidacion}
   />
 );
 
 export const CompraHipoteca = () => (
   <BuyerPage
-    title="Compra de Hipoteca"
+    title="Compra de deuda hipotecaria: mejora tu tasa y libera capital"
     subtitle="Compra de Hipoteca"
     heroDescription="Mejora las condiciones de tu hipoteca actual. Refinancia con mejores tasas y condiciones más flexibles."
     problems={[
@@ -434,6 +493,11 @@ export const CompraHipoteca = () => (
     ]}
     solution="Compramos tu hipoteca actual y te ofrecemos mejores condiciones. Reducimos tu cuota mensual y te damos la posibilidad de liberar capital adicional."
     buyerType="Compra de Hipoteca"
+    intro={{
+      title: "¿Qué es la compra de deuda hipotecaria?",
+      body: "Es trasladar la hipoteca que ya tienes a un nuevo crédito con mejores condiciones: se cancela tu deuda actual y se reemplaza por otra respaldada por el mismo inmueble, con el objetivo de bajar tu cuota, mejorar la tasa o darte más plazo, sin perder tu propiedad. La operación se estructura con fondos de inversión institucionales tomando como garantía un inmueble inscrito en SUNARP, y muchas veces permite además liberar capital adicional sobre el valor de tu propiedad. Como la evaluación mira el valor del inmueble más que tu historial, incluso si estás en Infocorp o tu banco no te ofrece refinanciamiento puedes mejorar las condiciones de tu hipoteca en Lima y Callao.",
+    }}
+    faqs={faqsCompraHipoteca}
   />
 );
 

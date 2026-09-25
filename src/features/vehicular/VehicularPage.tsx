@@ -7,6 +7,7 @@ import Image from "next/image";
 import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import CreditWizard from "@/features/credit-wizard/components/CreditWizard";
+import { faqsVehicular } from "@/features/vehicular/faqsVehicular";
 import heroVehicular from "@/assets/hero-vehicular.png";
 
 const institutions = [
@@ -24,34 +25,6 @@ const institutions = [
     icon: Award,
     title: "Cámara de Comercio de Lima",
     description: "Empresa asociada a la CCL",
-  },
-];
-
-const faqs = [
-  {
-    question: "¿Cómo funciona el crédito con garantía vehicular?",
-    answer:
-      "Presentas tu vehículo de marca comercial con hasta 10 años de antigüedad. Evaluamos sus condiciones y te ofrecemos un monto preaprobado. Tu vehículo queda en custodia segura en nuestras instalaciones en Lima hasta que canceles el crédito. Los plazos disponibles van desde 30 hasta 180 días. Todo el proceso se formaliza ante notario y se registra en SUNARP.",
-  },
-  {
-    question: "¿Qué marcas de vehículos aceptan para el préstamo?",
-    answer:
-      "Aceptamos las principales marcas comerciales del mercado peruano: Toyota, Hyundai, Kia, Nissan, Chevrolet, Honda, Ford, Mazda, Volkswagen, Subaru, Renault, entre otras. Si tu marca no aparece en nuestro listado, un asesor puede evaluar tu caso de forma personalizada.",
-  },
-  {
-    question: "¿Qué pasa si no pago el crédito con garantía vehicular?",
-    answer:
-      "El crédito se formaliza mediante escritura pública ante notario y se registra en SUNARP. Si no se cumple el pago según los términos del contrato, se procede conforme a las disposiciones legales vigentes en Perú. Recomendamos comunicarte con tu asesor ante cualquier dificultad para buscar una solución.",
-  },
-  {
-    question: "¿Cuánto me pueden prestar dejando mi auto en garantía?",
-    answer:
-      "El monto del préstamo depende de la marca, año, kilometraje y tipo de combustible de tu vehículo. Puedes usar nuestro simulador online para obtener una estimación en minutos. El valor mínimo del vehículo debe ser de S/ 20,000. Prestaclub está registrada en la SBS, por lo que ofrecemos condiciones formales y transparentes.",
-  },
-  {
-    question: "¿Cuánto tiempo queda mi vehículo en custodia?",
-    answer:
-      "Tu vehículo permanece en custodia segura en nuestras instalaciones en Lima hasta que canceles el total del crédito. Los plazos van desde 30 hasta 180 días. La custodia incluye espacio con vigilancia permanente, póliza de seguros, control periódico y acta formal de entrega y devolución. Además, te entregamos tu vehiculo lavado y listo para usarlo.",
   },
 ];
 
@@ -76,7 +49,7 @@ const FAQSection = () => {
         </motion.div>
 
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {faqsVehicular.map((faq, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 10 }}
@@ -91,7 +64,7 @@ const FAQSection = () => {
                 aria-expanded={openIndex === index}
               >
                 <h3 className="font-bold text-[#1a2b4b] text-lg sm:text-xl leading-snug">
-                  {faq.question}
+                  {faq.q}
                 </h3>
                 <ChevronDown
                   className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${openIndex === index ? "rotate-180 text-primary" : ""
@@ -106,7 +79,7 @@ const FAQSection = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="px-8 pb-6 text-slate-600 leading-relaxed text-base sm:text-lg border-t border-slate-50 pt-4">
-                    {faq.answer}
+                    {faq.a}
                   </div>
                 </motion.div>
               )}
@@ -262,6 +235,15 @@ const Hero = ({ onSimulate }: { onSimulate: () => void }) => {
             <span className="text-[#ffa200]">liquidez</span> en pocas horas.
           </motion.h1>
 
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="font-heading text-xl sm:text-2xl font-semibold text-[#ffa200] mb-6"
+          >
+            Crédito con garantía vehicular con custodia segura en Lima
+          </motion.h2>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -307,6 +289,37 @@ const Hero = ({ onSimulate }: { onSimulate: () => void }) => {
   );
 };
 
+const IntroSection = () => (
+  <section className="section-padding bg-[#f3f4f7]">
+    <div className="container mx-auto max-w-3xl px-4">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-3xl md:text-4xl font-bold text-[#1a2b4b] mb-6 leading-tight"
+      >
+        ¿Qué es un crédito con garantía vehicular con custodia?
+      </motion.h2>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="text-slate-600 text-lg leading-relaxed"
+      >
+        Es un préstamo en el que usas tu vehículo como respaldo para obtener liquidez de forma
+        rápida, sin venderlo. Tu auto de marca comercial y hasta 10 años de antigüedad queda
+        protegido en custodia segura —con vigilancia permanente, póliza de seguro, control
+        periódico y acta de entrega y devolución— en nuestras instalaciones en Lima mientras dure
+        el crédito, con plazos de 30 a 180 días. La operación se formaliza mediante escritura
+        pública ante notario y se registra en SUNARP, y al cancelar el total recuperas tu vehículo.
+        Es una alternativa formal y transparente para acceder a efectivo en pocas horas cuando no
+        quieres desprenderte de tu auto.
+      </motion.p>
+    </div>
+  </section>
+);
+
 const VehicularPage = () => {
   const wizardRef = useRef<HTMLDivElement>(null);
 
@@ -317,6 +330,8 @@ const VehicularPage = () => {
   return (
     <Layout>
       <Hero onSimulate={scrollToSimulate} />
+
+      <IntroSection />
 
       <InstitutionalTrust />
 

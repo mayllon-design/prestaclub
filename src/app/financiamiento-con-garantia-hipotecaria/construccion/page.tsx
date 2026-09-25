@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Construccion } from "@/features/hipotecario/BuyerHipotecarioPage";
+import { faqsConstruccion } from "@/features/hipotecario/faqsConstruccion";
+import { faqPageSchema } from "@/shared/lib/structuredData";
 
 export const metadata: Metadata = {
     title: "Financiamiento para Construcción con Garantía Hipotecaria - PrestaClub",
@@ -10,5 +12,14 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    return <Construccion />;
+    const faqLd = faqPageSchema(faqsConstruccion);
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+            />
+            <Construccion />
+        </>
+    );
 }

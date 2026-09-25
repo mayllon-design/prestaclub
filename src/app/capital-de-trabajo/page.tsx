@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { CapitalDeTrabajo } from "@/features/hipotecario/BuyerHipotecarioPage";
+import { faqsCapitalTrabajo } from "@/features/hipotecario/faqsCapitalTrabajo";
+import { faqPageSchema } from "@/shared/lib/structuredData";
 
 export const metadata: Metadata = {
     title: "Capital de Trabajo con Garantía Hipotecaria - PrestaClub",
@@ -10,5 +12,14 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    return <CapitalDeTrabajo />;
+    const faqLd = faqPageSchema(faqsCapitalTrabajo);
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+            />
+            <CapitalDeTrabajo />
+        </>
+    );
 }

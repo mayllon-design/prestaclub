@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { ConsolidacionDeudas } from "@/features/hipotecario/BuyerHipotecarioPage";
+import { faqsConsolidacion } from "@/features/hipotecario/faqsConsolidacion";
+import { faqPageSchema } from "@/shared/lib/structuredData";
 
 export const metadata: Metadata = {
     title: "Unificar y pagar deudas con garantía hipotecaria - PrestaClub",
@@ -10,5 +12,14 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    return <ConsolidacionDeudas />;
+    const faqLd = faqPageSchema(faqsConsolidacion);
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+            />
+            <ConsolidacionDeudas />
+        </>
+    );
 }
