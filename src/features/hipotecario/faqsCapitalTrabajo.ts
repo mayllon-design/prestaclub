@@ -12,7 +12,7 @@ export const faqsCapitalTrabajo: FaqItem[] = [
   },
   {
     q: "¿Cuánto capital puedo obtener?",
-    a: "Desde S/ 10,000. El monto final depende del valor de realización del inmueble en garantía, determinado por una tasación durante la evaluación.",
+    a: "Desde S/ 10,000 hasta S/ 1,000,000 (un millón de soles). El monto final depende del valor de realización del inmueble en garantía, determinado por una tasación durante la evaluación.",
   },
   {
     q: "¿Qué inmueble puede usarse como garantía?",

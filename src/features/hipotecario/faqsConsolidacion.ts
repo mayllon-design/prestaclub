@@ -9,7 +9,7 @@ export const faqsConsolidacion: FaqItem[] = [
   },
   {
     q: "¿Cuánto puedo obtener para consolidar mis deudas?",
-    a: "Desde S/ 10,000. El monto final depende del valor de realización del inmueble en garantía, determinado por una tasación durante la evaluación, y del total de deudas que quieras unificar.",
+    a: "Desde S/ 10,000 hasta S/ 1,000,000 (un millón de soles). El monto final depende del valor de realización del inmueble en garantía, determinado por una tasación durante la evaluación, y del total de deudas que quieras unificar.",
   },
   {
     q: "¿Qué inmueble puede usarse como garantía?",

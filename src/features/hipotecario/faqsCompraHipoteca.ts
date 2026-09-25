@@ -9,7 +9,7 @@ export const faqsCompraHipoteca: FaqItem[] = [
   },
   {
     q: "¿Puedo liberar capital adicional al comprar mi hipoteca? ¿Cuánto?",
-    a: "Sí. Además de mejorar las condiciones, puedes obtener liquidez adicional sobre el valor de tu propiedad. El financiamiento parte desde S/ 10,000 y el monto final depende del valor de realización del inmueble, determinado por una tasación, y del saldo pendiente de tu hipoteca actual.",
+    a: "Sí. Además de mejorar las condiciones, puedes obtener liquidez adicional sobre el valor de tu propiedad. El financiamiento va desde S/ 10,000 hasta S/ 1,000,000 (un millón de soles) y el monto final depende del valor de realización del inmueble, determinado por una tasación, y del saldo pendiente de tu hipoteca actual.",
   },
   {
     q: "¿Qué inmueble aplica para esta operación?",

@@ -414,7 +414,7 @@ export const CapitalDeTrabajo = () => (
   <BuyerPage
     title="Capital de Trabajo con Garantía Hipotecaria"
     subtitle="Capital de Trabajo"
-    heroDescription="Obtén la liquidez que tu negocio necesita para crecer. Usa tu propiedad como garantía y accede a montos importantes con condiciones flexibles."
+    heroDescription="Obtén la liquidez que tu negocio necesita para crecer. Usa tu propiedad como garantía y accede a montos desde S/ 10,000 con condiciones flexibles."
     problems={[
       "Tu negocio necesita capital pero los bancos te rechazan",
       "No tienes acceso a crédito formal",

@@ -9,7 +9,7 @@ export const faqsConstruccion: FaqItem[] = [
   },
   {
     q: "¿Cuánto puedo financiar y cómo se entrega el dinero?",
-    a: "Desde S/ 10,000. El monto final depende del valor de realización del inmueble o terreno en garantía, determinado por una tasación durante la evaluación. En proyectos de construcción, el dinero puede entregarse en desembolsos progresivos según el avance de la obra.",
+    a: "Desde S/ 10,000 hasta S/ 1,000,000 (un millón de soles). El monto final depende del valor de realización del inmueble o terreno en garantía, determinado por una tasación durante la evaluación. En proyectos de construcción, el dinero puede entregarse en desembolsos progresivos según el avance de la obra.",
   },
   {
     q: "¿Qué inmueble o terreno puede usarse como garantía?",
