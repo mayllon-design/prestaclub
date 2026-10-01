@@ -12,7 +12,7 @@ export const faqsEmpresa: FaqItem[] = [
   },
   {
     q: "¿Cuánto financiamiento puede obtener mi empresa?",
-    a: "El financiamiento para empresas parte desde S/ 200,000. El monto final depende del valor de realización del inmueble en garantía —determinado por una tasación— y de la evaluación de tu caso.",
+    a: "El financiamiento para empresas va desde S/ 200,000 hasta S/ 2,000,000. El monto final depende del valor de realización del inmueble en garantía —determinado por una tasación— y de la evaluación de tu caso.",
   },
   {
     q: "¿Qué inmueble puede usarse como garantía?",

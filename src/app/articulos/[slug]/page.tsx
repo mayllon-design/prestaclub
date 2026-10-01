@@ -65,9 +65,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `/articulos/${slug}`,
     },
     openGraph: {
+      type: 'article',
+      siteName: 'PrestaClub',
+      locale: 'es_PE',
       title: article.seo_title || article.title,
       description: article.seo_description || article.excerpt || '',
-      images: article.image_url ? [article.image_url] : [],
+      // Sin imagen propia no definimos `images`, para que use la imagen general del sitio.
+      ...(article.image_url ? { images: [article.image_url] } : {}),
     },
   };
 }

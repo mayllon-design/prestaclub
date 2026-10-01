@@ -29,6 +29,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  // La imagen sale de src/app/opengraph-image.png (convención de archivos de Next).
+  openGraph: {
+    type: "website",
+    siteName: "PrestaClub",
+    locale: "es_PE",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

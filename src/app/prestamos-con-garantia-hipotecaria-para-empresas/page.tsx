@@ -5,7 +5,7 @@ import { faqPageSchema } from "@/shared/lib/structuredData";
 
 export const metadata: Metadata = {
     title: "Préstamos con Garantía Hipotecaria para Empresas - PrestaClub",
-    description: "Liquidez desde S/ 200,000 para tu empresa con garantía hipotecaria, en tiempo récord. Sin burocracia bancaria. Evaluación en 15 días.",
+    description: "Préstamo con garantía hipotecaria para empresas: liquidez de S/ 200,000 a S/ 2,000,000 con el respaldo de un inmueble, sin burocracia bancaria.",
     alternates: {
         canonical: "/prestamos-con-garantia-hipotecaria-para-empresas",
     },
