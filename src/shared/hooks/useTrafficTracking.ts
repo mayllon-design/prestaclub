@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
-import { useSearchParams, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 // Códigos de origen por landing (tráfico orgánico). Se hace match por ruta completa
 // para poder diferenciar las sub-landings de hipotecario. Lo que no esté aquí cae
@@ -24,7 +24,6 @@ const LANDING_PREFIXES: Record<string, string> = {
 };
 
 export const useTrafficTracking = () => {
-    const searchParams = useSearchParams();
     const pathname = usePathname();
 
     const [tracking, setTracking] = useState({
@@ -34,7 +33,10 @@ export const useTrafficTracking = () => {
     });
 
     useEffect(() => {
-        // En Next.js, useSearchParams ya nos da los parámetros de la URL de forma reactiva.
+        // Leemos la URL directamente en el navegador. No usamos useSearchParams() porque en
+        // páginas estáticas obliga a renderizar en el cliente todo el contenido hasta el
+        // <Suspense> del layout, y el HTML llega vacío a Google y a los crawlers de IA.
+        const searchParams = new URLSearchParams(window.location.search);
         const utmSource = searchParams.get('utm_source');
         const utmCampaign = searchParams.get('utm_campaign');
         const utmMedium = searchParams.get('utm_medium');
@@ -57,7 +59,7 @@ export const useTrafficTracking = () => {
             source: utmSource || storedSource || '',
             campaign: utmCampaign || storedCampaign || '',
         });
-    }, [searchParams]);
+    }, [pathname]);
 
     const getWhatsAppUrl = useCallback((customMessage?: string, options?: { organicPrefix?: string }) => {
         if (tracking.isPaid) {
