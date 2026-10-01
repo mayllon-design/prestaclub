@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     }
 
     // Retornamos la URL relativa que será accesible bajo TU DOMINIO gracias al rewrite
-    // de next.config.ts (ej: prestaclub.com/uploads/articulos/filename.jpg)
+    // de next.config.mjs (ej: prestaclub.com/uploads/articulos/filename.jpg)
     return NextResponse.json({ 
       url: `/uploads/articulos/${fileName}`,
       success: true 
