@@ -246,6 +246,16 @@ const FinanciamientoHipotecario = () => {
               <strong className="text-foreground">esto NO es un crédito hipotecario para comprar casa.</strong>{" "}
               Es lo contrario — tú ya tienes la propiedad, y la usas como herramienta para obtener liquidez.
             </p>
+            <p>
+              También se le conoce como crédito con garantía hipotecaria. Para personas naturales es un{" "}
+              <strong className="text-foreground">préstamo personal con garantía hipotecaria</strong>: tú pones tu
+              casa, departamento, local o terreno como respaldo. Si quien necesita el capital es tu empresa, revisa
+              nuestro{" "}
+              <Link href="/prestamos-con-garantia-hipotecaria-para-empresas" className="text-gold font-semibold underline underline-offset-4">
+                préstamo con garantía hipotecaria para empresas
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>

@@ -308,7 +308,8 @@ const IntroSection = () => (
         className="text-slate-600 text-lg leading-relaxed"
       >
         Es un préstamo en el que usas tu vehículo como respaldo para obtener liquidez de forma
-        rápida, sin venderlo. Tu auto de marca comercial y hasta 10 años de antigüedad queda
+        rápida, sin venderlo. También se le llama préstamo prendario vehicular, préstamo con
+        garantía prendaria o, simplemente, dejar tu auto o carro en garantía. Tu auto de marca comercial y hasta 10 años de antigüedad queda
         protegido en custodia segura —con vigilancia permanente, póliza de seguro, control
         periódico y acta de entrega y devolución— en nuestras instalaciones en Lima mientras dure
         el crédito, con plazos de 30 a 180 días. La operación se formaliza mediante escritura

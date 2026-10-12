@@ -24,4 +24,8 @@ export const faqsVehicular: FaqItem[] = [
     q: "¿Cuánto tiempo queda mi vehículo en custodia?",
     a: "Tu vehículo permanece en custodia segura en nuestras instalaciones en Lima hasta que canceles el total del crédito. Los plazos van desde 30 hasta 180 días. La custodia incluye espacio con vigilancia permanente, póliza de seguros, control periódico y acta formal de entrega y devolución. Además, te entregamos tu vehículo lavado y listo para usarlo.",
   },
+  {
+    q: "¿Es lo mismo un préstamo prendario vehicular que un crédito con garantía vehicular?",
+    a: "Sí. Préstamo prendario vehicular, préstamo con garantía prendaria, préstamo con tu auto o carro en garantía y crédito con garantía vehicular son nombres distintos para la misma operación: tu vehículo respalda el préstamo mientras lo pagas. En el Perú, legalmente se formaliza como garantía mobiliaria ante notario e inscrita en SUNARP. En Prestaclub el vehículo queda en custodia segura durante el plazo del crédito y lo recuperas al cancelarlo.",
+  },
 ];

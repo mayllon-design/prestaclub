@@ -33,6 +33,10 @@ export const faqsHipotecario: Faq[] = [
     a: "Sí, un terreno también puede ser ofrecido en garantía. Además de casas, departamentos y locales comerciales, Prestaclub puede estructurar operaciones respaldadas con terrenos urbanos con cerco perimétrico y otros inmuebles que cumplan con los criterios de evaluación. La viabilidad de la operación dependerá, entre otros aspectos, del valor de realización del inmueble, determinado mediante una tasación profesional, de su situación legal y registral, y del cumplimiento de los requisitos establecidos por el fondo de inversión que otorgará el financiamiento. Si el inmueble resulta apto para respaldar la operación, podrás acceder a una alternativa de financiamiento sin necesidad de vender tu propiedad.",
   },
   {
+    q: "¿Es un préstamo personal o para empresas?",
+    a: "Ambos, con condiciones distintas. Para personas naturales es un préstamo personal con garantía hipotecaria: pones tu casa, departamento, local o terreno como respaldo y el monto va desde S/ 10,000 hasta S/ 1,000,000. Para empresas con RUC 20 tenemos una línea específica, desde S/ 200,000 hasta S/ 2,000,000, que se evalúa en nuestra página de préstamos para empresas.",
+  },
+  {
     q: "¿Cuánto demora el desembolso?",
     a: "El tiempo de desembolso depende de las características de cada operación. Factores como la situación legal y registral del inmueble, la disponibilidad de la documentación requerida, los resultados de la evaluación y el cumplimiento de las condiciones necesarias para el cierre de la operación pueden influir en los plazos. Por ello, no es posible establecer una fecha exacta sin realizar una evaluación previa. En Prestaclub, el proceso se desarrolla por etapas, que comprenden la precalificación, la tasación y revisión legal del inmueble, la estructuración de la operación, la formalización ante notario y, una vez cumplidas las condiciones correspondientes, el desembolso por parte del fondo de inversión o inversionista. Desde el inicio del proceso, se informa al cliente una estimación razonable de los tiempos de acuerdo con las características específicas de su operación.",
   },
