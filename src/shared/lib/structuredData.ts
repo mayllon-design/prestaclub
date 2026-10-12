@@ -129,3 +129,55 @@ export function faqPageSchema(faqs: { q: string; a: string }[]) {
     })),
   };
 }
+
+// Helper: genera un Article (schema.org) para cada entrada del blog.
+// Recibe solo los campos que usa, así no depende del tipo completo de la BD.
+export function articleSchema(article: {
+  slug: string;
+  title: string;
+  excerpt: string | null;
+  image_url: string | null;
+  author: string | null;
+  published_at: string | Date;
+  updated_at?: string | Date | null;
+  seo_description?: string | null;
+  section?: string | null;
+  category?: string | null;
+}) {
+  const url = `${SITE_URL}/articulos/${article.slug}`;
+  // Las imágenes del blog se guardan como ruta relativa (/uploads/articulos/...).
+  const image = article.image_url
+    ? article.image_url.startsWith("http")
+      ? article.image_url
+      : `${SITE_URL}${article.image_url}`
+    : `${SITE_URL}/opengraph-image.png`;
+  const toIso = (d: string | Date | null | undefined) =>
+    d ? new Date(d).toISOString() : undefined;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${url}#article`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    url,
+    headline: article.title,
+    description: article.seo_description || article.excerpt || undefined,
+    image,
+    inLanguage: "es-PE",
+    articleSection: article.section || article.category || undefined,
+    datePublished: toIso(article.published_at),
+    dateModified: toIso(article.updated_at) || toIso(article.published_at),
+    // Autor y editor van completos (no solo por @id): los validadores de Google
+    // no siempre resuelven referencias a otro bloque JSON-LD de la misma página.
+    author: article.author
+      ? { "@type": "Person", name: article.author }
+      : { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "PrestaClub", url: SITE_URL },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "PrestaClub",
+      url: SITE_URL,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.png` },
+    },
+  };
+}

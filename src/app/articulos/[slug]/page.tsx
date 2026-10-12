@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Article } from '@/features/articulos/types';
 import { ArticleWhatsAppCTA } from '@/features/articulos/ArticleWhatsAppCTA';
+import { articleSchema } from '@/shared/lib/structuredData';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -83,9 +84,14 @@ export default async function ArticleDetailPage({ params }: Props) {
   if (!article) notFound();
 
   const related = await getRelatedArticles(String(article.id), article.section, article.category);
+  const articleLd = articleSchema(article);
 
   return (
     <Layout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
       <article className="min-h-screen pb-20 overflow-hidden">
         {/* Hero Image */}
         <div className="relative h-[45vh] md:h-[60vh] w-full">
