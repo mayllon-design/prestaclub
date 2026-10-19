@@ -12,8 +12,8 @@ import fotoEmpresas from "@/assets/portada-empresas-inmobiliario.webp";
 
 type Opcion = { nombre: string; detalle: string; href: string; icono: ReactNode };
 
-const svg = (d: ReactNode) => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5921E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+const svg = (d: ReactNode, color = "#F5921E") => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     {d}
   </svg>
 );
@@ -23,6 +23,8 @@ const iconoMaletin = svg(<><rect x="3" y="7" width="18" height="13" rx="2" /><pa
 const iconoObra = svg(<path d="M4 21h16M6 21V10l6-4 6 4v11M10 21v-5h4v5" />);
 const iconoDeudas = svg(<path d="M4 6h5l4 6-4 6H4M20 12h-7M17 9l3 3-3 3" />);
 const iconoTraslado = svg(<path d="M7 4v13M4 14l3 3 3-3M17 20V7M14 10l3-3 3 3" />);
+const iconoAuto = svg(<><path d="M5 17h14M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0M3 17v-4l2-5h12l3 5v4" /><path d="M3 13h18" /></>, "#1D2B6C");
+const iconoDocumento = svg(<><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7z" /><path d="M14 3v4h4M9 13l2 2 4-4" /></>, "#1D2B6C");
 const iconoEdificio = svg(<path d="M3 21h18M5 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M15 9h3a1 1 0 0 1 1 1v11M8 8h2M8 12h2M8 16h2" />);
 
 const opcionesPersonas: Opcion[] = [
@@ -31,6 +33,12 @@ const opcionesPersonas: Opcion[] = [
   { nombre: "Construcción", detalle: "Si quieres construir, ampliar o remodelar tu inmueble", href: "/financiamiento-con-garantia-hipotecaria/construccion", icono: iconoObra },
   { nombre: "Consolidación de Deudas", detalle: "Si quieres unir tus deudas en una sola cuota", href: "/financiamiento-con-garantia-hipotecaria/consolidacion-de-deudas", icono: iconoDeudas },
   { nombre: "Compra de Hipoteca", detalle: "Si ya tienes una hipoteca y quieres trasladarla", href: "/financiamiento-con-garantia-hipotecaria/compra-de-hipoteca", icono: iconoTraslado },
+];
+
+// Servicios que no son préstamo con garantía hipotecaria: van en un grupo aparte.
+const otrasSoluciones: Opcion[] = [
+  { nombre: "Crédito con Garantía Vehicular", detalle: "Si quieres liquidez rápida dejando tu auto en custodia", href: "/prestamo-con-garantia-vehicular", icono: iconoAuto },
+  { nombre: "Saneamiento Predial", detalle: "Si necesitas regularizar tu propiedad ante SUNARP", href: "/saneamiento-predial", icono: iconoDocumento },
 ];
 
 const opcionesEmpresas: Opcion[] = [
@@ -53,11 +61,12 @@ type TarjetaProps = {
   foto: StaticImageData;
   altFoto: string;
   opciones: Opcion[];
+  extras?: Opcion[];
   cta: { texto: string; href: string };
   variante: "dorada" | "azul";
 };
 
-const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, cta, variante }: TarjetaProps) => {
+const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, extras, cta, variante }: TarjetaProps) => {
   // En móvil la lista se puede plegar; en escritorio siempre está visible.
   const [abierta, setAbierta] = useState(true);
   const dorada = variante === "dorada";
@@ -106,6 +115,27 @@ const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, c
             </li>
           ))}
         </ul>
+        {extras && extras.length > 0 && (
+          <div className="mt-4 pt-3 border-t-2 border-dashed border-[#E6E8EF]">
+            <p className="text-[11px] font-extrabold text-[#6B7390] uppercase tracking-[0.1em] pb-2">También te ayudamos con</p>
+            <ul className="grid sm:grid-cols-2 gap-2">
+              {extras.map((o) => (
+                <li key={o.href}>
+                  <Link
+                    href={o.href}
+                    className="flex items-center gap-3 h-full p-2.5 rounded-xl bg-[#F3F5F9] text-[#1D2B6C] hover:bg-[#E8ECF8] transition-colors"
+                  >
+                    <span className="w-[34px] h-[34px] rounded-[10px] bg-white flex items-center justify-center shrink-0">{o.icono}</span>
+                    <span className="flex-1 min-w-0">
+                      <span className="block text-[13px] font-extrabold leading-tight">{o.nombre}</span>
+                      <span className="block text-[11.5px] leading-[1.35] text-[#6B7390]">{o.detalle}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className="mt-4 md:mt-auto md:pt-[26px]">
           <Link
             href={cta.href}
@@ -148,6 +178,7 @@ const PortadaV2Page = () => {
             foto={fotoPersonas}
             altFoto="Familia emprendedora en su tienda de productos peruanos"
             opciones={opcionesPersonas}
+            extras={otrasSoluciones}
             cta={{ texto: "Ver financiamiento para personas y pymes", href: "/financiamiento-con-garantia-hipotecaria" }}
             variante="dorada"
           />
