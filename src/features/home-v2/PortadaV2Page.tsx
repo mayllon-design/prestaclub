@@ -139,7 +139,7 @@ const PortadaV2Page = () => {
           </p>
         </div>
 
-        <div className="relative max-w-[1200px] mx-auto grid md:grid-cols-2 gap-3.5 md:gap-7 px-4 md:px-10 pt-5 md:pt-[30px] items-stretch">
+        <div className="relative max-w-[1200px] mx-auto grid md:grid-cols-2 gap-3.5 md:gap-12 px-4 md:px-10 pt-5 md:pt-[30px] items-stretch">
           <Tarjeta
             numero="01"
             etiqueta="Personas y Pymes"
