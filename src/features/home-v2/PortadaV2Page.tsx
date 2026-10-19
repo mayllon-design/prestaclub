@@ -7,8 +7,8 @@ import { useState, type ReactNode } from "react";
 import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
 import Layout from "@/core/layouts/MainLayout";
-import fotoPersonas from "@/assets/financiamiento-con-garantia-hipotecaria.png";
-import fotoEmpresas from "@/assets/team-working.jpg";
+import fotoPersonas from "@/assets/portada-personas-pymes.webp";
+import fotoEmpresas from "@/assets/portada-empresas-inmobiliario.webp";
 
 type Opcion = { nombre: string; detalle: string; href: string; icono: ReactNode };
 
@@ -146,7 +146,7 @@ const PortadaV2Page = () => {
             titulo={<>Soy persona o tengo un negocio <span className="text-[#F5921E]">(DNI / RUC 10)</span></>}
             resumen="De S/ 10 mil a S/ 1 millón"
             foto={fotoPersonas}
-            altFoto="Familia frente a su casa, usada como garantía de un préstamo"
+            altFoto="Familia emprendedora en su tienda de productos peruanos"
             opciones={opcionesPersonas}
             cta={{ texto: "Ver financiamiento para personas y pymes", href: "/financiamiento-con-garantia-hipotecaria" }}
             variante="dorada"
@@ -157,7 +157,7 @@ const PortadaV2Page = () => {
             titulo={<>Represento una empresa <span className="text-[#F5921E]">(RUC 20)</span> o desarrollo proyectos</>}
             resumen="Desde S/ 200,000 · personas jurídicas"
             foto={fotoEmpresas}
-            altFoto="Equipo de una empresa reunido en una oficina"
+            altFoto="Edificio en construcción con grúas en Lima al atardecer"
             opciones={opcionesEmpresas}
             cta={{ texto: "Ver financiamiento para empresas", href: "/prestamos-con-garantia-hipotecaria-para-empresas" }}
             variante="azul"
