@@ -28,7 +28,7 @@ const iconoDocumento = svg(<><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a
 const iconoEdificio = svg(<path d="M3 21h18M5 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M15 9h3a1 1 0 0 1 1 1v11M8 8h2M8 12h2M8 16h2" />);
 
 const opcionesPersonas: Opcion[] = [
-  { nombre: "Garantía Hipotecaria", detalle: "Si necesitas dinero de libre uso con tu inmueble como respaldo", href: "/financiamiento-con-garantia-hipotecaria", icono: iconoCasa },
+  { nombre: "Libre uso", detalle: "Si necesitas dinero de libre uso con tu inmueble como respaldo", href: "/financiamiento-con-garantia-hipotecaria", icono: iconoCasa },
   { nombre: "Capital de Trabajo", detalle: "Si necesitas capital para tu negocio: mercadería, campaña o local", href: "/capital-de-trabajo", icono: iconoMaletin },
   { nombre: "Construcción", detalle: "Si quieres construir, ampliar o remodelar tu inmueble", href: "/financiamiento-con-garantia-hipotecaria/construccion", icono: iconoObra },
   { nombre: "Consolidación de Deudas", detalle: "Si quieres unir tus deudas en una sola cuota", href: "/financiamiento-con-garantia-hipotecaria/consolidacion-de-deudas", icono: iconoDeudas },
@@ -87,13 +87,15 @@ type TarjetaProps = {
   altFoto: string;
   opciones: Opcion[];
   extras?: Opcion[];
+  // Si se indica, las opciones se muestran como subcategorías de esta categoría.
+  categoria?: { nombre: string; icono: ReactNode };
   destacado?: Destacado;
   opcionesGrandes?: boolean;
   cta: { texto: string; href: string };
   variante: "dorada" | "azul";
 };
 
-const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, extras, destacado, opcionesGrandes, cta, variante }: TarjetaProps) => {
+const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, extras, categoria, destacado, opcionesGrandes, cta, variante }: TarjetaProps) => {
   // En móvil la lista se puede plegar; en escritorio siempre está visible.
   const [abierta, setAbierta] = useState(true);
   const dorada = variante === "dorada";
@@ -143,6 +145,34 @@ const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, e
             </li>
           ))}
         </ul>
+        ) : categoria ? (
+        <div className="pt-1">
+          <div className="flex items-center gap-3 md:gap-3.5 py-2">
+            <span className="w-[34px] h-[34px] md:w-9 md:h-9 rounded-[10px] bg-[#F9B826] flex items-center justify-center shrink-0 [&_svg]:stroke-[#1A2340]">{categoria.icono}</span>
+            <span className="flex-1 min-w-0">
+              <span className="block text-[14.5px] md:text-base font-extrabold text-[#1D2B6C] leading-tight">{categoria.nombre}</span>
+              <span className="block text-[11.5px] md:text-xs text-[#6B7390]">{opciones.length} opciones</span>
+            </span>
+          </div>
+          <ul className="ml-[17px] md:ml-[18px] pl-4 md:pl-5 border-l-2 border-[#F9B826]/50 flex flex-col">
+            {opciones.map((o, i) => (
+              <li key={o.href} className="relative">
+                <span className="absolute -left-4 md:-left-5 top-1/2 w-3 md:w-4 border-t-2 border-[#F9B826]/50" aria-hidden="true" />
+                <Link
+                  href={o.href}
+                  className={`flex items-center gap-3 min-h-[52px] py-2 px-1.5 text-[#1D2B6C] rounded-[10px] hover:bg-[#F3F5F9] transition-colors ${i < opciones.length - 1 ? "border-b border-[#E6E8EF]" : ""}`}
+                >
+                  <span className="w-[30px] h-[30px] rounded-lg bg-[#FFF3D6] flex items-center justify-center shrink-0 [&_svg]:w-4 [&_svg]:h-4">{o.icono}</span>
+                  <span className="flex-1 min-w-0">
+                    <span className="block text-[13.5px] md:text-sm font-extrabold">{o.nombre}</span>
+                    <span className="block text-[11.5px] md:text-[12.5px] leading-[1.35] text-[#6B7390]">{o.detalle}</span>
+                  </span>
+                  <span className="text-[#F5921E] font-extrabold" aria-hidden="true">→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
         ) : (
         <ul className="flex flex-col">
           {opciones.map((o, i) => (
@@ -247,6 +277,7 @@ const PortadaV2Page = () => {
             foto={fotoPersonas}
             altFoto="Familia emprendedora en su tienda de productos peruanos"
             opciones={opcionesPersonas}
+            categoria={{ nombre: "Financiamiento con Garantía Hipotecaria", icono: iconoCasa }}
             extras={otrasSoluciones}
             cta={{ texto: "Ver financiamiento para personas y pymes", href: "/financiamiento-con-garantia-hipotecaria" }}
             variante="dorada"
