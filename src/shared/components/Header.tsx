@@ -23,8 +23,6 @@ const Header = () => {
   const isActive = (path: string) => pathname === path;
   const isDevoluciones = pathname === "/gestion-de-devoluciones-de-saldo";
   const isSaneamiento = pathname === "/saneamiento-predial";
-  // Portada alternativa en evaluación: header solo con el logo.
-  const soloLogo = pathname === "/inicio-v2";
 
   const wizardAnchors: Record<string, string> = {
     "/prestamo-con-garantia-vehicular": "#simulador",
@@ -41,6 +39,9 @@ const Header = () => {
   const precalificarHref = wizardAnchors[pathname] ?? "/financiamiento-con-garantia-hipotecaria#precalificar";
   const precalificarText = isSaneamiento ? "CONSULTAR AHORA" : "PRECALIFICAR";
 
+  // Portada alternativa en evaluación: se muestra sin header.
+  if (pathname === "/inicio-v2") return null;
+
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:h-20">
@@ -55,7 +56,6 @@ const Header = () => {
         </Link>
 
         {/* Desktop Nav */}
-        {!soloLogo && (
         <nav className="hidden lg:flex items-center gap-1">
           <Link
             href="/"
@@ -105,10 +105,9 @@ const Header = () => {
             Contáctanos
           </Link>
         </nav>
-        )}
 
         {/* CTA */}
-        {!isDevoluciones && !soloLogo && (
+        {!isDevoluciones && (
           <div className="hidden lg:flex items-center gap-3">
             <Button variant="hero" size="lg" asChild>
               <Link href={precalificarHref}>{precalificarText}</Link>
@@ -117,15 +116,13 @@ const Header = () => {
         )}
 
         {/* Mobile Toggle */}
-        {!soloLogo && (
-          <button className="lg:hidden p-2" onClick={() => setMobileOpen(!mobileOpen)}>
-            {mobileOpen ? <X className="h-6 w-6 text-foreground" /> : <Menu className="h-6 w-6 text-foreground" />}
-          </button>
-        )}
+        <button className="lg:hidden p-2" onClick={() => setMobileOpen(!mobileOpen)}>
+          {mobileOpen ? <X className="h-6 w-6 text-foreground" /> : <Menu className="h-6 w-6 text-foreground" />}
+        </button>
       </div>
 
       {/* Mobile Menu */}
-      {mobileOpen && !soloLogo && (
+      {mobileOpen && (
         <div className="lg:hidden bg-card border-t border-border animate-fade-in">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-1">
             <Link href="/" className="px-4 py-3 rounded-xl text-sm font-medium hover:bg-muted" onClick={() => setMobileOpen(false)}>Principal</Link>
