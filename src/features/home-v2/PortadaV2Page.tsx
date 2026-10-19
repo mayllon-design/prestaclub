@@ -41,6 +41,19 @@ const otrasSoluciones: Opcion[] = [
   { nombre: "Saneamiento Predial", detalle: "Si necesitas regularizar tu propiedad ante SUNARP", href: "/saneamiento-predial", icono: iconoDocumento },
 ];
 
+type Destacado = { titulo: string; valor: string; nota: string; puntos: string[] };
+
+const datosEmpresas: Destacado = {
+  titulo: "Por qué las empresas nos eligen",
+  valor: "S/ 200,000 – S/ 2,000,000",
+  nota: "Rango de financiamiento para empresas",
+  puntos: [
+    "Evaluamos el valor de tu inmueble, no solo tu historial",
+    "Fondos de inversión institucionales, no banca tradicional",
+    "Desarrollo inmobiliario con cobertura en todo el Perú",
+  ],
+};
+
 const opcionesEmpresas: Opcion[] = [
   { nombre: "Garantía Hipotecaria para Empresas", detalle: "Si tu empresa (RUC 20) necesita capital desde S/ 200,000", href: "/prestamos-con-garantia-hipotecaria-para-empresas", icono: iconoEdificio },
   { nombre: "Desarrollo Inmobiliario", detalle: "Si quieres financiar un proyecto inmobiliario", href: "/desarrollo-inmobiliario", icono: iconoObra },
@@ -62,11 +75,12 @@ type TarjetaProps = {
   altFoto: string;
   opciones: Opcion[];
   extras?: Opcion[];
+  destacado?: Destacado;
   cta: { texto: string; href: string };
   variante: "dorada" | "azul";
 };
 
-const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, extras, cta, variante }: TarjetaProps) => {
+const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, extras, destacado, cta, variante }: TarjetaProps) => {
   // En móvil la lista se puede plegar; en escritorio siempre está visible.
   const [abierta, setAbierta] = useState(true);
   const dorada = variante === "dorada";
@@ -136,6 +150,28 @@ const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, e
             </ul>
           </div>
         )}
+        {destacado && (
+          <div className="mt-4 md:mt-6 rounded-2xl bg-[#EEF1FA] p-5 md:p-6 flex flex-col md:flex-1">
+            <p className="text-[11px] font-extrabold text-[#6B7390] uppercase tracking-[0.1em]">{destacado.titulo}</p>
+            <p className="mt-3 text-[22px] md:text-[28px] font-extrabold text-[#1D2B6C] leading-tight">
+              {/* Cada monto queda entero; si no cabe, el salto cae después del guion. */}
+              {destacado.valor.split(" – ").map((parte, i) => (
+                <span key={parte}>{i > 0 && " – "}<span className="whitespace-nowrap">{parte}</span></span>
+              ))}
+            </p>
+            <p className="text-[12.5px] text-[#6B7390]">{destacado.nota}</p>
+            <ul className="mt-4 md:mt-auto md:pt-5 flex flex-col gap-2.5">
+              {destacado.puntos.map((punto) => (
+                <li key={punto} className="flex items-start gap-2.5 text-[13px] md:text-sm font-semibold text-[#1D2B6C] leading-snug">
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-[#1D2B6C] text-white flex items-center justify-center shrink-0" aria-hidden="true">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5L20 7" /></svg>
+                  </span>
+                  {punto}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className="mt-4 md:mt-auto md:pt-[26px]">
           <Link
             href={cta.href}
@@ -190,6 +226,7 @@ const PortadaV2Page = () => {
             foto={fotoEmpresas}
             altFoto="Edificio en construcción con grúas en Lima al atardecer"
             opciones={opcionesEmpresas}
+            destacado={datosEmpresas}
             cta={{ texto: "Ver financiamiento para empresas", href: "/prestamos-con-garantia-hipotecaria-para-empresas" }}
             variante="azul"
           />
