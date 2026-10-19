@@ -39,10 +39,10 @@ const opcionesEmpresas: Opcion[] = [
 ];
 
 const cifras = [
-  { valor: "+24", texto: "años en el mercado", corto: "años" },
-  { valor: "+15,000", texto: "operaciones gestionadas", corto: "operaciones" },
-  { valor: "+S/ 700M", texto: "desembolsados", corto: "desembolsados" },
-  { valor: "SBS", texto: "empresa registrada", corto: "registrados" },
+  { valor: "+24", texto: "años en el mercado" },
+  { valor: "+15,000", texto: "operaciones gestionadas" },
+  { valor: "+S/ 700M", texto: "desembolsados" },
+  { valor: "SBS", texto: "empresa registrada" },
 ];
 
 type TarjetaProps = {
@@ -164,13 +164,12 @@ const PortadaV2Page = () => {
           />
         </div>
 
-        <div className="relative grid grid-cols-4 gap-1 md:flex md:justify-center md:gap-12 px-4 md:px-16 pt-5 pb-6 md:pt-[22px] md:pb-[26px]">
+        <div className="relative grid grid-cols-2 gap-y-8 gap-x-4 md:flex md:justify-center md:gap-20 px-6 md:px-16 pt-14 pb-16 md:pt-20 md:pb-24">
           {cifras.map((c) => (
             <div key={c.valor} className="text-center">
-              <div className="text-base md:text-[22px] font-extrabold text-[#1D2B6C]">{c.valor}</div>
-              <div className="text-[10px] md:text-xs text-[#6B7390]">
-                <span className="md:hidden">{c.corto}</span>
-                <span className="hidden md:inline">{c.texto}</span>
+              <div className="text-[32px] md:text-5xl font-extrabold text-[#1D2B6C] leading-none">{c.valor}</div>
+              <div className="mt-2 text-sm md:text-base text-[#6B7390]">
+                {c.texto}
               </div>
             </div>
           ))}
