@@ -185,7 +185,7 @@ const PortadaV2Page = () => {
           <Tarjeta
             numero="02"
             etiqueta="Empresas e Inmobiliario"
-            titulo={<>Represento una empresa <span className="text-[#F5921E]">(RUC 20)</span> o desarrollo proyectos</>}
+            titulo={<>Represento una empresa <span className="text-[#F5921E]">(RUC 20)</span> o desarrollo proyectos inmobiliarios</>}
             resumen="Desde S/ 200,000 · personas jurídicas"
             foto={fotoEmpresas}
             altFoto="Edificio en construcción con grúas en Lima al atardecer"
