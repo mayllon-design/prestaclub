@@ -54,10 +54,22 @@ const datosEmpresas: Destacado = {
   ],
 };
 
+// Cómo se llena la tarjeta de empresas, que tiene menos opciones que la de personas:
+// "datos"   -> opciones normales + recuadro "Por qué las empresas nos eligen"
+// "grandes" -> las dos opciones como tarjetas grandes que ocupan todo el alto
+const ESTILO_EMPRESAS = "grandes" as "datos" | "grandes";
+
 const opcionesEmpresas: Opcion[] = [
   { nombre: "Garantía Hipotecaria para Empresas", detalle: "Si tu empresa (RUC 20) necesita capital desde S/ 200,000", href: "/prestamos-con-garantia-hipotecaria-para-empresas", icono: iconoEdificio },
   { nombre: "Desarrollo Inmobiliario", detalle: "Si quieres financiar un proyecto inmobiliario", href: "/desarrollo-inmobiliario", icono: iconoObra },
 ];
+
+const detalleLargoEmpresas: Record<string, string> = {
+  "/prestamos-con-garantia-hipotecaria-para-empresas":
+    "Capital de S/ 200,000 a S/ 2,000,000 para tu empresa con RUC 20, usando un inmueble como respaldo. La evaluación mira el valor de la garantía, no solo el historial.",
+  "/desarrollo-inmobiliario":
+    "Financiamiento y crédito puente para tu proyecto inmobiliario, a través de fondos de inversión institucionales. Cobertura en todo el Perú.",
+};
 
 const cifras = [
   { valor: "+24", texto: "años en el mercado" },
@@ -76,11 +88,12 @@ type TarjetaProps = {
   opciones: Opcion[];
   extras?: Opcion[];
   destacado?: Destacado;
+  opcionesGrandes?: boolean;
   cta: { texto: string; href: string };
   variante: "dorada" | "azul";
 };
 
-const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, extras, destacado, cta, variante }: TarjetaProps) => {
+const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, extras, destacado, opcionesGrandes, cta, variante }: TarjetaProps) => {
   // En móvil la lista se puede plegar; en escritorio siempre está visible.
   const [abierta, setAbierta] = useState(true);
   const dorada = variante === "dorada";
@@ -112,6 +125,25 @@ const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, e
 
       <div className={`${abierta ? "flex" : "hidden"} md:flex flex-col flex-1 px-[18px] pb-[18px] pt-3.5 md:px-7 md:pb-[26px]`}>
         <p className="text-[13px] md:text-sm font-extrabold text-[#1D2B6C] pb-1">Elige según tu necesidad</p>
+        {opcionesGrandes ? (
+        <ul className="flex flex-col gap-3 md:gap-4 md:flex-1 pt-2">
+          {opciones.map((o) => (
+            <li key={o.href} className="md:flex-1 flex">
+              <Link
+                href={o.href}
+                className="group flex-1 flex flex-col md:flex-row md:items-center gap-3 md:gap-5 p-4 md:px-6 md:py-5 rounded-2xl border-[1.5px] border-[#E6E8EF] bg-white text-[#1D2B6C] hover:border-[#F9B826] hover:bg-[#FFFBF2] transition-colors"
+              >
+                <span className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-[#FFF3D6] flex items-center justify-center shrink-0 [&_svg]:w-6 [&_svg]:h-6 md:[&_svg]:w-8 md:[&_svg]:h-8">{o.icono}</span>
+                <span className="flex flex-col gap-1.5 md:gap-2 min-w-0">
+                  <span className="block text-base md:text-lg font-extrabold leading-tight">{o.nombre}</span>
+                  <span className="block text-[13px] md:text-[13.5px] leading-relaxed text-[#6B7390]">{detalleLargoEmpresas[o.href] ?? o.detalle}</span>
+                  <span className="text-[13px] md:text-sm font-extrabold text-[#F5921E] group-hover:translate-x-1 transition-transform">Conocer más →</span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        ) : (
         <ul className="flex flex-col">
           {opciones.map((o, i) => (
             <li key={o.href}>
@@ -129,6 +161,7 @@ const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, e
             </li>
           ))}
         </ul>
+        )}
         {extras && extras.length > 0 && (
           <div className="mt-4 pt-3 border-t-2 border-dashed border-[#E6E8EF]">
             <p className="text-[11px] font-extrabold text-[#6B7390] uppercase tracking-[0.1em] pb-2">También te ayudamos con</p>
@@ -226,7 +259,8 @@ const PortadaV2Page = () => {
             foto={fotoEmpresas}
             altFoto="Edificio en construcción con grúas en Lima al atardecer"
             opciones={opcionesEmpresas}
-            destacado={datosEmpresas}
+            destacado={ESTILO_EMPRESAS === "datos" ? datosEmpresas : undefined}
+            opcionesGrandes={ESTILO_EMPRESAS === "grandes"}
             cta={{ texto: "Ver financiamiento para empresas", href: "/prestamos-con-garantia-hipotecaria-para-empresas" }}
             variante="azul"
           />
