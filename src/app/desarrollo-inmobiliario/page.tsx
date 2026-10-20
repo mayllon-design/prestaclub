@@ -3,7 +3,7 @@ import DesarrolloInmobiliarioPage from "@/features/desarrollo-inmobiliario/Desar
 
 export const metadata: Metadata = {
     title: "PrestaClub - Desarrollo Inmobiliario",
-    description: "Financiamiento puente para tu proyecto inmobiliario.",
+    description: "Financiamiento y crédito puente para tu proyecto inmobiliario, a través de fondos de inversión institucionales. Cobertura en todo el Perú.",
     alternates: {
         canonical: "/desarrollo-inmobiliario",
     },

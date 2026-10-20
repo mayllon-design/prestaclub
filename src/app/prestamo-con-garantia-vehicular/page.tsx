@@ -5,7 +5,7 @@ import { faqPageSchema } from "@/shared/lib/structuredData";
 
 export const metadata: Metadata = {
     title: "Crédito con Garantía Vehicular con custodia - PrestaClub",
-    description: "Obtén un préstamo rápido usando tu vehículo como garantía, en plazos de hasta 180 días. Tu vehículo queda protegido en custodia segura hasta cancelar el crédito.",
+    description: "Obtén un préstamo rápido con tu vehículo como garantía, en plazos de hasta 180 días. Tu vehículo queda en custodia segura hasta cancelar el crédito.",
     alternates: {
         canonical: "/prestamo-con-garantia-vehicular",
     },
