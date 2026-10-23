@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import pool from '@/shared/lib/db';
+import { getAdminUser, unauthorized } from '@/shared/lib/adminAuth';
 
 export async function GET(
   request: Request,
@@ -22,6 +23,7 @@ export async function PUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!(await getAdminUser(request))) return unauthorized();
   const { id } = await params;
   try {
     const body = await request.json();
@@ -49,6 +51,7 @@ export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!(await getAdminUser(request))) return unauthorized();
   const { id } = await params;
   try {
     await pool.execute('DELETE FROM articles WHERE id = ?', [id]);

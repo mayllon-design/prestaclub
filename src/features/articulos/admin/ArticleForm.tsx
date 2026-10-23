@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Article, CreateArticleInput } from '../types';
-import { articlesApi } from '../api';
+import { articlesApi, authHeaders } from '../api';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Textarea } from '@/shared/components/ui/textarea';
@@ -111,6 +111,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
       // Llamada a nuestro nuevo API de subida local
       const response = await fetch('/api/upload', {
         method: 'POST',
+        headers: await authHeaders(),
         body: formData,
       });
 

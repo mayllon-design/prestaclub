@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server';
 import pool from '@/shared/lib/db';
+import { getAdminUser, unauthorized } from '@/shared/lib/adminAuth';
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const isAdmin = searchParams.get('admin') === 'true';
+    // El listado de admin incluye borradores y el contenido completo: solo con sesión.
+    if (isAdmin && !(await getAdminUser(request))) return unauthorized();
 
     // Para el listado público NO traemos el `content` (HTML completo, muy pesado):
     // solo las columnas que la tarjeta necesita. El admin sí trae todo.
@@ -44,6 +47,7 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  if (!(await getAdminUser(request))) return unauthorized();
   try {
     const body = await request.json();
     const { 
