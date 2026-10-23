@@ -29,12 +29,20 @@ export const faqsHipotecario: Faq[] = [
     a: "Sí, es posible. El inmueble ofrecido en garantía puede ser de propiedad de un familiar o de un tercero, siempre que su propietario participe voluntariamente en la operación como garante hipotecario y manifieste su consentimiento mediante la suscripción de la documentación correspondiente. Asimismo, el inmueble debe encontrarse inscrito en SUNARP y contar con una situación registral que permita su evaluación. La constitución de la garantía se formaliza ante notario, garantizando que todas las partes conozcan el alcance y los efectos jurídicos de la operación. Durante el proceso, Prestaclub brinda la estructuración de la operación y la asesoría legal y financiera correspondiente.",
   },
   {
+    q: "¿Puedo poner mi casa como aval o dejarla en garantía para un préstamo?",
+    a: "Sí, eso es exactamente un préstamo con garantía hipotecaria. En el lenguaje cotidiano se dice «poner la casa como aval», «dejar la casa en garantía» o «pedir un préstamo con las escrituras»; en términos legales, lo que ocurre es que se constituye una hipoteca sobre el inmueble y se inscribe en SUNARP. No entregas tus escrituras ni la posesión: sigues siendo el propietario y continúas viviendo o trabajando en el inmueble mientras pagas. Al cancelar el préstamo, la hipoteca se levanta. Si la casa es de un familiar, su propietario participa como garante hipotecario y firma la operación ante notario.",
+  },
+  {
     q: "¿Un terreno también sirve como garantía o solo casas?",
     a: "Sí, un terreno también puede ser ofrecido en garantía. Además de casas, departamentos y locales comerciales, Prestaclub puede estructurar operaciones respaldadas con terrenos urbanos con cerco perimétrico y otros inmuebles que cumplan con los criterios de evaluación. La viabilidad de la operación dependerá, entre otros aspectos, del valor de realización del inmueble, determinado mediante una tasación profesional, de su situación legal y registral, y del cumplimiento de los requisitos establecidos por el fondo de inversión que otorgará el financiamiento. Si el inmueble resulta apto para respaldar la operación, podrás acceder a una alternativa de financiamiento sin necesidad de vender tu propiedad.",
   },
   {
     q: "¿Es un préstamo personal o para empresas?",
     a: "Ambos, con condiciones distintas. Para personas naturales es un préstamo personal con garantía hipotecaria: pones tu casa, departamento, local o terreno como respaldo y el monto va desde S/ 10,000 hasta S/ 1,000,000. Para empresas con RUC 20 tenemos una línea específica, desde S/ 200,000 hasta S/ 2,000,000, que se evalúa en nuestra página de préstamos para empresas.",
+  },
+  {
+    q: "¿Es lo mismo un crédito con garantía hipotecaria que un préstamo con garantía hipotecaria?",
+    a: "Sí. «Crédito con garantía hipotecaria», «préstamo con garantía hipotecaria» y «préstamo con garantía inmobiliaria» son nombres distintos para la misma operación: un financiamiento respaldado por un inmueble inscrito en SUNARP. Lo que sí es diferente es el «crédito hipotecario» que ofrecen los bancos, que sirve únicamente para comprar una vivienda. En el préstamo con garantía hipotecaria tú ya eres dueño del inmueble y lo usas como respaldo para obtener liquidez de libre disponibilidad.",
   },
   {
     q: "¿Cuánto demora el desembolso?",

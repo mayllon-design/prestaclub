@@ -247,7 +247,8 @@ const FinanciamientoHipotecario = () => {
               Es lo contrario — tú ya tienes la propiedad, y la usas como herramienta para obtener liquidez.
             </p>
             <p>
-              También se le conoce como crédito con garantía hipotecaria. Para personas naturales es un{" "}
+              También se le conoce como crédito con garantía hipotecaria o préstamo con garantía inmobiliaria. Para
+              personas naturales es un{" "}
               <strong className="text-foreground">préstamo personal con garantía hipotecaria</strong>: tú pones tu
               casa, departamento, local o terreno como respaldo. Si quien necesita el capital es tu empresa, revisa
               nuestro{" "}
@@ -260,8 +261,37 @@ const FinanciamientoHipotecario = () => {
         </div>
       </section>
 
-      {/* Steps */}
+      {/* Nombres de la misma operación: crédito / aval / garantía inmobiliaria */}
       <section className="section-padding bg-muted/50">
+        <div className="container mx-auto max-w-3xl">
+          <p className="text-sm font-bold text-gold uppercase tracking-widest mb-3">
+            Distintos nombres, la misma operación
+          </p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground leading-tight mb-6">
+            ¿Crédito con garantía hipotecaria, aval hipotecario o garantía inmobiliaria?
+          </h2>
+          <div className="space-y-4 text-muted-foreground font-body leading-relaxed">
+            <p>
+              En el Perú la gente lo busca de muchas formas:{" "}
+              <strong className="text-foreground">crédito con garantía hipotecaria</strong>,{" "}
+              <strong className="text-foreground">préstamo con garantía inmobiliaria</strong>,{" "}
+              <strong className="text-foreground">préstamo con aval hipotecario</strong>, &ldquo;dejar mi casa en
+              garantía&rdquo; o &ldquo;préstamo con las escrituras de mi casa&rdquo;. Todas describen lo mismo: un
+              préstamo respaldado por un inmueble, con una hipoteca inscrita en SUNARP.
+            </p>
+            <p>
+              Dos precisiones útiles. <strong className="text-foreground">No entregas tus escrituras ni tu casa</strong>:
+              sigues siendo el dueño y viviendo en ella; lo único que cambia es que la hipoteca queda anotada en la
+              partida registral mientras pagas. Y cuando se habla de &ldquo;aval&rdquo;, en este producto el respaldo es
+              el inmueble; si la propiedad es de un familiar, esa persona participa como garante hipotecario y firma la
+              operación ante notario.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Steps */}
+      <section className="section-padding bg-background">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-8 text-center">¿Cómo funciona?</h2>
 
@@ -299,7 +329,7 @@ const FinanciamientoHipotecario = () => {
       </section>
 
       {/* Cuánto prestan */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-muted/50">
         <div className="container mx-auto max-w-3xl">
           <p className="text-sm font-bold text-gold uppercase tracking-widest mb-3">
             La pregunta clave
@@ -320,12 +350,19 @@ const FinanciamientoHipotecario = () => {
             </p>
           </div>
 
+          <h2 id="simulador" className="text-2xl md:text-3xl font-extrabold text-foreground leading-tight mt-12 mb-3 scroll-mt-24">
+            Simulador de préstamo con garantía hipotecaria
+          </h2>
+          <p className="text-muted-foreground font-body leading-relaxed mb-6">
+            Ingresa el valor aproximado de tu propiedad y calcula en segundos el monto al que podrías acceder y una
+            cuota referencial.
+          </p>
           <SimuladorHipotecario />
         </div>
       </section>
 
       {/* Requisitos */}
-      <section className="section-padding bg-muted/50">
+      <section className="section-padding bg-background">
         <div className="container mx-auto max-w-5xl">
           <p className="text-sm font-bold text-gold uppercase tracking-widest mb-3">
             Menos de los que imaginas
@@ -405,7 +442,7 @@ const FinanciamientoHipotecario = () => {
       </section>
 
       {/* Costos */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-muted/50">
         <div className="container mx-auto max-w-5xl">
           <p className="text-sm font-bold text-gold uppercase tracking-widest mb-3">
             Sin sorpresas
@@ -440,7 +477,7 @@ const FinanciamientoHipotecario = () => {
       </section>
 
       {/* Qué pasa si no pago */}
-      <section className="section-padding bg-muted/50">
+      <section className="section-padding bg-background">
         <div className="container mx-auto max-w-5xl">
           <p className="text-sm font-bold text-gold uppercase tracking-widest mb-3">
             La pregunta que todos tienen
@@ -475,7 +512,7 @@ const FinanciamientoHipotecario = () => {
       </section>
 
       {/* Comparativa */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-muted/50">
         <div className="container mx-auto max-w-5xl">
           <p className="text-sm font-bold text-gold uppercase tracking-widest mb-3">
             Compara antes de decidir
@@ -522,7 +559,7 @@ const FinanciamientoHipotecario = () => {
       </section>
 
       {/* Solutions / Buyers */}
-      <section className="section-padding bg-muted/50">
+      <section className="section-padding bg-background">
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4 text-center">Soluciones para cada necesidad</h2>
           <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto font-body">Elige el tipo de financiamiento que mejor se adapte a tu situación.</p>
@@ -552,7 +589,7 @@ const FinanciamientoHipotecario = () => {
       </section>
 
       {/* Testimonial */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-muted/50">
         <div className="container mx-auto max-w-3xl text-center">
           <div className="card-elevated p-10">
             <div className="flex gap-1 justify-center mb-4">
@@ -568,7 +605,7 @@ const FinanciamientoHipotecario = () => {
       </section>
 
       {/* FAQ */}
-      <section className="section-padding bg-muted/50" id="faq">
+      <section className="section-padding bg-background" id="faq">
         <div className="container mx-auto max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-8 text-center">Preguntas frecuentes</h2>
           <div className="flex flex-col gap-4">
@@ -586,7 +623,7 @@ const FinanciamientoHipotecario = () => {
       </section>
 
       {/* Advantages */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-muted/50">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-8 text-center">Ventajas de trabajar con PrestaClub</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
