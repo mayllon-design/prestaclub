@@ -14,6 +14,7 @@ import { LocationModal } from "@/shared/components/LocationModal";
 import { SimuladorHipotecario } from "@/features/hipotecario/SimuladorHipotecario";
 import { faqsHipotecario } from "@/features/hipotecario/faqs";
 
+import { openWhatsApp } from "@/shared/lib/whatsapp";
 const heroBadges: { icon: LucideIcon; label: string; href?: string }[] = [
   { icon: FileText, label: "Registrados ante la SBS", href: "/uploads/articulos/Resolucion-SBS.PDF" },
   { icon: Scale, label: "Asesoría legal en todo el proceso" },
@@ -152,7 +153,7 @@ const FinanciamientoHipotecario = () => {
     clearTracking();
     const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
     const url = getWhatsAppUrl(customMessage);
-    window.open(url, "_blank", "noopener,noreferrer");
+    openWhatsApp(url);
   };
 
   return (

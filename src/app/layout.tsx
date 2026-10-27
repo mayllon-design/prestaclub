@@ -5,6 +5,7 @@ import Script from "next/script";
 import { Suspense } from "react"; // 1. Importamos Suspense
 import { Toaster } from "sonner";
 import { organizationSchema } from "@/shared/lib/structuredData";
+import WhatsAppAppLinks from "@/shared/components/WhatsAppAppLinks";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -80,6 +81,7 @@ export default function RootLayout({
           {children}
         </Suspense>
         <Toaster position="top-right" richColors />
+        <WhatsAppAppLinks />
       </body>
     </html>
   );

@@ -19,6 +19,7 @@ import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import { trackWhatsAppClick } from "@/shared/lib/tracking";
 import { faqsTerreno } from "@/features/hipotecario/faqsTerreno";
 
+import { openWhatsApp } from "@/shared/lib/whatsapp";
 const heroBadges: { icon: LucideIcon; label: string; href?: string }[] = [
   { icon: FileText, label: "Registrados en la SBS", href: "/uploads/articulos/Resolucion-SBS.PDF" },
   { icon: Scale, label: "Asesoría legal en todo el proceso" },
@@ -71,7 +72,7 @@ const TerrenoPage = () => {
     trackWhatsAppClick({ button_location: "terreno_cta", destino: "Garantía de Terreno" });
     clearTracking();
     const url = getWhatsAppUrl(WHATSAPP_MESSAGE);
-    window.open(url, "_blank", "noopener,noreferrer");
+    openWhatsApp(url);
   };
 
   return (

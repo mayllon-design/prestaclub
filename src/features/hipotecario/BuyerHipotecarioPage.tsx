@@ -18,6 +18,7 @@ import { LocationModal } from "@/shared/components/LocationModal";
 import { useRouter } from "next/navigation";
 
 
+import { openWhatsApp } from "@/shared/lib/whatsapp";
 const WizardHipotecario = ({ buyerType, onComplete }: { buyerType: string; onComplete: (data: WizardData) => void }) => {
   const [step, setStep] = useState(0);
   const [data, setData] = useState<WizardData>({
@@ -217,7 +218,7 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
     clearTracking();
     const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
     const url = getWhatsAppUrl(customMessage);
-    window.open(url, "_blank", "noopener,noreferrer");
+    openWhatsApp(url);
   };
 
   const handleWizardComplete = (data: WizardData) => {
@@ -234,7 +235,7 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
       ubicacion: data.ubicacionInmueble,
     });
 
-    window.open(getWhatsAppUrl(message), "_blank");
+    openWhatsApp(getWhatsAppUrl(message));
     clearTracking();
   };
 

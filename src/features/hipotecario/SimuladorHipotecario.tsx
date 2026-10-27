@@ -6,6 +6,7 @@ import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import { trackWhatsAppClick } from "@/shared/lib/tracking";
 import { LocationModal } from "@/shared/components/LocationModal";
 
+import { openWhatsApp } from "@/shared/lib/whatsapp";
 // ─── Reglas del producto (referenciales) ───
 // Monto:
 //   1. El valor de realización equivale a ~70% del valor comercial declarado.
@@ -69,7 +70,7 @@ export const SimuladorHipotecario = () => {
       `cuotas mensuales aprox. de ${formatSoles(resultado.cuota)}. ` +
       `Necesito más información sobre el proceso.`;
 
-    window.open(getWhatsAppUrl(message), "_blank", "noopener,noreferrer");
+    openWhatsApp(getWhatsAppUrl(message));
   };
 
   const valor = parseFloat(valorPropiedad) || 0;

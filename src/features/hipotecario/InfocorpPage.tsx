@@ -20,6 +20,7 @@ import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import { trackWhatsAppClick } from "@/shared/lib/tracking";
 import { faqsInfocorp } from "@/features/hipotecario/faqsInfocorp";
 
+import { openWhatsApp } from "@/shared/lib/whatsapp";
 const heroBadges: { icon: LucideIcon; label: string; href?: string }[] = [
   { icon: FileText, label: "Registrados en la SBS", href: "/uploads/articulos/Resolucion-SBS.PDF" },
   { icon: Scale, label: "Asesoría legal en todo el proceso" },
@@ -73,7 +74,7 @@ const InfocorpPage = () => {
     trackWhatsAppClick({ button_location: "infocorp_cta", destino: "Estando en Infocorp" });
     clearTracking();
     const url = getWhatsAppUrl(WHATSAPP_MESSAGE);
-    window.open(url, "_blank", "noopener,noreferrer");
+    openWhatsApp(url);
   };
 
   return (

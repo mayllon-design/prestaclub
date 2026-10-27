@@ -19,6 +19,7 @@ import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 
+import { openWhatsApp } from "@/shared/lib/whatsapp";
 interface WizardData {
     tipoProyecto: string;
     ubicacion: string;
@@ -385,7 +386,7 @@ ${campaign ? `\nCampaña: ${campaign}` : ""}`;
 
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
 
-        window.open(url, "_blank");
+        openWhatsApp(url);
     };
 
     return (

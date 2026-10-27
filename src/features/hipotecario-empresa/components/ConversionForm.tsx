@@ -7,6 +7,7 @@ import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 import { MessageSquare, Send, CheckCircle2, Star, UserCheck2, Landmark } from "lucide-react";
 
+import { openWhatsApp } from "@/shared/lib/whatsapp";
 export const ConversionForm = () => {
   const { getWhatsAppUrl } = useTrafficTracking();
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ export const ConversionForm = () => {
         destino: "Financiamiento Empresarial",
         monto: formData.monto,
       });
-      window.open(getWhatsAppUrl(message), "_blank");
+      openWhatsApp(getWhatsAppUrl(message));
       setIsSubmitting(false);
       setIsSuccess(true);
     }, 1500);

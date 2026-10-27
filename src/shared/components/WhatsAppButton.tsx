@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { LocationModal } from "@/shared/components/LocationModal";
 
+import { openWhatsApp } from "@/shared/lib/whatsapp";
 const WhatsAppButton = () => {
   const { whatsappUrl, getWhatsAppUrl, clearTracking } = useTrafficTracking();
   const pathname = usePathname();
@@ -84,7 +85,7 @@ const WhatsAppButton = () => {
     const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
     const url = getWhatsAppUrl(customMessage);
 
-    window.open(url, "_blank", "noopener,noreferrer");
+    openWhatsApp(url);
   };
 
   return (

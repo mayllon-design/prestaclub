@@ -7,6 +7,7 @@ import { Check, ChevronRight, MessageCircle, Shield, Eye, FileText, Car, AlertTr
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 import { trackWhatsAppClick } from "@/shared/lib/tracking";
 
+import { openWhatsApp } from "@/shared/lib/whatsapp";
 // ─── SCORING DATA ───
 const BRANDS: Record<string, number> = {
     "Toyota": 5, "Hyundai": 5, "Kia": 5, "Nissan": 4, "Chevrolet": 4,
@@ -180,7 +181,7 @@ Quedo atento a su respuesta.`;
         });
 
         const whatsappUrl = getWhatsAppUrl(message);
-        window.open(whatsappUrl, "_blank");
+        openWhatsApp(whatsappUrl);
     };
 
     const yearTooOld = year && (currentYear - parseInt(year)) > 11;

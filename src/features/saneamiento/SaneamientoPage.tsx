@@ -8,6 +8,7 @@ import Layout from "@/core/layouts/MainLayout";
 import VideoSection from "@/shared/components/VideoSection";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 
+import { openWhatsApp } from "@/shared/lib/whatsapp";
 const SaneamientoPredial = () => {
   const { getWhatsAppUrl, clearTracking, campaign } = useTrafficTracking();
   const [step, setStep] = useState(0);
@@ -25,7 +26,7 @@ const SaneamientoPredial = () => {
       `Ubicación: ${data.ubicacion}\nProblema: ${data.tipoProblema}\n` +
       `Documentos: ${data.tieneDocumentos}${campaign ? `\n\nRef: [${campaign}]` : ''}`;
 
-    window.open(getWhatsAppUrl(message), "_blank");
+    openWhatsApp(getWhatsAppUrl(message));
     clearTracking();
   };
 
