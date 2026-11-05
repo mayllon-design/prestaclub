@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, BookOpen } from "lucide-react";
 import logoPresta from "@/assets/logopresta.png";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 
@@ -65,6 +65,9 @@ const Footer = () => {
               <Link href="/contacto" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Contáctanos</Link>
               <a href="/politica-de-privacidad-de-prestaclub-2026.pdf" target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Política de Privacidad</a>
               <Link href="/terminos-y-condiciones" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">Términos y Condiciones</Link>
+              <Link href="/libro-de-reclamaciones" className="inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-primary-foreground transition-colors">
+                <BookOpen className="h-4 w-4 shrink-0" /> Libro de Reclamaciones
+              </Link>
 
             </div>
           </div>

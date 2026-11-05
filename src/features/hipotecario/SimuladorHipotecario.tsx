@@ -58,6 +58,7 @@ export const SimuladorHipotecario = () => {
 
     trackWhatsAppClick({
       button_location: "hipotecario_simulador",
+      lead_tipo: "formulario",
       destino: data.useType,
       monto: resultado.montoMaximo,
       ubicacion: data.location,

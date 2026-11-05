@@ -176,6 +176,7 @@ Quedo atento a su respuesta.`;
 
         trackWhatsAppClick({
           button_location: "vehicular_simulador",
+          lead_tipo: "formulario",
           destino: "Garantía Vehicular",
           monto: preApproved,
         });

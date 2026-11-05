@@ -230,6 +230,7 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
 
     trackWhatsAppClick({
       button_location: "hipotecario_wizard",
+      lead_tipo: "formulario",
       destino: data.usoDelCapital,
       monto: data.montoAprox,
       ubicacion: data.ubicacionInmueble,

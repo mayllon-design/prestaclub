@@ -125,6 +125,7 @@ export const CalculatorSection = () => {
                     onClick={() =>
                       trackWhatsAppClick({
                         button_location: "empresa_calculadora",
+                        lead_tipo: "formulario",
                         destino: "Financiamiento Empresarial",
                         monto,
                       })

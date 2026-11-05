@@ -33,6 +33,7 @@ export const ConversionForm = () => {
       const message = `Hola PrestaClub, mi nombre es ${formData.nombre} (${formData.ruc}), mi teléfono es ${formData.telefono} y solicito un financiamiento empresarial de S/ ${formData.monto}.`;
       trackWhatsAppClick({
         button_location: "empresa_form",
+        lead_tipo: "formulario",
         destino: "Financiamiento Empresarial",
         monto: formData.monto,
       });

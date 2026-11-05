@@ -20,6 +20,7 @@ import { Button } from "@/shared/components/ui/button";
 import { useTrafficTracking } from "@/shared/hooks/useTrafficTracking";
 
 import { openWhatsApp } from "@/shared/lib/whatsapp";
+import { trackWhatsAppClick } from "@/shared/lib/tracking";
 interface WizardData {
     tipoProyecto: string;
     ubicacion: string;
@@ -383,6 +384,14 @@ ${campaign ? `\nCampaña: ${campaign}` : ""}`;
         } catch (error) {
             console.error('Error general guardando el lead:', error);
         }
+
+        // Sin monto: aquí está en dólares y el evento de Meta se valora en soles.
+        trackWhatsAppClick({
+            button_location: "desarrollo_wizard",
+            lead_tipo: "formulario",
+            destino: "Desarrollo Inmobiliario",
+            ubicacion: data.ubicacion,
+        });
 
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
 

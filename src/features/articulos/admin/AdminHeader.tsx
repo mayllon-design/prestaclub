@@ -11,6 +11,12 @@ export function AdminHeader() {
           <h1 className="text-xl font-bold">Panel Admin - PrestaClub</h1>
         </div>
         <nav className="flex items-center gap-4">
+          <Link href="/admin/articulos" className="text-sm text-muted-foreground hover:text-primary">
+            Artículos
+          </Link>
+          <Link href="/admin/reclamaciones" className="text-sm text-muted-foreground hover:text-primary">
+            Reclamaciones
+          </Link>
           <Link href="/articulos" className="text-sm text-muted-foreground hover:text-primary">
             Ver Blog
           </Link>
