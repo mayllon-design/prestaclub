@@ -5,7 +5,7 @@ import ReclamacionForm from "@/features/reclamaciones/ReclamacionForm";
 export const metadata: Metadata = {
   title: "Libro de Reclamaciones - PrestaClub",
   description: "Libro de Reclamaciones virtual de PRESTACLUB S.A.C., conforme a la Ley N.° 29571. Registra tu reclamo o queja y recibe tu código de constancia.",
-  alternates: { canonical: "/libro-de-reclamaciones" },
+  alternates: { canonical: "/libro-de-reclamaciones-prestaclub" },
 };
 
 export default function Page() {

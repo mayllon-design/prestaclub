@@ -19,6 +19,12 @@ const nextConfig = {
         destination: 'https://prestaclub.com/:path*',
         statusCode: 301,
       },
+      // 301: el libro de reclamaciones se publicó primero con esta URL.
+      {
+        source: '/libro-de-reclamaciones',
+        destination: '/libro-de-reclamaciones-prestaclub',
+        statusCode: 301,
+      },
       // 301: artículo "proceso…" se fusiona en el artículo "financiamiento…" (consolidar señales SEO).
       // El contenido de B sigue en la BD (editable por ID en el admin) para hacer la fusión luego.
       {

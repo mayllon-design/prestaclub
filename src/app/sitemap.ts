@@ -29,7 +29,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/preguntas-frecuentes`, lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
     { url: `${baseUrl}/politica-de-privacidad`, lastModified: now, changeFrequency: 'monthly', priority: 0.3 },
     { url: `${baseUrl}/terminos-y-condiciones`, lastModified: now, changeFrequency: 'monthly', priority: 0.3 },
-    { url: `${baseUrl}/libro-de-reclamaciones`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
   ];
 
   // Artículos publicados (dinámico desde la base de datos).
