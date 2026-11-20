@@ -39,9 +39,6 @@ const Header = () => {
   const precalificarHref = wizardAnchors[pathname] ?? "/financiamiento-con-garantia-hipotecaria#precalificar";
   const precalificarText = isSaneamiento ? "CONSULTAR AHORA" : "PRECALIFICAR";
 
-  // Portada alternativa en evaluación: se muestra sin header.
-  if (pathname === "/inicio-v2") return null;
-
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:h-20">

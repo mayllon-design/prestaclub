@@ -19,6 +19,12 @@ const nextConfig = {
         destination: 'https://prestaclub.com/:path*',
         statusCode: 301,
       },
+      // 301: la portada de prueba pasó a ser la home.
+      {
+        source: '/inicio-v2',
+        destination: '/',
+        statusCode: 301,
+      },
       // 301: URL anterior del libro de reclamaciones; se manda a la home a propósito.
       {
         source: '/libro-de-reclamaciones',

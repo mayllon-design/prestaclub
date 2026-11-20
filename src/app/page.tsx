@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Principal from "@/features/home/PrincipalPage";
+import PortadaV2Page from "@/features/home-v2/PortadaV2Page";
 
 export const metadata: Metadata = {
   title: "PrestaClub | Financiamiento con garantía real - Registrados en SBS",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <Principal />;
+  return <PortadaV2Page />;
 }

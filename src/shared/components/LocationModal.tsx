@@ -8,24 +8,33 @@ import Link from "next/link";
 interface LocationModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onConfirm: (data: { location: string; useType: string }) => void;
+    onConfirm: (data: { location: string; useType: string; amount?: string }) => void;
+    /** Agrega la pregunta del monto entre ubicación y uso (botón flotante de WhatsApp). */
+    askAmount?: boolean;
 }
 
-type Step = 'location' | 'use-type' | 'error';
+type Step = 'location' | 'amount' | 'use-type' | 'error' | 'amount-error';
 
-export const LocationModal = ({ isOpen, onClose, onConfirm }: LocationModalProps) => {
+// Rangos de monto. "Menos de S/ 10 mil" no avanza: muestra el aviso de monto mínimo.
+const AMOUNT_OPTIONS = ['S/ 10 mil - S/ 50 mil', 'S/ 50 mil - S/ 150 mil', 'S/ 150 mil - S/ 300 mil', 'S/ 300 mil - S/ 500 mil', 'Más de S/ 500 mil'];
+// En pantallas angostas el rango solo se parte en el guion, nunca dentro de "S/ 150 mil".
+const noBreak = (text: string) => text.split(' - ').map((part) => part.replace(/ /g, ' ')).join(' - ');
+
+export const LocationModal = ({ isOpen, onClose, onConfirm, askAmount = false }: LocationModalProps) => {
     const [step, setStep] = useState<Step>('location');
     const [selectedLocation, setSelectedLocation] = useState('');
+    const [selectedAmount, setSelectedAmount] = useState('');
     const [selectedUseType, setSelectedUseType] = useState('');
 
     if (!isOpen) return null;
 
     const handleConfirm = (useType: string) => {
-        onConfirm({ location: selectedLocation, useType });
+        onConfirm({ location: selectedLocation, useType, ...(askAmount && selectedAmount ? { amount: selectedAmount } : {}) });
         onClose();
         // Reset state for next time
         setStep('location');
         setSelectedLocation('');
+        setSelectedAmount('');
         setSelectedUseType('');
     };
 
@@ -42,7 +51,7 @@ export const LocationModal = ({ isOpen, onClose, onConfirm }: LocationModalProps
                 <button
                     onClick={() => {
                         setSelectedLocation('Lima o Callao');
-                        setStep('use-type');
+                        setStep(askAmount ? 'amount' : 'use-type');
                     }}
                     className="flex items-center justify-between p-4 rounded-2xl border-2 border-border hover:border-primary hover:bg-primary/5 transition-all text-left group"
                 >
@@ -62,6 +71,70 @@ export const LocationModal = ({ isOpen, onClose, onConfirm }: LocationModalProps
                         <span className="text-xs text-muted-foreground">Fuera de Lima y Callao</span>
                     </div>
                     <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-red-500 transition-colors" />
+                </button>
+            </div>
+        </div>
+    );
+
+    const renderAmountStep = () => (
+        <div className="space-y-6">
+            <div className="text-center sm:text-left">
+                <h3 className="text-2xl font-bold text-foreground">¿Qué monto deseas solicitar?</h3>
+                <p className="text-muted-foreground mt-2 font-body">
+                    Elige el rango aproximado que necesitas.
+                </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 pt-2">
+                <button
+                    onClick={() => setStep('amount-error')}
+                    className="min-h-12 px-3 py-3 rounded-xl border-2 border-border hover:border-red-500/50 hover:bg-red-500/5 transition-all text-sm font-medium text-foreground"
+                >
+                    {noBreak('Menos de S/ 10 mil')}
+                </button>
+                {AMOUNT_OPTIONS.map((option) => (
+                    <button
+                        key={option}
+                        onClick={() => {
+                            setSelectedAmount(option);
+                            setStep('use-type');
+                        }}
+                        className="min-h-12 px-3 py-3 rounded-xl border-2 border-border hover:border-primary hover:bg-primary/5 transition-all text-sm font-medium text-foreground"
+                    >
+                        {noBreak(option)}
+                    </button>
+                ))}
+            </div>
+
+            <button
+                onClick={() => setStep('location')}
+                className="w-full text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+                Volver
+            </button>
+        </div>
+    );
+
+    const renderAmountErrorStep = () => (
+        <div className="text-center py-4 space-y-6">
+            <div className="h-16 w-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Ban className="h-8 w-8 text-red-600" />
+            </div>
+            <div>
+                <h3 className="text-xl font-bold text-foreground">Lo sentimos</h3>
+                <p className="text-muted-foreground mt-3 font-body leading-relaxed">
+                    No otorgamos <strong>préstamos personales</strong> ni préstamos <strong>menores a S/ 10,000</strong>.
+                </p>
+            </div>
+            <div className="pt-4">
+                <Button variant="outline" className="w-full rounded-xl" asChild>
+                    <Link href="/nosotros" onClick={onClose}>Conoce más aquí</Link>
+                </Button>
+                <button
+                    onClick={() => setStep('amount')}
+                    className="mt-4 text-sm text-muted-foreground hover:text-primary underline"
+                >
+                    Volver
                 </button>
             </div>
         </div>
@@ -125,7 +198,7 @@ export const LocationModal = ({ isOpen, onClose, onConfirm }: LocationModalProps
                 </Button>
                 
                 <button
-                    onClick={() => setStep('location')}
+                    onClick={() => setStep(askAmount ? 'amount' : 'location')}
                     className="w-full text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                     Volver
@@ -179,6 +252,8 @@ export const LocationModal = ({ isOpen, onClose, onConfirm }: LocationModalProps
                     </div>
 
                     {step === 'location' && renderLocationStep()}
+                    {step === 'amount' && renderAmountStep()}
+                    {step === 'amount-error' && renderAmountErrorStep()}
                     {step === 'use-type' && renderUseTypeStep()}
                     {step === 'error' && renderErrorStep()}
                 </div>

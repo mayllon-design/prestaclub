@@ -1,12 +1,14 @@
 "use client";
 
 // Portada alternativa "Elige tu camino" (diseño 1b de Claude Design, proyecto
-// "Portada dividida Prestaclub"). Vive en /inicio-v2 para compararla con la home actual.
+// "Portada dividida Prestaclub"). Es la home ("/") desde noviembre de 2026.
 
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
+import { Shield, Clock, Users, CheckCircle2, Star } from "lucide-react";
 import Layout from "@/core/layouts/MainLayout";
+import SecurityAnnouncementPopup from "@/features/home/SecurityAnnouncementPopup";
 import fotoPersonas from "@/assets/portada-personas-pymes.webp";
 import fotoEmpresas from "@/assets/portada-empresas-inmobiliario.webp";
 
@@ -248,9 +250,86 @@ const Tarjeta = ({ numero, etiqueta, titulo, resumen, foto, altFoto, opciones, e
   );
 };
 
+// Bloque de marca: responde a quien busca "prestaclub" o "prestaclub es confiable".
+const beneficios = [
+  { icono: CheckCircle2, texto: "Registrados en la SBS" },
+  { icono: Shield, texto: "Respaldo de inversionistas institucionales" },
+  { icono: Clock, texto: "Precalificación en minutos" },
+  { icono: Users, texto: "Atención personalizada" },
+];
+
+const testimonios = [
+  {
+    nombre: "Carlos M.",
+    rol: "Emprendedor, San Juan de Lurigancho",
+    texto: "PrestaClub me ayudó a obtener el capital de trabajo que necesitaba para expandir mi negocio. El proceso fue rápido y transparente.",
+  },
+  {
+    nombre: "María L.",
+    rol: "Propietaria, Cercado de Lima",
+    texto: "Consolidé todas mis deudas en una sola cuota. Gracias a PrestaClub ahora tengo tranquilidad financiera.",
+  },
+  {
+    nombre: "Roberto S.",
+    rol: "Constructor, Ventanilla",
+    texto: "El financiamiento para mi proyecto de construcción fue aprobado rápidamente. Excelente servicio y acompañamiento.",
+  },
+];
+
+const BloqueMarca = () => (
+  <section className="bg-white px-4 md:px-10 py-14 md:py-20">
+    <div className="max-w-[1200px] mx-auto">
+      <div className="max-w-3xl mx-auto text-center">
+        <h2 className="text-[26px] md:text-4xl font-extrabold text-[#1D2B6C] leading-tight">
+          ¿Por qué elegir PrestaClub?
+        </h2>
+        <p className="mt-4 text-[15px] md:text-lg text-[#6B7390] leading-relaxed">
+          PrestaClub es una fintech peruana con más de 24 años en el mercado, registrada en la SBS
+          como empresa de préstamos (Resolución SBS N.º 2150-2020), miembro de la Asociación Fintech
+          Perú y asociada a la Cámara de Comercio de Lima. Conectamos a personas y empresas que
+          necesitan financiamiento con garantía real con fondos de inversión, en operaciones
+          formalizadas ante notario.
+        </p>
+      </div>
+
+      <ul className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        {beneficios.map((b) => (
+          <li key={b.texto} className="flex flex-col items-center text-center gap-3 rounded-2xl bg-[#F3F5F9] p-5 md:p-6">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F9B826]/15">
+              <b.icono className="h-6 w-6 text-[#F5921E]" />
+            </span>
+            <span className="text-sm md:text-base font-semibold text-[#1D2B6C]">{b.texto}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h2 className="mt-14 md:mt-20 text-center text-[24px] md:text-3xl font-extrabold text-[#1D2B6C]">
+        Lo que dicen nuestros clientes
+      </h2>
+      <div className="mt-8 grid md:grid-cols-3 gap-4 md:gap-6">
+        {testimonios.map((t) => (
+          <figure key={t.nombre} className="rounded-2xl border border-[#E3E7F0] bg-white p-6 md:p-8 shadow-sm">
+            <div className="flex gap-1 mb-4" aria-label="5 de 5 estrellas">
+              {Array.from({ length: 5 }).map((_, j) => (
+                <Star key={j} className="h-5 w-5 fill-[#F9B826] text-[#F9B826]" />
+              ))}
+            </div>
+            <blockquote className="text-[15px] text-[#3B4466] leading-relaxed">&ldquo;{t.texto}&rdquo;</blockquote>
+            <figcaption className="mt-5">
+              <span className="block font-bold text-[#1D2B6C]">{t.nombre}</span>
+              <span className="block text-sm text-[#6B7390]">{t.rol}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
 const PortadaV2Page = () => {
   return (
     <Layout>
+      <SecurityAnnouncementPopup />
       <section className="relative bg-[#F3F5F9] overflow-hidden">
         <div className="absolute inset-x-0 top-0 h-[280px] md:h-[360px] bg-gradient-to-br from-[#1D2B6C] to-[#0B163F]" aria-hidden="true" />
         <div className="absolute -top-[120px] -right-20 w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle,rgba(249,184,38,0.35),rgba(249,184,38,0)_70%)]" aria-hidden="true" />
@@ -308,6 +387,7 @@ const PortadaV2Page = () => {
           ))}
         </div>
       </section>
+      <BloqueMarca />
     </Layout>
   );
 };

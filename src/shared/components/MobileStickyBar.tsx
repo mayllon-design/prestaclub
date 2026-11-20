@@ -44,14 +44,15 @@ const MobileStickyBar = () => {
     }
   };
 
-  const proceedToWhatsApp = (data: { location: string; useType: string }) => {
+  const proceedToWhatsApp = (data: { location: string; useType: string; amount?: string }) => {
     trackWhatsAppClick({
       button_location: "mobile_bar_hipotecario",
       destino: data.useType,
       ubicacion: data.location,
     });
     clearTracking();
-    const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
+    const montoTexto = data.amount ? `, necesito un monto de *${data.amount}*` : "";
+    const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}*${montoTexto} y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
     const url = getWhatsAppUrl(customMessage);
     openWhatsApp(url);
   };
@@ -83,6 +84,7 @@ const MobileStickyBar = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={proceedToWhatsApp}
+        askAmount
       />
     </>
   );

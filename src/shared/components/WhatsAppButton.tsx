@@ -75,14 +75,15 @@ const WhatsAppButton = () => {
     }
   };
 
-  const proceedToWhatsApp = (data: { location: string; useType: string }) => {
+  const proceedToWhatsApp = (data: { location: string; useType: string; amount?: string }) => {
     trackWhatsAppConversion(
       isHomePage ? "home_floating_button" : "hipotecario_floating_button",
       { destino: data.useType, ubicacion: data.location }
     );
     clearTracking();
 
-    const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}* y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
+    const montoTexto = data.amount ? `, necesito un monto de *${data.amount}*` : "";
+    const customMessage = `Hola *PrestaClub*. Mi inmueble está en *${data.location}*${montoTexto} y lo usaré para *${data.useType}*. Necesito más información sobre financiamientos.`;
     const url = getWhatsAppUrl(customMessage);
 
     openWhatsApp(url);
@@ -109,6 +110,7 @@ const WhatsAppButton = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={proceedToWhatsApp}
+        askAmount
       />
     </>
   );
