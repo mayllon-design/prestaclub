@@ -321,6 +321,64 @@ const IntroSection = () => (
   </section>
 );
 
+const pasosAutoGarantia = [
+  {
+    title: "Simula tu préstamo",
+    text: "Ingresa la marca, el año, el kilometraje y el tipo de combustible de tu auto y obtén un monto estimado en minutos.",
+  },
+  {
+    title: "Evaluamos tu vehículo",
+    text: "Un asesor revisa las condiciones de tu carro y te confirma el monto y el plazo, de 30 a 180 días.",
+  },
+  {
+    title: "Firma ante notario",
+    text: "El préstamo con garantía de auto se formaliza por escritura pública y se inscribe en SUNARP.",
+  },
+  {
+    title: "Recupera tu auto",
+    text: "Tu vehículo queda en custodia segura y lo recuperas al cancelar el total del crédito.",
+  },
+];
+
+const AutoEnGarantiaSection = () => (
+  <section className="section-padding bg-background">
+    <div className="container mx-auto max-w-5xl px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-10"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold text-[#1a2b4b] mb-4 leading-tight">
+          Préstamo con tu auto o carro en garantía: así funciona
+        </h2>
+        <p className="text-slate-600 text-lg leading-relaxed max-w-3xl mx-auto">
+          Si buscas un préstamo con garantía de auto en Lima, en Prestaclub usas tu carro,
+          camioneta o SUV como respaldo y recibes liquidez en pocas horas, sin venderlo.
+        </p>
+      </motion.div>
+      <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {pasosAutoGarantia.map((paso, index) => (
+          <motion.li
+            key={paso.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.08 }}
+            className="bg-[#f3f4f7] rounded-2xl p-6"
+          >
+            <span className="flex w-10 h-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold mb-4">
+              {index + 1}
+            </span>
+            <h3 className="font-bold text-[#1a2b4b] text-lg mb-2">{paso.title}</h3>
+            <p className="text-slate-600 leading-relaxed">{paso.text}</p>
+          </motion.li>
+        ))}
+      </ol>
+    </div>
+  </section>
+);
+
 const VehicularPage = () => {
   const wizardRef = useRef<HTMLDivElement>(null);
 
@@ -333,6 +391,8 @@ const VehicularPage = () => {
       <Hero onSimulate={scrollToSimulate} />
 
       <IntroSection />
+
+      <AutoEnGarantiaSection />
 
       <InstitutionalTrust />
 

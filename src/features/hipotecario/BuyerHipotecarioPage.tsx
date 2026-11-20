@@ -268,6 +268,16 @@ const BuyerPage = ({ title, subtitle, heroDescription, problems, solution, buyer
           <div className="container mx-auto max-w-3xl">
             <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6 leading-tight">{intro.title}</h2>
             <p className="text-lg text-muted-foreground font-body leading-relaxed">{intro.body}</p>
+            <p className="text-lg text-muted-foreground font-body leading-relaxed mt-4">
+              Es una de las modalidades de nuestro{" "}
+              <Link
+                href="/financiamiento-con-garantia-hipotecaria"
+                className="font-semibold text-primary hover:text-gold transition-colors"
+              >
+                préstamo con garantía hipotecaria
+              </Link>
+              .
+            </p>
           </div>
         </section>
       )}

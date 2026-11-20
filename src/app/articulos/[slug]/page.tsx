@@ -147,6 +147,27 @@ export default async function ArticleDetailPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
 
+              {/* Enlace interno al producto: refuerza la landing que debe posicionar por la keyword. */}
+              <p className="mt-12 text-base text-muted-foreground leading-relaxed">
+                {/vehicul|auto|carro/i.test(article.title) ? (
+                  <>
+                    ¿Necesitas liquidez? Conoce nuestro{" "}
+                    <Link href="/prestamo-con-garantia-vehicular" className="font-semibold text-primary hover:text-gold transition-colors">
+                      préstamo con garantía vehicular
+                    </Link>
+                    , con tu auto en custodia segura.
+                  </>
+                ) : (
+                  <>
+                    ¿Necesitas liquidez? Conoce nuestro{" "}
+                    <Link href="/financiamiento-con-garantia-hipotecaria" className="font-semibold text-primary hover:text-gold transition-colors">
+                      préstamo con garantía hipotecaria
+                    </Link>
+                    , con tu casa, local o terreno como respaldo.
+                  </>
+                )}
+              </p>
+
               {/* CTA WhatsApp */}
               <div className="mt-14 rounded-2xl overflow-hidden border border-muted/20 shadow-lg bg-gradient-to-br from-[#002D72] to-[#003d99] p-8 md:p-10">
                 <div className="max-w-2xl mx-auto text-center">

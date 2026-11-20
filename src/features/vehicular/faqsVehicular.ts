@@ -25,6 +25,14 @@ export const faqsVehicular: FaqItem[] = [
     a: "Tu vehículo permanece en custodia segura en nuestras instalaciones en Lima hasta que canceles el total del crédito. Los plazos van desde 30 hasta 180 días. La custodia incluye espacio con vigilancia permanente, póliza de seguros, control periódico y acta formal de entrega y devolución. Además, te entregamos tu vehículo lavado y listo para usarlo.",
   },
   {
+    q: "¿Qué necesito para pedir un préstamo con mi auto o carro en garantía?",
+    a: "Necesitas un vehículo de marca comercial, con hasta 10 años de antigüedad y un valor mínimo de S/ 20,000; por el momento no aceptamos motos. Con la marca, el año, el kilometraje y el tipo de combustible puedes simular tu préstamo en línea y un asesor te indica los documentos del vehículo que debes presentar. La operación se firma ante notario y se inscribe en SUNARP.",
+  },
+  {
+    q: "¿Dónde puedo sacar un préstamo con garantía de auto en Lima?",
+    a: "En Prestaclub, empresa registrada en la SBS (Resolución SBS N.º 2150-2020). Simulas tu préstamo con garantía de auto en línea, un asesor evalúa tu vehículo y, una vez firmado el contrato ante notario, tu auto queda en custodia segura en nuestras instalaciones en Lima hasta que canceles el crédito.",
+  },
+  {
     q: "¿Es lo mismo un préstamo prendario vehicular que un crédito con garantía vehicular?",
     a: "Sí. Préstamo prendario vehicular, préstamo con garantía prendaria, préstamo con tu auto o carro en garantía y crédito con garantía vehicular son nombres distintos para la misma operación: tu vehículo respalda el préstamo mientras lo pagas. En el Perú, legalmente se formaliza como garantía mobiliaria ante notario e inscrita en SUNARP. En Prestaclub el vehículo queda en custodia segura durante el plazo del crédito y lo recuperas al cancelarlo.",
   },

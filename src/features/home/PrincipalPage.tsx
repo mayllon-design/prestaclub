@@ -16,7 +16,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
 import SecurityAnnouncementPopup from "./SecurityAnnouncementPopup";
-import heroPrincipal from "@/assets/prestamo-garantia-hipotecaria-home.png";
+import heroPrincipal from "@/assets/hero-home-propiedad.png";
 import heroVehicular from "@/assets/hero-vehicular.png";
 import teamWorking from "@/assets/saneamiento-pedrial.png";
 import equipoPresta from "@/assets/Prestamo-con-garantia-hipotecaria-para-empresas.png";
