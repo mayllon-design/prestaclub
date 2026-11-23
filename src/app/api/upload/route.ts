@@ -5,10 +5,14 @@ import { getAdminUser, unauthorized } from "@/shared/lib/adminAuth";
 // Configuración de Supabase
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function POST(request: Request) {
   if (!(await getAdminUser(request))) return unauthorized();
+  // Se sube con la sesión del admin: el bucket solo acepta subidas de usuarios autenticados.
+  const supabase = createClient(supabaseUrl, supabaseKey, {
+    auth: { persistSession: false, autoRefreshToken: false },
+    global: { headers: { Authorization: request.headers.get("authorization") ?? "" } },
+  });
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File;

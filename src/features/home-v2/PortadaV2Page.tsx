@@ -8,7 +8,6 @@ import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
 import { Shield, Clock, Users, CheckCircle2, Star } from "lucide-react";
 import Layout from "@/core/layouts/MainLayout";
-import SecurityAnnouncementPopup from "@/features/home/SecurityAnnouncementPopup";
 import fotoPersonas from "@/assets/portada-personas-pymes.webp";
 import fotoEmpresas from "@/assets/portada-empresas-inmobiliario.webp";
 
@@ -329,7 +328,6 @@ const BloqueMarca = () => (
 const PortadaV2Page = () => {
   return (
     <Layout>
-      <SecurityAnnouncementPopup />
       <section className="relative bg-[#F3F5F9] overflow-hidden">
         <div className="absolute inset-x-0 top-0 h-[280px] md:h-[360px] bg-gradient-to-br from-[#1D2B6C] to-[#0B163F]" aria-hidden="true" />
         <div className="absolute -top-[120px] -right-20 w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle,rgba(249,184,38,0.35),rgba(249,184,38,0)_70%)]" aria-hidden="true" />

@@ -17,6 +17,9 @@ export function AdminHeader() {
           <Link href="/admin/reclamaciones" className="text-sm text-muted-foreground hover:text-primary">
             Reclamaciones
           </Link>
+          <Link href="/admin/popup" className="text-sm text-muted-foreground hover:text-primary">
+            Popup
+          </Link>
           <Link href="/articulos" className="text-sm text-muted-foreground hover:text-primary">
             Ver Blog
           </Link>
